@@ -25,7 +25,7 @@ public class CurrencyStoreCommand implements CommandExecutor {
             Player pp = (Player) sender;
 
             if (Main.systemDisabled("halloweenSurvival")) {
-                sender.sendMessage(c.red + "Halloween event not active!");
+                sender.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Halloween event is not active!");
                 return false;
             }
 
