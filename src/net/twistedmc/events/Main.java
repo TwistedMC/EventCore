@@ -56,6 +56,12 @@ public class Main extends JavaPlugin implements Listener {
     public static String sqlUserCurrency = "currency";
     public static String sqlPwCurrency = "GDfn7YcSr5gcktDr";
 
+    public String sqlHostAdvent = "173.44.44.251";
+    public String sqlPortAdvent = "3306";
+    public String sqlDbAdvent = "events_advent?useSSL=false";
+    public String sqlUserAdvent = "events_advent";
+    public String sqlPwAdvent = "DdY3HkcfnT4RvP9c";
+
     public static Connection connection = null;
 
     public void onEnable() {
@@ -233,8 +239,9 @@ public class Main extends JavaPlugin implements Listener {
             try {
                 connection = MySQL.openConnection();
                 Bukkit.getConsoleSender().sendMessage("[EVENT CORE] Database connected!");
-                createEventsDB();
+                createProgressDB();
                 createNetworkEventsDB();
+                createAdventDB();
             } catch (SQLException | ClassNotFoundException e) {
                 Bukkit.getLogger().log(Level.WARNING, "[EVENT CORE] Error while connecting to database!");
                 return;
@@ -272,7 +279,6 @@ public class Main extends JavaPlugin implements Listener {
     }
     
     private void createNetworkEventsDB() {
-
         String sqlHost = "173.44.44.251";
         String sqlPort = "3306";
         String sqlDb = "network_events?useSSL=false";
@@ -283,21 +289,35 @@ public class Main extends JavaPlugin implements Listener {
             MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
             Statement statement = MySQL.openConnection().createStatement();
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS networkEvents (UUID VARCHAR(36), `eventsCompleted` INT(11), `rewardsClaimed` INT(11), `claimableRewards` INT(11));");
+            Bukkit.getConsoleSender().sendMessage("[EVENT CORE] Network Events database created!");
         } catch (SQLException | ClassNotFoundException s) {
             s.printStackTrace();
-            Bukkit.getLogger().severe("Database not connecting. (Network Events DB)");
+            Bukkit.getLogger().severe("An error occurred while creating the Network Events Database!");
         }
     }
 
-    private void createEventsDB() {
+    private void createProgressDB() {
         try {
             Statement s = getConnection().createStatement();
             s.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS progress (UUID VARCHAR(36)," +
                             " `progress` INT(11));");
+            Bukkit.getConsoleSender().sendMessage("[EVENT CORE] Progress database created!");
         } catch (Exception e) {
             e.printStackTrace();
-            Bukkit.getLogger().severe("Database not connecting. (Events DB)");
+            Bukkit.getLogger().severe("An error occurred while creating the Progress Database!");
+        }
+    }
+
+    private void createAdventDB() {
+        try {
+            MySQL MySQL = new MySQL(sqlHostAdvent, sqlPortAdvent, sqlDbAdvent, sqlUserAdvent, sqlPwAdvent);
+            Statement statement = MySQL.openConnection().createStatement();
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS adventCalendar (`id` int NOT NULL AUTO_INCREMENT, `uuid` VARCHAR(36), `openedWindow` VARCHAR(3000), PRIMARY KEY (id));");
+            Bukkit.getConsoleSender().sendMessage("[EVENT CORE] Advent Calendar database created!");
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+            Bukkit.getLogger().severe("An error occurred while creating the Advent Calendar Database!");
         }
     }
 
