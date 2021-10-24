@@ -10,57 +10,18 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jars/luckperms.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jars/Discord-Webhooks-API-WithDependencies.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jars/placeholderapi.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../Build Tools/spigot-1.17.jar!/" />
+          <root url="jar://C:/jars/HeadDatabase-4.13.4.jar!/" />
+          <root url="jar://C:/jars/Discord-Webhooks-API-WithDependencies.jar!/" />
+          <root url="jar://C:/jars/placeholderapi.jar!/" />
+          <root url="jar://C:/jars/luckperms.jar!/" />
+          <root url="jar://C:/jars/SafeReboot.jar!/" />
+          <root url="jar://C:/jars/spigot-1.17.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../Build Tools/spigot-1.17.jar!/" />
+          <root url="jar://C:/jars/spigot-1.17.jar!/" />
+          <root url="file://$MODULE_DIR$/src" />
         </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../EnchantedCore/out/artifacts/EnchantedCore_jar/EnchantedCore1.17.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jars/HeadDatabase-4.13.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
       </library>
     </orderEntry>
   </component>
