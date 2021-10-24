@@ -1,0 +1,27 @@
+################################################################################
+#
+# THIS PLUGIN IS MADE FOR USE ON TWISTEDMC
+# DO NOT USE ON YOUR OWN SERVER TO TEST USE THE DEV SERVER
+# DO NOT DISTRIBUTE
+#
+# PA Pre Alpha
+# A Alpha
+# B Beta
+# H Halloween
+# C Christmas
+################################################################################
+
+name: EventCore1.17
+version: H0.9.0|C0.1.0
+author: [shastagrande,MCEpic_Nation]
+main: net.twistedmc.events.Main
+api-version: 1.16
+website: https://twistedmc.net
+depend: [PlaceholderAPI]
+commands:
+  eventprogress:
+  rewards:
+  hcc:
+  seasonal:
+  candy:
+   aliases: [candystore]
