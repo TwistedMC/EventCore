@@ -29,7 +29,7 @@ public class JoinListener implements Listener {
 
     @EventHandler
     public void onJoin(AsyncPlayerPreLoginEvent e) {
-        if (plugin.connection == null) {
+        if (Main.getConnection() == null) {
                 e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, "There was an error with the database, please try again in a minute. If the problem persists, please contact an administrator with the code (N9TT-9G0A)");
         }
     }
@@ -146,6 +146,31 @@ public class JoinListener implements Listener {
                 s.printStackTrace();
             }
         }
+
+        if(!inSnowflakesCurrencyDB(player.getUniqueId())) {
+            String sqlHostCurrency = "173.44.44.251";
+            String sqlPortCurrency = "3306";
+            String sqlDbCurrency = "currency?useSSL=false";
+            String sqlUserCurrency = "currency";
+            String sqlPwCurrency = "GDfn7YcSr5gcktDr";
+            try {
+                MySQL MySQL = new MySQL(sqlHostCurrency, sqlPortCurrency, sqlDbCurrency, sqlUserCurrency, sqlPwCurrency);
+                Statement statement = MySQL.openConnection().createStatement();
+                statement.executeUpdate("INSERT INTO snowflakes (uuid, snowflakes) VALUES ('" + player.getUniqueId() + "', '0')");
+            } catch (SQLException | ClassNotFoundException s) {
+                s.printStackTrace();
+            }
+        }
+
+        if(!inAdventCalendarDB(player.getUniqueId())) {
+            try {
+                MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
+                Statement statement = MySQL.openConnection().createStatement();
+                statement.executeUpdate("INSERT INTO adventCalendar (uuid, openedWindow) VALUES ('" + player.getUniqueId() + "', '0')");
+            } catch (SQLException | ClassNotFoundException s) {
+                s.printStackTrace();
+            }
+        }
     }
     public static boolean hasJoined(UUID uuid){
         try {
@@ -213,6 +238,21 @@ public class JoinListener implements Listener {
             MySQL MySQL = new MySQL(sqlHostCurrency, sqlPortCurrency, sqlDbCurrency, sqlUserCurrency, sqlPwCurrency);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM snowflakes WHERE UUID = '" + uuid.toString() + "'");
+            while(res.next()){
+                return res.getString("uuid") != null;
+            }
+            return false;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean inAdventCalendarDB(UUID uuid){
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
+            Statement statement = MySQL.openConnection().createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM adventCalendar WHERE UUID = '" + uuid.toString() + "'");
             while(res.next()){
                 return res.getString("uuid") != null;
             }

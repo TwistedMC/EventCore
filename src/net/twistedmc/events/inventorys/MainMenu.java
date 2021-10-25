@@ -13,6 +13,8 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
+import twistedmc.core.Core;
+import twistedmc.core.framework.ServerType;
 
 import java.text.NumberFormat;
 
@@ -35,33 +37,43 @@ public class MainMenu extends AbstractGUI implements Listener {
         String candies = formatter.format(Main.getCandies(pp));
         String snowflakes = formatter.format(Main.getSnowflakes(pp));
 
-        setItem(new cItemStack(api.getItemHead("40395")).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
-                c.gray + "All your Halloween seasonal currency",
-                c.gray + "has been contained in this chest, for safe keeping.",
-                c.gray + "This chest has been imbued with a magic to only allow",
-                c.gray + "you to open it and use it in the Candies shop.",
-                "",
-                c.red + "Staff can still reset your currency",
-                c.red + "if you violate the currency rules.",
-                "",
-                c.gray + "This chest is holding " + c.gold + candies + " Candies" + c.gray + ".",
-                "",
-                c.yellow + "Click to open Halloween Store!"
-        ), 13, (s,c,p) -> { });
+        if (Main.getServerDataManager().getServerType() == ServerType.MINIGAME) {
+            setItem(new cItemStack(api.getItemHead("40395")).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
+                    c.gray + "All your Halloween seasonal currency",
+                    c.gray + "has been contained in this chest, for safe keeping.",
+                    c.gray + "This chest has been imbued with a magic to only allow",
+                    c.gray + "you to open it and use it in the Candies shop.",
+                    "",
+                    c.gray + "This chest is holding " + c.gold + candies + " Candies" + c.gray + ".",
+                    "",
+                    c.yellow + "Click to open Halloween Store!"
+            ), 13, (s, c, p) -> {
+            });
+        }
 
-        /*setItem(new cItemStack(api.getItemHead("41106")).setDisplayName(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe").addLore(
-                c.gray + "All your Winter seasonal currency",
-                c.gray + "has been contained in this chest, for safe keeping.",
-                c.gray + "This globe has been imbued with a magic to only allow",
-                c.gray + "you to open it and use it in the Snowflakes shop.",
-                "",
-                c.red + "Staff can still reset your currency",
-                c.red + "if you violate the currency rules.",
-                "",
-                c.gray + "This chest is holding " + c.white + snowflakes + " Snowflakes." + c.gray + ".",
-                "",
-                c.yellow + "Click to open Winter Store!"
-        ), 15, (s,c,p) -> { });*/
+        if (Main.getServerDataManager().getServerType() == ServerType.DEV) {
+            setItem(new cItemStack(api.getItemHead("40395")).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
+                    c.gray + "All your Halloween seasonal currency",
+                    c.gray + "has been contained in this chest, for safe keeping.",
+                    c.gray + "This chest has been imbued with a magic to only allow",
+                    c.gray + "you to open it and use it in the Candies shop.",
+                    "",
+                    c.gray + "This chest is holding " + c.gold + candies + " Candies" + c.gray + ".",
+                    "",
+                    c.yellow + "Click to open Halloween Store!"
+            ), 12, (s,c,p) -> { });
+
+            setItem(new cItemStack(api.getItemHead("41106")).setDisplayName(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe").addLore(
+                    c.gray + "All your Winter seasonal currency",
+                    c.gray + "has been contained in this chest, for safe keeping.",
+                    c.gray + "This globe has been imbued with a magic to only allow",
+                    c.gray + "you to open it and use it in the Snowflakes shop.",
+                    "",
+                    c.gray + "This chest is holding " + c.white + snowflakes + " Snowflakes" + c.gray + ".",
+                    "",
+                    c.yellow + "Click to open Winter Store!"
+            ), 14, (s,c,p) -> { });
+        }
 
         setItem(new cItemStack(Material.WRITTEN_BOOK).setDisplayName(c.yellow + "Information").addLore(
                 c.gray + "Simply put, this menu will allow you to access",
