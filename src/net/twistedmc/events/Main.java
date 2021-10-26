@@ -122,7 +122,7 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
             public void run() {
                 Date now = new java.sql.Date(System.currentTimeMillis());
-                SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ssa 'ET'");
+                SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa 'ET'");
                 Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
 
                 for (final Player p : Bukkit.getOnlinePlayers()) {
