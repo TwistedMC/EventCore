@@ -21,18 +21,28 @@ import net.twistedmc.events.commands.*;
 import net.twistedmc.events.commands.advent.AdventCalendarCommand;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
+import net.twistedmc.events.inventorys.advent.AdventCalendar;
+import net.twistedmc.events.inventorys.advent.AdventCalendarListener;
+import net.twistedmc.events.inventorys.advent.AdventCalendarTestMenu;
 import net.twistedmc.events.listeners.JoinListener;
 import net.twistedmc.events.listeners.SuggestionsManager;
 import net.twistedmc.events.listeners.ToTListener;
 import net.twistedmc.events.placeholders.PlaceholderListener;
 import org.bukkit.*;
 import org.bukkit.command.*;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -79,7 +89,7 @@ public class Main extends JavaPlugin implements Listener {
 
         serverDataManager = new ServerDataManager();
 
-        getServerDataManager().setServerType(ServerType.DEV);
+        getServerDataManager().setServerType(ServerType.MINIGAME);
 
         if (!serverInDB(getIP() + ":" + getServer().getPort())) {
 
@@ -123,7 +133,10 @@ public class Main extends JavaPlugin implements Listener {
             public void run() {
                 Date now = new java.sql.Date(System.currentTimeMillis());
                 SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa 'ET'");
-                Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
+
+                if (getServerDataManager().getServerType() == ServerType.DEV) {
+                    Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
+                }
 
                 for (final Player p : Bukkit.getOnlinePlayers()) {
 
@@ -529,135 +542,137 @@ public class Main extends JavaPlugin implements Listener {
             discordPluginLeak.sendMessage(dmPluginLeak);
 
         }
-        
-            this.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, (Runnable) new Runnable() {
-                @Override
-                public void run() {
-                    for (final Player p : Bukkit.getOnlinePlayers()) {
 
-                        String sqlHost = "173.44.44.251";
-                        String sqlPort = "3306";
-                        String sqlDb = "survivalEnchanted_events?useSSL=false";
-                        String sqlUser = "survivalEnchanted_events";
-                        String sqlPw = "4mHYCVVltvCmLVgF";
+        this.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, (Runnable) new Runnable() {
+            @Override
+            public void run() {
+                for (final Player p : Bukkit.getOnlinePlayers()) {
 
-                        int progress = 0;
+                    String sqlHost = "173.44.44.251";
+                    String sqlPort = "3306";
+                    String sqlDb = "survivalEnchanted_events?useSSL=false";
+                    String sqlUser = "survivalEnchanted_events";
+                    String sqlPw = "4mHYCVVltvCmLVgF";
+
+                    int progress = 0;
+
+                    try {
+                        MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
+                        Statement statement = MySQL.openConnection().createStatement();
+                        ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
+                        while (result.next()) {
+                            progress = result.getInt("VALUE");
+                        }
+                    } catch (SQLException | ClassNotFoundException c) {
+                        c.printStackTrace();
+                    }
+
+
+                    if (progress >= 20 && p.hasPermission("quests.quest.events1")) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set quests.quest.events1 false");
+
+                        String sqlHostE = "173.44.44.251";
+                        String sqlPortE = "3306";
+                        String sqlDbE = "network_events?useSSL=false";
+                        String sqlUserE = "network_events";
+                        String sqlPwE = "mDYvjpZIbj1CZjGD";
 
                         try {
-                            MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
+                            MySQL MySQL = new MySQL(sqlHostE, sqlPortE, sqlDbE, sqlUserE, sqlPwE);
                             Statement statement = MySQL.openConnection().createStatement();
-                            ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
-                            while (result.next()) {
-                                progress = result.getInt("VALUE");
-                            }
-                        } catch (SQLException | ClassNotFoundException c) {
-                            c.printStackTrace();
+                            statement.executeUpdate("UPDATE `networkEvents` SET eventsCompleted = eventsCompleted + 1 WHERE UUID = '" + p.getUniqueId() + "'");
+                        } catch (SQLException | ClassNotFoundException s) {
+                            s.printStackTrace();
                         }
-
-
-                        if (progress >= 20 && p.hasPermission("quests.quest.events1")) {
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set quests.quest.events1 false");
-
-                            String sqlHostE = "173.44.44.251";
-                            String sqlPortE = "3306";
-                            String sqlDbE = "network_events?useSSL=false";
-                            String sqlUserE = "network_events";
-                            String sqlPwE = "mDYvjpZIbj1CZjGD";
-
-                            try {
-                                MySQL MySQL = new MySQL(sqlHostE, sqlPortE, sqlDbE, sqlUserE, sqlPwE);
-                                Statement statement = MySQL.openConnection().createStatement();
-                                statement.executeUpdate("UPDATE `networkEvents` SET eventsCompleted = eventsCompleted + 1 WHERE UUID = '" + p.getUniqueId() + "'");
-                            } catch (SQLException | ClassNotFoundException s) {
-                                s.printStackTrace();
-                            }
-
-                            try {
-                                MySQL MySQL = new MySQL(sqlHostE, sqlPortE, sqlDbE, sqlUserE, sqlPwE);
-                                Statement statement = MySQL.openConnection().createStatement();
-                                statement.executeUpdate("UPDATE `networkEvents` SET claimableRewards = claimableRewards + 1 WHERE UUID = '" + p.getUniqueId() + "'");
-                            } catch (SQLException | ClassNotFoundException s) {
-                                s.printStackTrace();
-                            }
-
-                        }
-                    }
-                }
-            }, 0L, 3L);
-
-            this.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, (Runnable) new Runnable() {
-                @Override
-                public void run() {
-                    for (final Player p : Bukkit.getOnlinePlayers()) {
-
-                        String sqlHost = "173.44.44.251";
-                        String sqlPort = "3306";
-                        String sqlDb = "survivalEnchanted_events?useSSL=false";
-                        String sqlUser = "survivalEnchanted_events";
-                        String sqlPw = "4mHYCVVltvCmLVgF";
-
-                        int progress = 0;
 
                         try {
-                            MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
+                            MySQL MySQL = new MySQL(sqlHostE, sqlPortE, sqlDbE, sqlUserE, sqlPwE);
                             Statement statement = MySQL.openConnection().createStatement();
-                            ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
-                            while (result.next()) {
-                                progress = result.getInt("VALUE");
-                            }
-                        } catch (SQLException | ClassNotFoundException c) {
-                            c.printStackTrace();
+                            statement.executeUpdate("UPDATE `networkEvents` SET claimableRewards = claimableRewards + 1 WHERE UUID = '" + p.getUniqueId() + "'");
+                        } catch (SQLException | ClassNotFoundException s) {
+                            s.printStackTrace();
                         }
 
-
-                        if (progress == 20 && !p.hasPermission("twisted.events.redeemed.reward")) {
-                            p.sendMessage(c.gray + "--------------------------------------------");
-                            p.sendMessage(c.green + c.bold + "You have unclaimed rewards!");
-                            p.sendMessage(c.green + "Type /rewards to collect.");
-                            p.sendMessage(c.gray + "--------------------------------------------");
-                            p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 2.0F);
-                        }
                     }
                 }
-            }, 0, 600);
-
-            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-                new PlaceholderListener(this).register();
             }
+        }, 0L, 3L);
 
-            if (!new File(this.getDataFolder(), "config.yml").exists()) {
-                this.getConfig().options().copyDefaults(true);
-                this.saveDefaultConfig();
+        this.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, (Runnable) new Runnable() {
+            @Override
+            public void run() {
+                for (final Player p : Bukkit.getOnlinePlayers()) {
+
+                    String sqlHost = "173.44.44.251";
+                    String sqlPort = "3306";
+                    String sqlDb = "survivalEnchanted_events?useSSL=false";
+                    String sqlUser = "survivalEnchanted_events";
+                    String sqlPw = "4mHYCVVltvCmLVgF";
+
+                    int progress = 0;
+
+                    try {
+                        MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
+                        Statement statement = MySQL.openConnection().createStatement();
+                        ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
+                        while (result.next()) {
+                            progress = result.getInt("VALUE");
+                        }
+                    } catch (SQLException | ClassNotFoundException c) {
+                        c.printStackTrace();
+                    }
+
+
+                    if (progress == 20 && !p.hasPermission("twisted.events.redeemed.reward")) {
+                        p.sendMessage(c.gray + "--------------------------------------------");
+                        p.sendMessage(c.green + c.bold + "You have unclaimed rewards!");
+                        p.sendMessage(c.green + "Type /rewards to collect.");
+                        p.sendMessage(c.gray + "--------------------------------------------");
+                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 2.0F);
+                    }
+                }
             }
+        }, 0, 600);
 
-            instance = this;
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            new PlaceholderListener(this).register();
+        }
 
-            new SuggestionsManager(this);
-            registerCmds();
-            registerEvents();
-            HolidayCurrencyCommand.HCCSetup();
-            Bukkit.getPluginManager().registerEvents(this, this);
+        if (!new File(this.getDataFolder(), "config.yml").exists()) {
+            this.getConfig().options().copyDefaults(true);
+            this.saveDefaultConfig();
+        }
 
-            try {
-                connection = MySQL.openConnection();
-                Bukkit.getConsoleSender().sendMessage("[EVENT CORE] Database connected!");
-                createProgressDB();
-                createNetworkEventsDB();
-                createAdventDB();
-            } catch (SQLException | ClassNotFoundException e) {
-                Bukkit.getLogger().log(Level.WARNING, "[EVENT CORE] Error while connecting to database!");
-                return;
-            }
+        instance = this;
 
-            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            } else {
-                throw new RuntimeException("[EVENT CORE] Could not find PlaceholderAPI! Event Core will not properly work without it!");
-            }
+        new SuggestionsManager(this);
+        registerCmds();
+        registerEvents();
+        HolidayCurrencyCommand.HCCSetup();
+        Bukkit.getPluginManager().registerEvents(this, this);
+
+        try {
+            connection = MySQL.openConnection();
+            Bukkit.getConsoleSender().sendMessage("[EVENT CORE] Database connected!");
+            createProgressDB();
+            createNetworkEventsDB();
+            createAdventDB();
+        } catch (SQLException | ClassNotFoundException e) {
+            Bukkit.getLogger().log(Level.WARNING, "[EVENT CORE] Error while connecting to database!");
+            return;
+        }
+
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+        } else {
+            throw new RuntimeException("[EVENT CORE] Could not find PlaceholderAPI! Event Core will not properly work without it!");
+        }
 
     }
 
 
-        public static Connection getConnection() { return connection; }
+    public static Connection getConnection() {
+        return connection;
+    }
 
     private void registerCmds() {
         getCommand("candy").setExecutor((CommandExecutor) new CurrencyStoreCommand(this));
@@ -674,6 +689,7 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new ClaimRewardCommand(this), this);
         pm.registerEvents(new ToTListener(), this);
         pm.registerEvents(new CandyStoreListener(), this);
+        pm.registerEvents(new AdventCalendarListener(), this);
 
     }
 
@@ -684,7 +700,7 @@ public class Main extends JavaPlugin implements Listener {
     public static Main getInstance() {
         return Main.instance;
     }
-    
+
     private void createNetworkEventsDB() {
         String sqlHost = "173.44.44.251";
         String sqlPort = "3306";
@@ -728,7 +744,7 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
 
-    public static boolean serverInDB(String ip){
+    public static boolean serverInDB(String ip) {
         try {
 
             String networkSQLHost = "173.44.44.251";
@@ -740,7 +756,7 @@ public class Main extends JavaPlugin implements Listener {
             MySQL MySQL = new MySQL(networkSQLHost, networkSQLPort, networkSQLDb, networkSQLUser, networkSQLPw);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM plugins WHERE ip = '" + ip + "' AND plugin = 'EventCore'");
-            while(res.next()){
+            while (res.next()) {
                 return res.getString("ip") != null;
             }
             return false;
@@ -823,7 +839,7 @@ public class Main extends JavaPlugin implements Listener {
         return -1;
     }
 
-    public static boolean systemDisabled(String setting){
+    public static boolean systemDisabled(String setting) {
 
         String sqlHost = "173.44.44.253";
         String sqlPort = "3306";
@@ -835,7 +851,7 @@ public class Main extends JavaPlugin implements Listener {
             MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM disabledSystems WHERE " + setting + " = '1'");
-            while(res.next()){
+            while (res.next()) {
                 return res.getString(setting) != null;
             }
             return false;
@@ -854,4 +870,35 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
 
+    @EventHandler
+    public void onEntityClick(PlayerInteractAtEntityEvent event) {
+
+        Player p = event.getPlayer();
+        if (event.getRightClicked() instanceof ArmorStand) {
+            ArmorStand armorStand = (ArmorStand) event.getRightClicked();
+
+            if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+                try {
+                    new AdventCalendarTestMenu(p);
+                } catch (ParseException e) {
+                    p.sendMessage(twistedmc.core.util.color.c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onClickArmorStand(PlayerArmorStandManipulateEvent e){
+        if (e.getRightClicked().getName().equalsIgnoreCase("2021adventcalendarfigure")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getRightClicked().getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+            e.setCancelled(true);
+        }
+    }
+
 }
+
+

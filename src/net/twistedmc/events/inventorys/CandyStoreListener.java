@@ -228,7 +228,7 @@ public class CandyStoreListener implements Listener {
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(2000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "3x Ultra Crate Keys" + c.green + "!");
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p autumn 3 " + player.getName());
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p ultra 3 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 2000");
             player.closeInventory();
 

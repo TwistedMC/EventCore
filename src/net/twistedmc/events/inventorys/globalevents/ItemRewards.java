@@ -38,8 +38,8 @@ public class ItemRewards {
         c.aqua + "Thus, giving it increased damage, and the ability to regenerate.",
         c.aqua + "It has also been infused with a higher sweeping edge. ",
         "",
-        c.green + "✮✮ UnCommon (Event)"
-    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7).addEnchant(Enchantment.SWEEPING_EDGE, 5)
+        c.green + "✮✮ Uncommon (Event)"
+    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7).addEnchant(Enchantment.SWEEPING_EDGE, 5);
 
 }
 

@@ -3,8 +3,6 @@ package net.twistedmc.events.inventorys.advent;
 import net.twistedmc.events.util.API;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
-
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.item.AbstractGUI;
@@ -16,7 +14,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AdventCalendar extends AbstractGUI implements Listener {
+public class AdventCalendar extends AbstractGUI {
 /*
     00 01 02 03 04 05 06 07 08
     09 10 11 12 13 14 15 16 17
