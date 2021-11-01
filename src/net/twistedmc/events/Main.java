@@ -52,7 +52,7 @@ import twistedmc.core.framework.ServerDataManager;
 import twistedmc.core.framework.ServerGameType;
 import twistedmc.core.framework.ServerType;
 
-
+@SuppressWarnings("deprecated")
 public class Main extends JavaPlugin implements Listener {
 
     public static List<UUID> mob = new ArrayList<>();
