@@ -7,7 +7,7 @@ import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.store.CandyStore;
-import net.twistedmc.events.util.CanBuyItem;
+import net.twistedmc.events.util.API;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -92,7 +92,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + "VIP Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(10000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + "VIP Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(10000, "candy", player)) {
 
             if (player.hasPermission("rank.vip")) {
                 player.sendMessage(c.red + "You already have this rank or a higher rank!");
@@ -124,7 +124,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + "VIP+ Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(35000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + "VIP+ Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(35000, "candy", player)) {
 
             if (player.hasPermission("rank.vip+")) {
                 player.sendMessage(c.red + "You already have this rank or a higher rank!");
@@ -158,12 +158,12 @@ public class CandyStoreListener implements Listener {
 
         //
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "VIP Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(10000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "VIP Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(10000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(a1) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "VIP+ Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(35000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "VIP+ Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(35000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(a2) + " Candy)");
             return;
         }
@@ -174,7 +174,7 @@ public class CandyStoreListener implements Listener {
         int b2 = 3500 - Main.getCandies(player);
         int b3 = 5000 - Main.getCandies(player);
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(2200, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(2200, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "3x Autumn Crate Keys" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p autumn 3 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 2200");
@@ -200,7 +200,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "10x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(6000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "10x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(6000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "10x Autumn Crate Keys" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p autumn 10 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 6000");
@@ -226,7 +226,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(2000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(2000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "3x Ultra Crate Keys" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p ultra 3 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 2000");
@@ -254,17 +254,17 @@ public class CandyStoreListener implements Listener {
 
         //
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "3x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(2200, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "3x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(2200, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(b1) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "10x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(6000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "10x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(6000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(b2) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(2000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(2000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(b3) + " Candy)");
             return;
         }
@@ -275,7 +275,7 @@ public class CandyStoreListener implements Listener {
         int c2 = 19000 - Main.getCandies(player);
         int c3 = 30000 - Main.getCandies(player);
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "5,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(7000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "5,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(7000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "5,000 Gold" + c.green + "!");
             APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 5000, true, "Seasonal Purchase");
             player.closeInventory();
@@ -301,7 +301,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "15,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(19000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "15,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(19000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "15,000 Gold" + c.green + "!");
             APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 15000, true, "Seasonal Purchase");
             player.closeInventory();
@@ -327,7 +327,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "45,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(30000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "45,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(30000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "45,000 Gold" + c.green + "!");
             APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 45000, true, "Seasonal Purchase");
             player.closeInventory();
@@ -355,17 +355,17 @@ public class CandyStoreListener implements Listener {
 
         //
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "5,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(7000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "5,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(7000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(c1) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "15,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(19000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "15,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(19000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(c2) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "45,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(45000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "45,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(45000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(c3) + " Candy)");
             return;
         }
@@ -376,7 +376,7 @@ public class CandyStoreListener implements Listener {
         int d2 = 25000 - Main.getCandies(player);
         int d3 = 40000 - Main.getCandies(player);
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "10,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(10000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "10,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(10000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "10,000 Coins" + c.green + "!");
             APICoins.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Seasonal Purchase");
             player.closeInventory();
@@ -402,7 +402,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "30,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(25000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "30,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(25000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "30,000 Coins" + c.green + "!");
             APICoins.giveCoins(player, ServerGameType.ENCHANTED, 30000, true, "Seasonal Purchase");
             player.closeInventory();
@@ -428,7 +428,7 @@ public class CandyStoreListener implements Listener {
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "60,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && CanBuyItem.canBuy(40000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "60,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(40000, "candy", player)) {
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "60,000 Coins" + c.green + "!");
             APICoins.giveCoins(player, ServerGameType.ENCHANTED, 60000, true, "Seasonal Purchase");
             player.closeInventory();
@@ -456,17 +456,17 @@ public class CandyStoreListener implements Listener {
 
         //
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "10,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(10000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "10,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(10000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d1) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "30,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(25000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "30,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(25000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d2) + " Candy)");
             return;
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "60,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !CanBuyItem.canBuy(40000, "candy", player)) {
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "60,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(40000, "candy", player)) {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d3) + " Candy)");
             return;
         }
