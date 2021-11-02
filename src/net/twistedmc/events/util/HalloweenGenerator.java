@@ -5,6 +5,8 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+@Deprecated // leave class for random generator viewing if you want
 public class HalloweenGenerator {
     public static String[][] tricks = {{""}};
     public static String[][] treats = {{"hcc %s add 10"},{"hcc %s add 20"},{"hcc %s add 30"},{"hcc %s add 40"},{"hcc %s add 50"}};

@@ -33,7 +33,7 @@ public class ItemRewards {
         c.blue + "✮✮✮ Rare (Event)"
     ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,8).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,3).addEnchant(Enchantment.DURABILITY,4).addEnchant(Enchantment.DAMAGE_ALL,2);
 
-    public static ItemStack displaySword = new cItemStack(Material.DIAMOND_SHOVEL).setDisplayName(c.aqua + c.italics + "Frosty Shovel").addLore(
+    public static ItemStack displaySword = new cItemStack(Material.DIAMOND_SHOVEL).setDisplayName(c.aqua + c.italics + "Frosty Sword").addLore(
         c.aqua + "This sword has been infused with ancient ice magic.",
         c.aqua + "Thus, giving it increased damage, and the ability to regenerate.",
         c.aqua + "It has also been infused with a higher sweeping edge. ",

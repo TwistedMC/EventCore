@@ -3,7 +3,7 @@ package net.twistedmc.events.inventorys.store;
 import net.minecraft.tags.Tag.f;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.util.CanBuyItem;
+import net.twistedmc.events.util.API;
 import net.twistedmc.events.util.item.cItemStack;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ import net.twistedmc.events.util.item.AbstractGUI;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemFlag;
-
+@SuppressWarnings("unused")
 public class CandyStore extends AbstractGUI {
 
     /*
@@ -43,7 +43,7 @@ public class CandyStore extends AbstractGUI {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (player.hasPermission("rank.vip") && CanBuyItem.canBuy(10000, "candy", player) || player.hasPermission("rank.vip") && !CanBuyItem.canBuy(10000, "candy", player)) {
+        if (player.hasPermission("rank.vip") && API.canBuy(10000, "candy", player) || player.hasPermission("rank.vip") && !API.canBuy(10000, "candy", player)) {
             setItem(new cItemStack(Material.PAPER).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.dred + "VIP Rank (30 Days)").addLore
                             (c.gray + "VIP Rank provides basic",
                                     c.gray + "perks which improve the",
@@ -56,7 +56,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (CanBuyItem.canBuy(10000, "candy", player) && !player.hasPermission("rank.vip")) {
+        if (API.canBuy(10000, "candy", player) && !player.hasPermission("rank.vip")) {
             setItem(new cItemStack(Material.PAPER).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.aqua + "VIP Rank (30 Days)").addLore
                             (c.gray + "VIP Rank provides basic",
                                     c.gray + "perks which improve the",
@@ -69,7 +69,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(10000, "candy", player) && !player.hasPermission("rank.vip")) {
+        if (!API.canBuy(10000, "candy", player) && !player.hasPermission("rank.vip")) {
             setItem(new cItemStack(Material.PAPER).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "VIP Rank (30 Days)").addLore
                             (c.gray + "VIP Rank provides basic",
                                     c.gray + "perks which improve the",
@@ -84,7 +84,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (player.hasPermission("rank.vip+") && CanBuyItem.canBuy(35000, "candy", player) || player.hasPermission("rank.vip+") && !CanBuyItem.canBuy(35000, "candy", player)) {
+        if (player.hasPermission("rank.vip+") && API.canBuy(35000, "candy", player) || player.hasPermission("rank.vip+") && !API.canBuy(35000, "candy", player)) {
             setItem(new cItemStack(Material.PAPER).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.dred + "VIP+ Rank (30 Days)").addLore
                             (c.gray + "VIP+ Rank contains",
                                     c.gray + "every perk from VIP",
@@ -97,7 +97,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (CanBuyItem.canBuy(35000, "candy", player) && !player.hasPermission("rank.vip+")) {
+        if (API.canBuy(35000, "candy", player) && !player.hasPermission("rank.vip+")) {
             setItem(new cItemStack(Material.PAPER).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.aqua + "VIP+ Rank (30 Days)").addLore
                             (c.gray + "VIP+ Rank contains",
                                     c.gray + "every perk from VIP",
@@ -110,7 +110,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(35000, "candy", player) && !player.hasPermission("rank.vip+")) {
+        if (!API.canBuy(35000, "candy", player) && !player.hasPermission("rank.vip+")) {
             setItem(new cItemStack(Material.PAPER).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "VIP+ Rank (30 Days)").addLore
                             (c.gray + "VIP+ Rank contains",
                                     c.gray + "every perk from VIP",
@@ -125,7 +125,7 @@ public class CandyStore extends AbstractGUI {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (CanBuyItem.canBuy(2200, "candy", player)) {
+        if (API.canBuy(2200, "candy", player)) {
             setItem(new cItemStack(Material.TRIPWIRE_HOOK, 3).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "3x Autumn Crate Keys").addLore
                             (c.gray + "Win special Halloween",
                                     c.gray + "Cosmetics in this crate!",
@@ -137,7 +137,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(2200, "candy", player)) {
+        if (!API.canBuy(2200, "candy", player)) {
             setItem(new cItemStack(Material.TRIPWIRE_HOOK, 3).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "3x Autumn Crate Keys").addLore
                             (c.gray + "Win special Halloween",
                                     c.gray + "Cosmetics in this crate!",
@@ -151,7 +151,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (CanBuyItem.canBuy(6000, "candy", player)) {
+        if (API.canBuy(6000, "candy", player)) {
             setItem(new cItemStack(Material.TRIPWIRE_HOOK, 10).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "10x Autumn Crate Keys").addLore
                             (c.gray + "Win special Halloween",
                                     c.gray + "Cosmetics and Tools in",
@@ -164,7 +164,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(6000, "candy", player)) {
+        if (!API.canBuy(6000, "candy", player)) {
             setItem(new cItemStack(Material.TRIPWIRE_HOOK, 10).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "10x Autumn Crate Keys").addLore
                             (c.gray + "Win special Halloween",
                                     c.gray + "Cosmetics and Tools in",
@@ -179,7 +179,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (CanBuyItem.canBuy(2000, "candy", player)) {
+        if (API.canBuy(2000, "candy", player)) {
             setItem(new cItemStack(Material.TRIPWIRE_HOOK, 3).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "3x Ultra Crate Keys").addLore
                             (c.gray + "Win special Cosmetics",
                                     c.gray + "and Tools in this crate",
@@ -191,7 +191,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(2000, "candy", player)) {
+        if (!API.canBuy(2000, "candy", player)) {
             setItem(new cItemStack(Material.TRIPWIRE_HOOK, 3).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "3x Ultra Crate Keys").addLore
                             (c.gray + "Win special Cosmetics",
                                     c.gray + "and Tools in this crate",
@@ -205,7 +205,7 @@ public class CandyStore extends AbstractGUI {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (CanBuyItem.canBuy(7000, "candy", player)) {
+        if (API.canBuy(7000, "candy", player)) {
             setItem(new cItemStack(Material.GOLD_NUGGET, 5).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "5,000 Gold").addLore
                             (c.gray + "Gold can be used for",
                                     c.gray + "the villager shops at spawn!",
@@ -217,7 +217,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(7000, "candy", player)) {
+        if (!API.canBuy(7000, "candy", player)) {
             setItem(new cItemStack(Material.GOLD_NUGGET, 5).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "5,000 Gold").addLore
                             (c.gray + "Gold can be used for",
                                     c.gray + "the villager shops at spawn!",
@@ -231,7 +231,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (CanBuyItem.canBuy(19000, "candy", player)) {
+        if (API.canBuy(19000, "candy", player)) {
             setItem(new cItemStack(Material.GOLD_NUGGET, 15).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "15,000 Gold").addLore
                             (c.gray + "Gold can be used for",
                                     c.gray + "the villager shops at spawn!",
@@ -243,7 +243,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(19000, "candy", player)) {
+        if (!API.canBuy(19000, "candy", player)) {
             setItem(new cItemStack(Material.GOLD_NUGGET, 15).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "15,000 Gold").addLore
                             (c.gray + "Gold can be used for",
                                     c.gray + "the villager shops at spawn!",
@@ -257,7 +257,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (CanBuyItem.canBuy(30000, "candy", player)) {
+        if (API.canBuy(30000, "candy", player)) {
             setItem(new cItemStack(Material.GOLD_NUGGET, 45).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "45,000 Gold").addLore
                             (c.gray + "Gold can be used for",
                                     c.gray + "the villager shops at spawn!",
@@ -269,7 +269,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(30000, "candy", player)) {
+        if (!API.canBuy(30000, "candy", player)) {
             setItem(new cItemStack(Material.GOLD_NUGGET, 45).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "45,000 Gold").addLore
                             (c.gray + "Gold can be used for",
                                     c.gray + "the villager shops at spawn!",
@@ -283,7 +283,7 @@ public class CandyStore extends AbstractGUI {
 
  //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (CanBuyItem.canBuy(10000, "candy", player)) {
+        if (API.canBuy(10000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 10).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "10,000 Coins").addLore
                             (c.gray + "Coins is the network",
                                     c.gray + "currency!",
@@ -295,7 +295,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(10000, "candy", player)) {
+        if (!API.canBuy(10000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 10).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "10,000 Coins").addLore
                             (c.gray + "Coins is the network",
                                     c.gray + "currency!",
@@ -309,7 +309,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (CanBuyItem.canBuy(25000, "candy", player)) {
+        if (API.canBuy(25000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 30).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "30,000 Coins").addLore
                             (c.gray + "Coins is the network",
                                     c.gray + "currency!",
@@ -321,7 +321,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(25000, "candy", player)) {
+        if (!API.canBuy(25000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 30).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "30,000 Coins").addLore
                             (c.gray + "Coins is the network",
                                     c.gray + "currency!",
@@ -335,7 +335,7 @@ public class CandyStore extends AbstractGUI {
 
         //
 
-        if (CanBuyItem.canBuy(40000, "candy", player)) {
+        if (API.canBuy(40000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 60).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "60,000 Coins").addLore
                             (c.gray + "Coins is the network",
                                     c.gray + "currency!",
@@ -347,7 +347,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
-        if (!CanBuyItem.canBuy(40000, "candy", player)) {
+        if (!API.canBuy(40000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 60).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.red + "60,000 Coins").addLore
                             (c.gray + "Coins is the network",
                                     c.gray + "currency!",

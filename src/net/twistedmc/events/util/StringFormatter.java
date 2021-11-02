@@ -1,5 +1,6 @@
 package net.twistedmc.events.util;
 
+@Deprecated
 public class StringFormatter {
     public static String formatString(String stringtoformat,String thingtoformat) {
         String str = String.format(stringtoformat, thingtoformat);

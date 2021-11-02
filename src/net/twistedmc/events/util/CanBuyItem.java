@@ -3,7 +3,7 @@ package net.twistedmc.events.util;
 import org.bukkit.entity.Player;
 
 import net.twistedmc.events.Main;
-
+@Deprecated // Merged into API
 public class CanBuyItem {
 
     public static boolean canBuy(int price, String currency, Player plr) {

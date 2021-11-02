@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.bukkit.inventory.ItemStack;
 
+@Deprecated // Merged into API
 public class GenerateRandomItem {
     public static Random r = new Random(); // dumb as fuck that i had to intialize it here but whatever. -nation
     public static ItemStack generateRandomItem(ItemStack[] items) {
