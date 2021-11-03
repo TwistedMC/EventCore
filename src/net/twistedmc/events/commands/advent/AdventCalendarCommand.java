@@ -20,7 +20,7 @@ public class AdventCalendarCommand implements CommandExecutor {
             Player p = (Player) sender;
 
             if (API.systemDisabled("adventCalendar")) {
-                p.sendMessage(c.bold + "Sorry! " + c.red + "The Advent Calendar is currently disabled!");
+                p.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Advent Calendar is currently disabled!");
                 return false;
             }
 

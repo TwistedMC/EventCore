@@ -25,7 +25,7 @@ public class CandyStoreCommand implements CommandExecutor {
             Player p = (Player) sender;
 
             if (Main.systemDisabled("halloweenSurvival")) {
-                p.sendMessage(c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                p.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
                 return false;
             }
 
