@@ -10,8 +10,15 @@ import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.Random;
 import java.util.UUID;
+import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import twistedmc.core.Core;
+import twistedmc.core.achievements.Achievement;
+import twistedmc.core.achievements.AchievementType;
+import twistedmc.core.framework.ServerType;
 
 public class API {
 
@@ -96,5 +103,72 @@ public class API {
         }
         NumberFormat f = NumberFormat.getInstance();
         return f.format(int_);
+    }
+
+    public static boolean inCandyStorePurchasesDB(UUID uuid){
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostCP, Main.sqlPortCP, Main.sqlDbCP, Main.sqlUserCP, Main.sqlPwCP);
+            Statement statement = MySQL.openConnection().createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM `candyStorePurchases` WHERE UUID = '" + uuid.toString() + "'");
+            while(res.next()){
+                return res.getString("uuid") != null;
+            }
+            return false;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static int getCandyStorePurchases(Player player) {
+
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostCP, Main.sqlPortCP, Main.sqlDbCP, Main.sqlUserCP, Main.sqlPwCP);
+            Statement statement = MySQL.openConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM `candyStorePurchases` WHERE uuid = '" + player.getUniqueId() + "'");
+            while (result.next()) {
+                return result.getInt("purchases");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
+    public static void addCandyStorePurchase(Player player, int amount) {
+
+        if (!API.inCandyStorePurchasesDB(player.getUniqueId())) {
+            try {
+                MySQL MySQL = new MySQL(Main.sqlHostCP, Main.sqlPortCP, Main.sqlDbCP, Main.sqlUserCP, Main.sqlPwCP);
+                Statement statement = MySQL.openConnection().createStatement();
+                statement.executeUpdate("INSERT INTO `candyStorePurchases` (uuid, purchases) VALUES ('" + player.getUniqueId() + "', '0')");
+            } catch (SQLException | ClassNotFoundException s) {
+                s.printStackTrace();
+            }
+        }
+
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostCP, Main.sqlPortCP, Main.sqlDbCP, Main.sqlUserCP, Main.sqlPwCP);
+            Statement statement = MySQL.openConnection().createStatement();
+            statement.executeUpdate("UPDATE `candyStorePurchases` SET purchases = purchases + '" + amount + "' WHERE `uuid` = '" + player.getUniqueId() + "'");
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+        }
+
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostStats, Main.sqlPortStats, Main.sqlDbStats, Main.sqlUserStats, Main.sqlPwStats);
+            Statement statement = MySQL.openConnection().createStatement();
+            statement.executeUpdate("UPDATE `enchanted` SET candyShopPurchases = candyShopPurchases + '" + amount + "' WHERE `uuid` = '" + player.getUniqueId() + "'");
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+        }
+
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostStats, Main.sqlPortStats, Main.sqlDbStats, Main.sqlUserStats, Main.sqlPwStats);
+            Statement statement = MySQL.openConnection().createStatement();
+            statement.executeUpdate("UPDATE `enchanted` SET seasonalShopPurchases = seasonalShopPurchases + '" + amount + "' WHERE `uuid` = '" + player.getUniqueId() + "'");
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+        }
     }
 }

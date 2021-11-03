@@ -281,7 +281,7 @@ public class CandyStore extends AbstractGUI {
                     });
         }
 
- //////////////////////////////////////////////////////////////////////////////////////////////////////
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////
 
         if (API.canBuy(10000, "candy", player)) {
             setItem(new cItemStack(Material.ENDER_EYE, 10).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).setDisplayName(c.gold + "10,000 Coins").addLore
@@ -357,7 +357,7 @@ public class CandyStore extends AbstractGUI {
                                     c.red + "Not enough candy!")
                     , 34, (s, c, p) -> {
                     });
-        }
+        }*/
 
     }
     private void fill() {

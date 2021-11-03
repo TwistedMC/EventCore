@@ -76,6 +76,11 @@ public class CandyStoreListener implements Listener {
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.dred + "VIP Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store")) {
 
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             if (player.hasPermission("rank.vip")) {
                 player.sendMessage(c.red + "You already have this rank or a higher rank!");
                 return;
@@ -84,6 +89,11 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.dred + "VIP+ Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store")) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
 
             if (player.hasPermission("rank.vip")) {
                 player.sendMessage(c.red + "You already have this rank or a higher rank!");
@@ -94,14 +104,25 @@ public class CandyStoreListener implements Listener {
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + "VIP Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(10000, "candy", player)) {
 
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             if (player.hasPermission("rank.vip")) {
                 player.sendMessage(c.red + "You already have this rank or a higher rank!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
                 return;
             }
 
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "VIP Rank (30 Days)" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " parent addtemp vip 30d");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 10000");
+            API.addCandyStorePurchase(player, 1);
             player.closeInventory();
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
@@ -126,14 +147,25 @@ public class CandyStoreListener implements Listener {
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + "VIP+ Rank (30 Days)") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(35000, "candy", player)) {
 
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             if (player.hasPermission("rank.vip+")) {
                 player.sendMessage(c.red + "You already have this rank or a higher rank!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
                 return;
             }
 
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "VIP+ Rank (30 Days)" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " parent addtemp vip+ 30d");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 35000");
+            API.addCandyStorePurchase(player, 1);
             player.closeInventory();
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
@@ -175,9 +207,21 @@ public class CandyStoreListener implements Listener {
         int b3 = 5000 - Main.getCandies(player);
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(2200, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "3x Autumn Crate Keys" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p autumn 3 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 2200");
+            API.addCandyStorePurchase(player, 1);
             player.closeInventory();
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
@@ -201,9 +245,21 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "10x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(6000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "10x Autumn Crate Keys" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p autumn 10 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 6000");
+            API.addCandyStorePurchase(player, 1);
             player.closeInventory();
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
@@ -227,9 +283,21 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(2000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "3x Ultra Crate Keys" + c.green + "!");
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "crazycrates:cc give p ultra 3 " + player.getName());
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 2000");
+            API.addCandyStorePurchase(player, 1);
             player.closeInventory();
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
@@ -255,16 +323,34 @@ public class CandyStoreListener implements Listener {
         //
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "3x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(2200, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(b1) + " Candy)");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "10x Autumn Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(6000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(b2) + " Candy)");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "3x Ultra Crate Keys") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(2000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(b3) + " Candy)");
             return;
         }
@@ -276,10 +362,22 @@ public class CandyStoreListener implements Listener {
         int c3 = 30000 - Main.getCandies(player);
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "5,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(7000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "5,000 Gold" + c.green + "!");
-            APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 5000, true, "Seasonal Purchase");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "givegold " + player.getName() + " 5000 Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 7000");
+            API.addCandyStorePurchase(player, 1);
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
             DiscordWebhook discord = new DiscordWebhook(webhook);
@@ -302,10 +400,22 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "15,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(19000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "15,000 Gold" + c.green + "!");
-            APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 15000, true, "Seasonal Purchase");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "givegold " + player.getName() + " 15000 Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 19000");
+            API.addCandyStorePurchase(player, 1);
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
             DiscordWebhook discord = new DiscordWebhook(webhook);
@@ -328,10 +438,22 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "45,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(30000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "45,000 Gold" + c.green + "!");
-            APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 45000, true, "Seasonal Purchase");
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "givegold " + player.getName() + " 45000 Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 30000");
+            API.addCandyStorePurchase(player, 1);
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
             DiscordWebhook discord = new DiscordWebhook(webhook);
@@ -356,16 +478,34 @@ public class CandyStoreListener implements Listener {
         //
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "5,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(7000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(c1) + " Candy)");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "15,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(19000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(c2) + " Candy)");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "45,000 Gold") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(45000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(c3) + " Candy)");
             return;
         }
@@ -377,10 +517,22 @@ public class CandyStoreListener implements Listener {
         int d3 = 40000 - Main.getCandies(player);
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "10,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(10000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "10,000 Coins" + c.green + "!");
             APICoins.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 10000");
+            API.addCandyStorePurchase(player, 1);
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
             DiscordWebhook discord = new DiscordWebhook(webhook);
@@ -403,10 +555,22 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "30,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(25000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "30,000 Coins" + c.green + "!");
             APICoins.giveCoins(player, ServerGameType.ENCHANTED, 30000, true, "Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 25000");
+            API.addCandyStorePurchase(player, 1);
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
             DiscordWebhook discord = new DiscordWebhook(webhook);
@@ -429,10 +593,22 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "60,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && API.canBuy(40000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
+            if (API.getCandyStorePurchases(player) >= 20) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "You've reached the maximum number of items you can purchase!");
+                return;
+            }
+
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "60,000 Coins" + c.green + "!");
             APICoins.giveCoins(player, ServerGameType.ENCHANTED, 60000, true, "Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 40000");
+            API.addCandyStorePurchase(player, 1);
 
             String webhook = "https://discord.com/api/webhooks/849092250717913088/rfZXFwj7ONq2OpIqFjB6JC0QuVdxFcGm0Y-z8ZIMIRC-zX1MxsCKombdmUFc6tSgsE0P";
             DiscordWebhook discord = new DiscordWebhook(webhook);
@@ -457,16 +633,34 @@ public class CandyStoreListener implements Listener {
         //
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "10,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(10000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d1) + " Candy)");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "30,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(25000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d2) + " Candy)");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "60,000 Coins") && e.getView().getTitle().equalsIgnoreCase("Halloween Store") && !API.canBuy(40000, "candy", player)) {
+
+            if (Main.systemDisabled("halloweenSurvival")) {
+                player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+                return;
+            }
+
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d3) + " Candy)");
             return;
         }

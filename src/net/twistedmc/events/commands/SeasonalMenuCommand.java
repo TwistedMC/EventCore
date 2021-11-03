@@ -22,7 +22,7 @@ public class SeasonalMenuCommand implements CommandExecutor {
             Player pp = (Player) sender;
 
             if (Main.systemDisabled("seasonalMenu")) {
-                sender.sendMessage(c.red + "This system is currently disabled! Try again shortly.");
+                sender.sendMessage(c.red + c.bold + "Sorry! " + c.red + "This system is currently disabled! Try again shortly.");
                 return false;
             }
 

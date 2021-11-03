@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import twistedmc.core.util.api.API;
 import twistedmc.core.util.color.c;
 
 import java.text.ParseException;
@@ -18,10 +19,10 @@ public class AdventCalendarCommand implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("adventcalendar")) {
             Player p = (Player) sender;
 
-            //if (Main.systemDisabled("adventCalendar")) {
-            //    p.sendMessage(c.red + "This system is currently disabled! Try again shortly.");
-            //    return false;
-            //}
+            if (API.systemDisabled("adventCalendar")) {
+                p.sendMessage(c.bold + "Sorry! " + c.red + "The Advent Calendar is currently disabled!");
+                return false;
+            }
 
             try {
                 new AdventCalendarTestMenu(p);

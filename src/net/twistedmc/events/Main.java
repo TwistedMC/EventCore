@@ -7,7 +7,6 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +20,6 @@ import net.twistedmc.events.commands.*;
 import net.twistedmc.events.commands.advent.AdventCalendarCommand;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
-import net.twistedmc.events.inventorys.advent.AdventCalendar;
 import net.twistedmc.events.inventorys.advent.AdventCalendarListener;
 import net.twistedmc.events.inventorys.advent.AdventCalendarTestMenu;
 import net.twistedmc.events.listeners.JoinListener;
@@ -31,25 +29,19 @@ import net.twistedmc.events.placeholders.PlaceholderListener;
 import org.bukkit.*;
 import org.bukkit.command.*;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import twistedmc.core.boosters.BoosterManager;
 import twistedmc.core.framework.ServerDataManager;
-import twistedmc.core.framework.ServerGameType;
 import twistedmc.core.framework.ServerType;
 
 @SuppressWarnings("deprecated")
@@ -82,6 +74,18 @@ public class Main extends JavaPlugin implements Listener {
     public static String sqlDbAdvent = "events_advent?useSSL=false";
     public static String sqlUserAdvent = "events_advent";
     public static String sqlPwAdvent = "KoIGPn0JQ9tTi3qf";
+
+    public static String sqlHostCP = "173.44.44.251";
+    public static String sqlPortCP = "3306";
+    public static String sqlDbCP = "events_candyStorePurchases?useSSL=false";
+    public static String sqlUserCP = "events_candyStorePurchases";
+    public static String sqlPwCP = "FhX1fK75qtsJAZS5";
+
+    public static String sqlHostStats = "173.44.44.253";
+    public static String sqlPortStats = "3306";
+    public static String sqlDbStats = "networkStats?useSSL=false";
+    public static String sqlUserStats = "networkStats";
+    public static String sqlPwStats = "gKEB57G.jxu3_xAB";
 
     public static Connection connection = null;
 
@@ -675,7 +679,7 @@ public class Main extends JavaPlugin implements Listener {
     }
 
     private void registerCmds() {
-        getCommand("candy").setExecutor((CommandExecutor) new CurrencyStoreCommand(this));
+        getCommand("candy").setExecutor((CommandExecutor) new CandyStoreCommand(this));
         getCommand("eventprogress").setExecutor((CommandExecutor) new EventProgressCommand(this));
         getCommand("rewards").setExecutor((CommandExecutor) new ClaimRewardCommand(this));
         getCommand("hcc").setExecutor((CommandExecutor) new HolidayCurrencyCommand(this));

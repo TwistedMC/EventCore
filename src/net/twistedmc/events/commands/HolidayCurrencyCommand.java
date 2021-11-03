@@ -169,8 +169,6 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.removeCandy(op, Integer.parseInt(args[2]));
-
                     sender.sendMessage(c.green + "Removed " + c.yellow + args[2] + c.green + " " + holidayCurrencyNoColor + " to " + c.yellow + op.getName() + c.green + "!");
                     return false;
                 }
@@ -302,8 +300,6 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                 } catch (SQLException | ClassNotFoundException s) {
                     s.printStackTrace();
                 }
-
-                API.removeCandy(target, Integer.parseInt(args[2]));
 
                 sender.sendMessage(c.green + "Removed " + c.yellow + args[2] + c.green + " " + holidayCurrencyNoColor + " to " + c.yellow + target.getName() + c.green + "!");
                 return false;
