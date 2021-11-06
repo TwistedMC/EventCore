@@ -25,6 +25,7 @@ import net.twistedmc.events.inventorys.advent.AdventCalendarTestMenu;
 import net.twistedmc.events.listeners.JoinListener;
 import net.twistedmc.events.listeners.SuggestionsManager;
 import net.twistedmc.events.listeners.ToTListener;
+import net.twistedmc.events.commands.CandyStoreCommand;
 import net.twistedmc.events.placeholders.PlaceholderListener;
 import org.bukkit.*;
 import org.bukkit.command.*;

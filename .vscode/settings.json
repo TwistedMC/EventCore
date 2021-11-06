@@ -5,6 +5,7 @@
         "c:\\jars\\HeadDatabase-4.13.4.jar",
         "c:\\jars\\luckperms.jar",
         "c:\\jars\\placeholderapi.jar",
-        "c:\\jars\\spigot-1.17.jar"
+        "c:\\jars\\spigot-1.17.jar",
+        "c:\\jars\\EnchantedCore1.17.jar"
     ]
 }

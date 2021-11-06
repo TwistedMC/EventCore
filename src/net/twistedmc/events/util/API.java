@@ -1,24 +1,17 @@
 package net.twistedmc.events.util;
 
-import net.minecraft.world.item.ItemStack;
-import net.twistedmc.events.Main;
-import net.twistedmc.events.MySQL;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.Random;
 import java.util.UUID;
-import java.util.logging.Level;
 
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import twistedmc.core.Core;
-import twistedmc.core.achievements.Achievement;
-import twistedmc.core.achievements.AchievementType;
-import twistedmc.core.framework.ServerType;
+
+import net.minecraft.world.item.ItemStack;
+import net.twistedmc.events.Main;
+import net.twistedmc.events.MySQL;
 
 public class API {
 
@@ -169,6 +162,59 @@ public class API {
             statement.executeUpdate("UPDATE `enchanted` SET seasonalShopPurchases = seasonalShopPurchases + '" + amount + "' WHERE `uuid` = '" + player.getUniqueId() + "'");
         } catch (SQLException | ClassNotFoundException s) {
             s.printStackTrace();
+        }
+    }
+
+    /** 
+     *    For any of TwistedMC's plugins that use databases with playernames.
+     *    For use with TwistedMC & Specified Partner Servers (If any) only. DO NOT DISTRIBUTE.
+     *    <p>
+     *     Function & Javadoc Written by MCEpic_Nation
+     *    <p>
+     *    @param sqlLoginInfo The string table/array that will contain the login information for the desired Database, follows the format of:
+     *                          <code>MySQL(Host,Port,Database,Username,Password</code>
+     *    @param tableName The name of the table to search for the playername colum.
+     *    @param uuidColumLabel The name of the colum where the UUID value is stored (Usually "uuid" or "UUID")
+     *    @param PlayerNameColumIndex The name of the colum where the Player's name value is stored
+     *    @param player The player object/entity to use as the UUID and Name.
+     *    @return Returns nothing, ever.
+     *    @see <code>MySQL.MySQL</code>
+     *    @see <code>org.bukkit.entity.Player</code>
+     *    @since 0.1.0
+     *    @throws SQLException
+     *    @throws ClassNotFoundException
+    */
+    public static void updateDatabasePlayerName(String[] sqlLoginInfo,String tableName,String uuidColumLabel,String PlayerNameColumIndex,Player player) {
+        if (sqlLoginInfo.length < 5) {
+            return; // Incorrect Login Info (Does not have all 5 key parts)
+        }
+
+        String sqlHost = sqlLoginInfo[0];
+        String sqlPort = sqlLoginInfo[1];
+        String sqlDatabase = sqlLoginInfo[2];
+        String sqlUser = sqlLoginInfo[3];
+        String sqlPW = sqlLoginInfo[4];
+        String name = "";
+        try {
+            MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDatabase, sqlUser, sqlPW);
+            Statement st = MySQL.openConnection().createStatement();
+            ResultSet res = st.executeQuery("SELECT " + PlayerNameColumIndex + " VALUE FROM `" + tableName + "` WHERE `" + uuidColumLabel +"` = '" + player.getUniqueId() + "'");
+            while (res.next()) {
+                name = res.getString("VALUE");
+            }
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+        }
+
+        if (player.getName() != name) {
+            // Name does not match database, attempting to update!
+            try {
+                MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDatabase, sqlUser, sqlPW);
+                Statement st = MySQL.openConnection().createStatement();
+                st.executeUpdate("UPDATE `" + tableName + "` SET " + PlayerNameColumIndex + " = " + player.getName() + " WHERE `" + uuidColumLabel + "` = `" + player.getUniqueId() + "`");
+            } catch (SQLException | ClassNotFoundException s) {
+                s.printStackTrace();
+            }
         }
     }
 }
