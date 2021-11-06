@@ -172,7 +172,7 @@ public class API {
      *     Function & Javadoc Written by MCEpic_Nation
      *    <p>
      *    @param sqlLoginInfo The string table/array that will contain the login information for the desired Database, follows the format of:
-     *                          <code>MySQL(Host,Port,Database,Username,Password</code>
+     *                          <code>MySQL(Host,Port,Database,Username,Password)</code>
      *    @param tableName The name of the table to search for the playername colum.
      *    @param uuidColumLabel The name of the colum where the UUID value is stored (Usually "uuid" or "UUID")
      *    @param PlayerNameColumIndex The name of the colum where the Player's name value is stored
