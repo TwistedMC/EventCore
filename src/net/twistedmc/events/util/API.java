@@ -68,8 +68,8 @@ public class API {
 
     public static int getTotalContributionRAW() {
         int int_ = 0;
-        try { //TO-DO: UPDATE LOGIN CREDIIALS FOR CONTRIBUTION/EVENTS DATABASE.
-            MySQL MySQL = new MySQL(Main.sqlHostCurrency, Main.sqlPortCurrency, Main.sqlDbCurrency, Main.sqlUserCurrency, Main.sqlPwCurrency);
+        try { //TO-DO: UPDATE LOGIN CREDIIALS FOR CONTRIBUTION/EVENTS DATABASE. - DONE 11/9/2021
+            MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet result = statement.executeQuery("SELECT contribution VALUE FROM `contribution` WHERE `contribution` > 1");
             while (result.next()) {
@@ -85,7 +85,7 @@ public class API {
     public static String getTotalContributionFormatted() {
         int int_ = 0;
         try {
-            MySQL MySQL = new MySQL(Main.sqlHostCurrency, Main.sqlPortCurrency, Main.sqlDbCurrency, Main.sqlUserCurrency, Main.sqlPwCurrency);
+            MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet result = statement.executeQuery("SELECT contribution VALUE FROM `contribution` WHERE `contribution` > 1");
             while (result.next()) {

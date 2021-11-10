@@ -87,6 +87,12 @@ public class Main extends JavaPlugin implements Listener {
     public static String sqlDbStats = "networkStats?useSSL=false";
     public static String sqlUserStats = "networkStats";
     public static String sqlPwStats = "gKEB57G.jxu3_xAB";
+    // Contribution Login Info
+    public static String sqlHostContribution = "173.44.44.253";
+    public static String sqlPortContribution = "3306";
+    public static String sqlDbContribution = "events_main?useSSL=false";
+    public static String sqlUserContribution = "events_main";
+    public static String sqlPwContribution = "2LRyqtCbRkzcRFlI";
 
     public static Connection connection = null;
 
@@ -817,7 +823,7 @@ public class Main extends JavaPlugin implements Listener {
     public static int getContribution(Player player) {
 
         try {
-            MySQL MySQL = new MySQL(sqlHostCurrency, sqlPortCurrency, sqlDbCurrency, sqlUserCurrency, sqlPwCurrency);
+            MySQL MySQL = new MySQL(sqlHostContribution, sqlPortContribution, sqlDbContribution, sqlUserContribution, sqlPwContribution);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM `contribution` WHERE uuid = '" + player.getUniqueId() + "'");
             while (result.next()) {
