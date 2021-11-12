@@ -78,12 +78,31 @@ public class API {
         }
         return false;
     }
-    public static boolean canGetContributionItem(int requiredContribution, Player plr) {
+
+    /**
+     * 
+     * @param requiredContribution - The amount of contribution to unlock {@code <item>}
+     * @param userCantHavePerm - The permission the player can't have, it will return {@code False} if the player has it. 
+     * @param plr - The {@code Player}
+     * @param checkPerms - Not setting this or setting it to false will skip the {@code userCantHavePerm} variable. 
+     * @see org.bukkit.entity.Player
+     * @return {@code Boolean (True/False)}
+     * @since API 1.1.0
+     */
+    public static boolean canGetContributionItem(int requiredContribution, String userCantHavePerm, Player plr, boolean checkPerms) {
      int c = Main.getContribution(plr);
-     if (c >= requiredContribution) {
-         return true;
+     if (checkPerms == true) {
+        if (c >= requiredContribution && !plr.hasPermission(userCantHavePerm)) {
+            return true;
+        } else {
+            return false;
+        }
      } else {
-         return false;
+        if (c >= requiredContribution) {
+            return true;
+        } else {
+            return false;
+        }
      }
     }
 
