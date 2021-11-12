@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import net.minecraft.world.item.ItemStack;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
+import net.twistedmc.events.util.errors.APIException;
 
 public class API {
 
@@ -67,8 +68,8 @@ public class API {
 
     public static int getTotalContributionRAW() {
         int int_ = 0;
-        try { //TO-DO: UPDATE LOGIN CREDIIALS FOR CONTRIBUTION/EVENTS DATABASE.
-            MySQL MySQL = new MySQL(Main.sqlHostCurrency, Main.sqlPortCurrency, Main.sqlDbCurrency, Main.sqlUserCurrency, Main.sqlPwCurrency);
+        try { //TO-DO: UPDATE LOGIN CREDIIALS FOR CONTRIBUTION/EVENTS DATABASE. - DONE 11/9/2021
+            MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet result = statement.executeQuery("SELECT contribution VALUE FROM `contribution` WHERE `contribution` > 1");
             while (result.next()) {
@@ -84,7 +85,7 @@ public class API {
     public static String getTotalContributionFormatted() {
         int int_ = 0;
         try {
-            MySQL MySQL = new MySQL(Main.sqlHostCurrency, Main.sqlPortCurrency, Main.sqlDbCurrency, Main.sqlUserCurrency, Main.sqlPwCurrency);
+            MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet result = statement.executeQuery("SELECT contribution VALUE FROM `contribution` WHERE `contribution` > 1");
             while (result.next()) {
@@ -183,10 +184,11 @@ public class API {
      *    @since 0.1.0
      *    @throws SQLException
      *    @throws ClassNotFoundException
+     *    @throws APIException
     */
-    public static void updateDatabasePlayerName(String[] sqlLoginInfo,String tableName,String uuidColumLabel,String PlayerNameColumIndex,Player player) {
+    public static void updateDatabasePlayerName(String[] sqlLoginInfo,String tableName,String uuidColumLabel,String PlayerNameColumIndex,Player player) throws APIException {
         if (sqlLoginInfo.length < 5) {
-            return; // Incorrect Login Info (Does not have all 5 key parts)
+            throw new APIException("Login Array does not match minimum length of 5.");  // Incorrect Login Info (Does not have all 5 key parts)
         }
 
         String sqlHost = sqlLoginInfo[0];
@@ -217,4 +219,6 @@ public class API {
             }
         }
     }
-}
+
+
+} // End of API Class
