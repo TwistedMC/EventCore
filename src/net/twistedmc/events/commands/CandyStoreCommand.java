@@ -1,6 +1,7 @@
 package net.twistedmc.events.commands;
 
 import net.twistedmc.events.inventorys.store.CandyStore;
+import net.twistedmc.events.util.API;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -30,7 +31,6 @@ public class CandyStoreCommand implements CommandExecutor {
             }
 
             new CandyStore(p);
-
 
         }
         
