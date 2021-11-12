@@ -161,16 +161,6 @@ public class JoinListener implements Listener {
                 s.printStackTrace();
             }
         }
-
-        if(!inAdventCalendarDB(player.getUniqueId())) {
-            try {
-                MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
-                Statement statement = MySQL.openConnection().createStatement();
-                statement.executeUpdate("INSERT INTO adventCalendar (uuid, openedWindow) VALUES ('" + player.getUniqueId() + "', '0')");
-            } catch (SQLException | ClassNotFoundException s) {
-                s.printStackTrace();
-            }
-        }
     }
     public static boolean hasJoined(UUID uuid){
         try {

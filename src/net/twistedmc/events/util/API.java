@@ -30,6 +30,27 @@ public class API {
             return false;
         }
     }
+
+    public static void addAdvent(Player player, int window) {
+
+        if (!adventOpenedAlready(player.getUniqueId(), window)) {
+            try {
+                MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
+                Statement statement = MySQL.openConnection().createStatement();
+                statement.executeUpdate("INSERT INTO `adventCalendar` (uuid, openedWindow) VALUES ('" + player.getUniqueId() + "', '" + window + "')");
+            } catch (SQLException | ClassNotFoundException s) {
+                s.printStackTrace();
+            }
+        }
+
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostStats, Main.sqlPortStats, Main.sqlDbStats, Main.sqlUserStats, Main.sqlPwStats);
+            Statement statement = MySQL.openConnection().createStatement();
+            statement.executeUpdate("UPDATE `enchanted` SET openedWindows = openedWindows + '1' WHERE `uuid` = '" + player.getUniqueId() + "'");
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+        }
+    }
     
     
     public static ItemStack generateRandomItem(ItemStack[] items) {

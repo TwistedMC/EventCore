@@ -20,8 +20,7 @@ import net.twistedmc.events.commands.*;
 import net.twistedmc.events.commands.advent.AdventCalendarCommand;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
-import net.twistedmc.events.inventorys.advent.AdventCalendarListener;
-import net.twistedmc.events.inventorys.advent.AdventCalendarTestMenu;
+import net.twistedmc.events.inventorys.advent.*;
 import net.twistedmc.events.listeners.JoinListener;
 import net.twistedmc.events.listeners.SuggestionsManager;
 import net.twistedmc.events.listeners.ToTListener;
@@ -891,9 +890,9 @@ public class Main extends JavaPlugin implements Listener {
 
             if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
                 try {
-                    new AdventCalendarTestMenu(p);
+                    new AdventCalendar(p);
                 } catch (ParseException e) {
-                    p.sendMessage(twistedmc.core.util.color.c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
+                    p.sendMessage(c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
                     e.printStackTrace();
                 }
             }

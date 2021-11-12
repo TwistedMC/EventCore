@@ -10,11 +10,13 @@
 # H Halloween
 # C Christmas
 # AC Advent Calendar
+# API `Util.API` Class version
+# Use 'Bugfix #<#>' for bug fixes that do not fit into one of the above catagories
 #
 ################################################################################
 
 name: EventCore1.17
-version: H0.9.6|C0.0.8|AC0.0.4
+version: H0.9.6|C0.0.8|AC0.0.4|API0.1.0
 author: [shastagrande,MCEpic_Nation]
 main: net.twistedmc.events.Main
 api-version: 1.16

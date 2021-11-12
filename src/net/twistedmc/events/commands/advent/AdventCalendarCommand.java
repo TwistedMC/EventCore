@@ -1,7 +1,6 @@
 package net.twistedmc.events.commands.advent;
 
 import net.twistedmc.events.inventorys.advent.AdventCalendar;
-import net.twistedmc.events.inventorys.advent.AdventCalendarTestMenu;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -25,7 +24,7 @@ public class AdventCalendarCommand implements CommandExecutor {
             }
 
             try {
-                new AdventCalendarTestMenu(p);
+                new AdventCalendar(p);
             } catch (ParseException e) {
                 p.sendMessage(c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
                 e.printStackTrace();
