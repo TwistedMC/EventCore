@@ -81,9 +81,9 @@ public class PlaceholderListener extends PlaceholderExpansion {
             int contribution = 0;
 
             try{
-                MySQL MySQL = new MySQL(plugin.sqlHost, plugin.sqlPort, plugin.sqlDb, plugin.sqlUser, plugin.sqlPw);
+                MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
                 Statement statement = MySQL.openConnection().createStatement();
-                ResultSet result = statement.executeQuery("SELECT contribution VALUE FROM contribution WHERE uuid = '" + player.getUniqueId() + "'");
+                ResultSet result = statement.executeQuery("SELECT `contribution` VALUE FROM `contribution` WHERE uuid = '" + player.getUniqueId() + "'");
                 while(result.next()){
                     contribution = result.getInt("VALUE");
                 }

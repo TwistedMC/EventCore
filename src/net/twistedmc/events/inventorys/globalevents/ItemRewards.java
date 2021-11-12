@@ -2,6 +2,9 @@ package net.twistedmc.events.inventorys.globalevents;
 
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.item.cItemStack;
+
+import java.text.NumberFormat;
+
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -41,9 +44,14 @@ public class ItemRewards {
         c.green + "✮✮ Uncommon (Event)"
     ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7).addEnchant(Enchantment.SWEEPING_EDGE, 5);
 
+    NumberFormat f = NumberFormat.getInstance();
+    public static ItemStack displayGold = new cItemStack(Material.BUNDLE).setDisplayName(c.gold + "Gold Cache").addLore(
+        c.gray + "Receive " + c.gold + "5,000 Gold" + c.gray + " upon opening this cache.",
+        "",
+        c.gray + "✮ Common (Event)");
 }
 
 /*
 cock sucker
-
+  uno reverse card
 */
