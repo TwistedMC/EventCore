@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.ranktw.DiscordWebHooks.DiscordEmbed;
 import net.ranktw.DiscordWebHooks.DiscordMessage;
 import net.ranktw.DiscordWebHooks.DiscordWebhook;
@@ -151,6 +155,10 @@ public class Main extends JavaPlugin implements Listener {
 
                 for (final Player p : Bukkit.getOnlinePlayers()) {
 
+                    TextComponent click = new TextComponent(c.yellow + "Type /warp advent or click here to claim!");
+                    click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/advent"));
+                    click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Click to open Advent Calendar!").create()));
+
                     if (format.format(now).equals("11/30/2021 11:50:00PM ET")) {
                         // 1 window Show
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
@@ -161,7 +169,7 @@ public class Main extends JavaPlugin implements Listener {
                         // 1 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
                     }
 
@@ -176,8 +184,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 2 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(1);
                     }
 
 
@@ -191,8 +200,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 3 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(2);
                     }
 
 
@@ -206,8 +216,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 4 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(3);
                     }
 
 
@@ -221,8 +232,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 5 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(4);
                     }
 
 
@@ -236,8 +248,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 6 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(5);
                     }
 
 
@@ -251,8 +264,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 7 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(6);
                     }
 
 
@@ -266,8 +280,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 8 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(7);
                     }
 
 
@@ -281,8 +296,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 9 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(8);
                     }
 
 
@@ -296,8 +312,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 10 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(9);
                     }
 
 
@@ -311,8 +328,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 11 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(10);
                     }
 
 
@@ -326,8 +344,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 12 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(11);
                     }
 
 
@@ -341,8 +360,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 13 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(12);
                     }
 
 
@@ -356,8 +376,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 14 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(13);
                     }
 
 
@@ -371,8 +392,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 15 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(14);
                     }
 
 
@@ -386,8 +408,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 16 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(15);
                     }
 
 
@@ -401,8 +424,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 17 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(16);
                     }
 
 
@@ -416,8 +440,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 18 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(17);
                     }
 
 
@@ -431,8 +456,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 19 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(18);
                     }
 
 
@@ -446,8 +472,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 20 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(19);
                     }
 
 
@@ -461,8 +488,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 21 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(20);
                     }
 
 
@@ -476,8 +504,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 22 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(21);
                     }
 
 
@@ -491,8 +520,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 23 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(22);
                     }
 
 
@@ -506,8 +536,9 @@ public class Main extends JavaPlugin implements Listener {
                         // 24 window
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(23);
                     }
 
 
@@ -520,8 +551,14 @@ public class Main extends JavaPlugin implements Listener {
                     if (format.format(now).equals("12/25/2021 12:00:00AM ET")) {
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        Bukkit.broadcastMessage(c.yellow + "Type /warp advent or click here to claim!");
+                        p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        API.disableDay(24);
+                        // 25 window
+                    }
+
+                    if (format.format(now).equals("12/26/2021 12:00:00AM ET")) {
+                        API.disableDay(25);
                         // 25 window
                     }
                 }

@@ -46,23 +46,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23992")).setDisplayName(c.white + c.bold + "December 1st").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
                     c.white + "Reward claimed!"
             ), 10, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 1 && isDateInBetween("11/02/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(1) && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
             setItem(new cItemStack(api.getItemHead("39760")).setDisplayName(c.aqua + c.bold + "December 1st").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 10, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 1 && !isDateInBetween("11/02/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(1) && c1.get(Calendar.DAY_OF_MONTH) != 1 && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
             setItem(new cItemStack(api.getItemHead("24019")).setDisplayName(c.red + c.bold + "December 1st").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -88,23 +88,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23991")).setDisplayName(c.white + c.bold + "December 2nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival Coins and Gold Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
                     c.white + "Reward claimed!"
             ), 11, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 2 && isDateInBetween("11/03/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 2)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(2) && !API.adventOpenedAlready(pp.getUniqueId(), 2)) {
             setItem(new cItemStack(api.getItemHead("39759")).setDisplayName(c.aqua + c.bold + "December 2nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival Coins and Gold Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 11, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 2 && !isDateInBetween("11/03/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 2)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(2) && c1.get(Calendar.DAY_OF_MONTH) != 2 && !API.adventOpenedAlready(pp.getUniqueId(), 2)) {
             setItem(new cItemStack(api.getItemHead("24018")).setDisplayName(c.red + c.bold + "December 2nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -130,23 +130,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23990")).setDisplayName(c.white + c.bold + "December 3rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
                     "",
                     c.white + "Reward claimed!"
             ), 12, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 3 && isDateInBetween("11/04/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 3)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(3) && !API.adventOpenedAlready(pp.getUniqueId(), 3)) {
             setItem(new cItemStack(api.getItemHead("39758")).setDisplayName(c.aqua + c.bold + "December 3rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 12, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 3 && !isDateInBetween("11/04/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 3)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(3) && c1.get(Calendar.DAY_OF_MONTH) != 3 && !API.adventOpenedAlready(pp.getUniqueId(), 3)) {
             setItem(new cItemStack(api.getItemHead("24017")).setDisplayName(c.red + c.bold + "December 3rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -172,23 +172,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23989")).setDisplayName(c.white + c.bold + "December 4th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Ultra Crate Keys",
                     "",
                     c.white + "Reward claimed!"
             ), 13, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 4 && isDateInBetween("11/05/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 4)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(4) && !API.adventOpenedAlready(pp.getUniqueId(), 4)) {
             setItem(new cItemStack(api.getItemHead("39757")).setDisplayName(c.aqua + c.bold + "December 4th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Ultra Crate Keys",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 13, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 4 && !isDateInBetween("11/05/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 4)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(4) && c1.get(Calendar.DAY_OF_MONTH) != 4 && !API.adventOpenedAlready(pp.getUniqueId(), 4)) {
             setItem(new cItemStack(api.getItemHead("24016")).setDisplayName(c.red + c.bold + "December 4th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -214,23 +214,25 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23988")).setDisplayName(c.white + c.bold + "December 5th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.yellow + "Flash Bow Effect " + c.gray + "(" + c.aqua + "/boweffects" + c.gray + ")",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.white + "Reward claimed!"
             ), 14, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 5 && isDateInBetween("11/06/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 5)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(5) && !API.adventOpenedAlready(pp.getUniqueId(), 5)) {
             setItem(new cItemStack(api.getItemHead("39756")).setDisplayName(c.aqua + c.bold + "December 5th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.yellow + "Flash Bow Effect " + c.gray + "(" + c.aqua + "/boweffects" + c.gray + ")",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 14, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 5 && !isDateInBetween("11/06/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 5)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(5) && c1.get(Calendar.DAY_OF_MONTH) != 5 && !API.adventOpenedAlready(pp.getUniqueId(), 5)) {
             setItem(new cItemStack(api.getItemHead("24015")).setDisplayName(c.red + c.bold + "December 5th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -245,6 +247,7 @@ public class AdventCalendar extends AbstractGUI {
                     c.dgray + "Advent Reward",
                     "",
                     c.dgray + "+" + c.yellow + "Flash Bow Effect " + c.gray + "(" + c.aqua + "/boweffects" + c.gray + ")",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.green + "Click to open!"
             ), 14, (s,c,p) -> { });
@@ -256,23 +259,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23987")).setDisplayName(c.white + c.bold + "December 6th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival Coins and Gold Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
                     c.white + "Reward claimed!"
             ), 15, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 6 && isDateInBetween("11/07/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 6)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(6) && !API.adventOpenedAlready(pp.getUniqueId(), 6)) {
             setItem(new cItemStack(api.getItemHead("39755")).setDisplayName(c.aqua + c.bold + "December 6th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival Coins and Gold Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 15, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 6 && !isDateInBetween("11/07/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 6)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(6) && c1.get(Calendar.DAY_OF_MONTH) != 6 && !API.adventOpenedAlready(pp.getUniqueId(), 6)) {
             setItem(new cItemStack(api.getItemHead("24014")).setDisplayName(c.red + c.bold + "December 6th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -286,7 +289,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 6th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival Coins and Gold Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
                     c.green + "Click to open!"
             ), 15, (s,c,p) -> { });
@@ -298,23 +301,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23986")).setDisplayName(c.white + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
                     "",
                     c.white + "Reward claimed!"
             ), 16, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 7 && isDateInBetween("11/08/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 7)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(7) && !API.adventOpenedAlready(pp.getUniqueId(), 7)) {
             setItem(new cItemStack(api.getItemHead("39754")).setDisplayName(c.aqua + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 16, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 7 && !isDateInBetween("11/08/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 7)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(7) && c1.get(Calendar.DAY_OF_MONTH) != 7 && !API.adventOpenedAlready(pp.getUniqueId(), 7)) {
             setItem(new cItemStack(api.getItemHead("24013")).setDisplayName(c.red + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -328,7 +331,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
                     "",
                     c.green + "Click to open!"
             ), 16, (s,c,p) -> { });
@@ -340,23 +343,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23985")).setDisplayName(c.white + c.bold + "December 8th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "5,000" + c.gray + " Gold",
                     "",
                     c.white + "Reward claimed!"
             ), 19, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 8 && isDateInBetween("11/09/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 8)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(8) && !API.adventOpenedAlready(pp.getUniqueId(), 8)) {
             setItem(new cItemStack(api.getItemHead("39753")).setDisplayName(c.aqua + c.bold + "December 8th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.gold + "5,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 19, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 8 && !isDateInBetween("11/09/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 8)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(8) && c1.get(Calendar.DAY_OF_MONTH) != 8 && !API.adventOpenedAlready(pp.getUniqueId(), 8)) {
             setItem(new cItemStack(api.getItemHead("24012")).setDisplayName(c.red + c.bold + "December 8th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -370,7 +373,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 8th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "5,000" + c.gray + " Gold",
                     "",
                     c.green + "Click to open!"
             ), 19, (s,c,p) -> { });
@@ -382,23 +385,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23984")).setDisplayName(c.white + c.bold + "December 9th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
                     c.white + "Reward claimed!"
             ), 20, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 9 && isDateInBetween("11/11/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 9)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(9) && !API.adventOpenedAlready(pp.getUniqueId(), 9)) {
             setItem(new cItemStack(api.getItemHead("39752")).setDisplayName(c.aqua + c.bold + "December 9th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 20, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 9 && !isDateInBetween("11/11/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 9)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(9) && c1.get(Calendar.DAY_OF_MONTH) != 9 && !API.adventOpenedAlready(pp.getUniqueId(), 9)) {
             setItem(new cItemStack(api.getItemHead("24011")).setDisplayName(c.red + c.bold + "December 9th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -412,7 +415,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 9th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
                     c.green + "Click to open!"
             ), 20, (s,c,p) -> { });
@@ -424,23 +427,25 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23983")).setDisplayName(c.white + c.bold + "December 10th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.yellow + "Lightning Kill Effect " + c.gray + "(" + c.aqua + "/killeffects" + c.gray + ")",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.white + "Reward claimed!"
             ), 21, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 10 && isDateInBetween("11/11/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 10)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(10) && !API.adventOpenedAlready(pp.getUniqueId(), 10)) {
             setItem(new cItemStack(api.getItemHead("39806")).setDisplayName(c.aqua + c.bold + "December 10th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.yellow + "Lightning Kill Effect " + c.gray + "(" + c.aqua + "/killeffects" + c.gray + ")",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 21, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 10 && !isDateInBetween("11/11/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 10)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(10) && c1.get(Calendar.DAY_OF_MONTH) != 10 && !API.adventOpenedAlready(pp.getUniqueId(), 10)) {
             setItem(new cItemStack(api.getItemHead("24010")).setDisplayName(c.red + c.bold + "December 10th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -454,7 +459,8 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 10th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.yellow + "Lightning Kill Effect " + c.gray + "(" + c.aqua + "/killeffects" + c.gray + ")",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.green + "Click to open!"
             ), 21, (s,c,p) -> { });
@@ -466,23 +472,33 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23982")).setDisplayName(c.white + c.bold + "December 11th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.green + "Snowball Punch Messages",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
+                    "",
+                    c.dgray + "Requires Titan to use Punch",
+                    c.dgray + "Messages. Find Customize Appearance",
+                    c.dgray + "in your Profile.",
                     "",
                     c.white + "Reward claimed!"
             ), 22, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 11 && isDateInBetween("11/12/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 11)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(11) && !API.adventOpenedAlready(pp.getUniqueId(), 11)) {
             setItem(new cItemStack(api.getItemHead("39805")).setDisplayName(c.aqua + c.bold + "December 11th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.green + "Snowball Punch Messages",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
                     "",
-                    c.aqua + "Frozen!"
+                    c.dgray + "Requires Titan to use Punch",
+                    c.dgray + "Messages. Find Customize Appearance",
+                    c.dgray + "in your Profile.",
+                    "",
+                    c.aqua + "Oops! Reward missed!"
             ), 22, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 11 && !isDateInBetween("11/12/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 11)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(11) && c1.get(Calendar.DAY_OF_MONTH) != 11 && !API.adventOpenedAlready(pp.getUniqueId(), 11)) {
             setItem(new cItemStack(api.getItemHead("24009")).setDisplayName(c.red + c.bold + "December 11th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -496,7 +512,12 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 11th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.green + "Snowball Punch Messages",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
+                    "",
+                    c.dgray + "Requires Titan to use Punch",
+                    c.dgray + "Messages. Find Customize Appearance",
+                    c.dgray + "in your Profile.",
                     "",
                     c.green + "Click to open!"
             ), 22, (s,c,p) -> { });
@@ -508,23 +529,29 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23981")).setDisplayName(c.white + c.bold + "December 12th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x " + c.red + "3-star Mystery Box",
+                    "",
+                    c.dgray + "Open Mystery Boxes in",
+                    c.dgray + "the Main Lobby",
                     "",
                     c.white + "Reward claimed!"
             ), 23, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 12 && isDateInBetween("11/13/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 12)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(12) && !API.adventOpenedAlready(pp.getUniqueId(), 12)) {
             setItem(new cItemStack(api.getItemHead("39804")).setDisplayName(c.aqua + c.bold + "December 12th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "1x " + c.red + "3-star Mystery Box",
                     "",
-                    c.aqua + "Frozen!"
+                    c.dgray + "Open Mystery Boxes in",
+                    c.dgray + "the Main Lobby",
+                    "",
+                    c.aqua + "Oops! Reward missed!"
             ), 23, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 12 && !isDateInBetween("11/13/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 12)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(12) && c1.get(Calendar.DAY_OF_MONTH) != 12 && !API.adventOpenedAlready(pp.getUniqueId(), 12)) {
             setItem(new cItemStack(api.getItemHead("24008")).setDisplayName(c.red + c.bold + "December 12th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -538,7 +565,10 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 12th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x " + c.red + "3-star Mystery Box",
+                    "",
+                    c.dgray + "Open Mystery Boxes in",
+                    c.dgray + "the Main Lobby",
                     "",
                     c.green + "Click to open!"
             ), 23, (s,c,p) -> { });
@@ -550,23 +580,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23980")).setDisplayName(c.white + c.bold + "December 13th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "☃ Chat Emote " + c.gray + "(" + c.aqua + ":snow:" + c.gray + ")",
                     "",
                     c.white + "Reward claimed!"
             ), 24, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 13 && isDateInBetween("11/14/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 13)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(13) && !API.adventOpenedAlready(pp.getUniqueId(), 13)) {
             setItem(new cItemStack(api.getItemHead("39803")).setDisplayName(c.aqua + c.bold + "December 13th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "☃ Chat Emote " + c.gray + "(" + c.aqua + ":snow:" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 24, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 13 && !isDateInBetween("11/14/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 13)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(13) && c1.get(Calendar.DAY_OF_MONTH) != 13 && !API.adventOpenedAlready(pp.getUniqueId(), 13)) {
             setItem(new cItemStack(api.getItemHead("24007")).setDisplayName(c.red + c.bold + "December 13th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -580,7 +610,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 13th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "☃ Chat Emote " + c.gray + "(" + c.aqua + ":snow:" + c.gray + ")",
                     "",
                     c.green + "Click to open!"
             ), 24, (s,c,p) -> { });
@@ -592,23 +622,31 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23979")).setDisplayName(c.white + c.bold + "December 14th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.dred + "Reindeer Miniature",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
+                    "",
+                    c.dgray + "Unique miniatures that follow",
+                    c.dgray + "you around in every lobby!",
                     "",
                     c.white + "Reward claimed!"
             ), 25, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 14 && isDateInBetween("11/15/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 14)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(14) && !API.adventOpenedAlready(pp.getUniqueId(), 14)) {
             setItem(new cItemStack(api.getItemHead("39802")).setDisplayName(c.aqua + c.bold + "December 14th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.dred + "Reindeer Miniature",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.dgray + "Unique miniatures that follow",
+                    c.dgray + "you around in every lobby!",
+                    "",
+                    c.aqua + "Oops! Reward missed!"
             ), 25, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 14 && !isDateInBetween("11/15/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 14)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(14) && c1.get(Calendar.DAY_OF_MONTH) != 14 && !API.adventOpenedAlready(pp.getUniqueId(), 14)) {
             setItem(new cItemStack(api.getItemHead("24006")).setDisplayName(c.red + c.bold + "December 14th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -622,7 +660,11 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 14th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.dred + "Reindeer Miniature",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
+                    "",
+                    c.dgray + "Unique miniatures that follow",
+                    c.dgray + "you around in every lobby!",
                     "",
                     c.green + "Click to open!"
             ), 25, (s,c,p) -> { });
@@ -634,23 +676,35 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23978")).setDisplayName(c.white + c.bold + "December 15th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.purple + "Let It Snow Gadget",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
+                    "",
+                    c.dgray + "Releases a small snowstorm",
+                    c.dgray + "around you, covering the",
+                    c.dgray + "area in white for a short",
+                    c.dgray + "amount of time in every lobby!",
                     "",
                     c.white + "Reward claimed!"
             ), 28, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 15 && isDateInBetween("11/16/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 15)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(15) && !API.adventOpenedAlready(pp.getUniqueId(), 15)) {
             setItem(new cItemStack(api.getItemHead("39801")).setDisplayName(c.aqua + c.bold + "December 15th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.purple + "Let It Snow Gadget",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.dgray + "Releases a small snowstorm",
+                    c.dgray + "around you, covering the",
+                    c.dgray + "area in white for a short",
+                    c.dgray + "amount of time in every lobby!",
+                    "",
+                    c.aqua + "Oops! Reward missed!"
             ), 28, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 15 && !isDateInBetween("11/16/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 15)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(15) && c1.get(Calendar.DAY_OF_MONTH) != 15 && !API.adventOpenedAlready(pp.getUniqueId(), 15)) {
             setItem(new cItemStack(api.getItemHead("24005")).setDisplayName(c.red + c.bold + "December 15th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -664,7 +718,13 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 15th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.purple + "Let It Snow Gadget",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
+                    "",
+                    c.dgray + "Releases a small snowstorm",
+                    c.dgray + "around you, covering the",
+                    c.dgray + "area in white for a short",
+                    c.dgray + "amount of time in every lobby!",
                     "",
                     c.green + "Click to open!"
             ), 28, (s,c,p) -> { });
@@ -676,23 +736,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23977")).setDisplayName(c.white + c.bold + "December 16th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Bed Wars Coins Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
                     c.white + "Reward claimed!"
             ), 29, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 16 && isDateInBetween("11/17/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 16)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(16) && !API.adventOpenedAlready(pp.getUniqueId(), 16)) {
             setItem(new cItemStack(api.getItemHead("39800")).setDisplayName(c.aqua + c.bold + "December 16th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Bed Wars Coins Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 29, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 16 && !isDateInBetween("11/17/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 16)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(16) && c1.get(Calendar.DAY_OF_MONTH) != 16 && !API.adventOpenedAlready(pp.getUniqueId(), 16)) {
             setItem(new cItemStack(api.getItemHead("24004")).setDisplayName(c.red + c.bold + "December 16th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -706,7 +766,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 16th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Bed Wars Coins Booster (" + c.aqua + "Three Hours" + c.gray + ")",
                     "",
                     c.green + "Click to open!"
             ), 29, (s,c,p) -> { });
@@ -718,23 +778,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23976")).setDisplayName(c.white + c.bold + "December 17th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival EXP Booster (" + c.aqua + "One Hour" + c.gray + ")",
                     "",
                     c.white + "Reward claimed!"
             ), 30, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 17 && isDateInBetween("11/18/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 17)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(17) && !API.adventOpenedAlready(pp.getUniqueId(), 17)) {
             setItem(new cItemStack(api.getItemHead("39799")).setDisplayName(c.aqua + c.bold + "December 17th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival EXP Booster (" + c.aqua + "One Hour" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 30, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 17 && !isDateInBetween("11/18/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 17)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(17) && c1.get(Calendar.DAY_OF_MONTH) != 17 && !API.adventOpenedAlready(pp.getUniqueId(), 17)) {
             setItem(new cItemStack(api.getItemHead("24003")).setDisplayName(c.red + c.bold + "December 17th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -748,7 +808,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 17th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 2.0x " + c.gray + "Survival EXP Booster (" + c.aqua + "One Hour" + c.gray + ")",
                     "",
                     c.green + "Click to open!"
             ), 30, (s,c,p) -> { });
@@ -760,23 +820,31 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23975")).setDisplayName(c.white + c.bold + "December 18th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "300" + c.gray + " Snowflakes " + c.gray + "(" + c.aqua + "/seasonal" + c.gray + ")",
+                    "",
+                    c.dgray + "Snowflakes - A seasonal currency",
+                    c.dgray + "which allows you to buy in-game",
+                    c.dgray + "items through the seasonal shop!",
                     "",
                     c.white + "Reward claimed!"
             ), 31, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 18 && isDateInBetween("11/19/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 18)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(18) && !API.adventOpenedAlready(pp.getUniqueId(), 18)) {
             setItem(new cItemStack(api.getItemHead("39798")).setDisplayName(c.aqua + c.bold + "December 18th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "300" + c.gray + " Snowflakes " + c.gray + "(" + c.aqua + "/seasonal" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.dgray + "Snowflakes - A seasonal currency",
+                    c.dgray + "which allows you to buy in-game",
+                    c.dgray + "items through the seasonal shop!",
+                    "",
+                    c.aqua + "Oops! Reward missed!"
             ), 31, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 18 && !isDateInBetween("11/19/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 18)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(18) && c1.get(Calendar.DAY_OF_MONTH) != 18 && !API.adventOpenedAlready(pp.getUniqueId(), 18)) {
             setItem(new cItemStack(api.getItemHead("24002")).setDisplayName(c.red + c.bold + "December 18th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -790,7 +858,11 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 18th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "300" + c.gray + " Snowflakes " + c.gray + "(" + c.aqua + "/seasonal" + c.gray + ")",
+                    "",
+                    c.dgray + "Snowflakes - A seasonal currency",
+                    c.dgray + "which allows you to buy in-game",
+                    c.dgray + "items through the seasonal shop!",
                     "",
                     c.green + "Click to open!"
             ), 31, (s,c,p) -> { });
@@ -802,23 +874,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23974")).setDisplayName(c.white + c.bold + "December 19th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "15,000" + c.gray + " Gold",
                     "",
                     c.white + "Reward claimed!"
             ), 32, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 19 && isDateInBetween("11/20/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 19)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(19) && !API.adventOpenedAlready(pp.getUniqueId(), 19)) {
             setItem(new cItemStack(api.getItemHead("39797")).setDisplayName(c.aqua + c.bold + "December 19th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.gold + "15,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 32, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 19 && !isDateInBetween("11/20/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 19)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(19) && c1.get(Calendar.DAY_OF_MONTH) != 19 && !API.adventOpenedAlready(pp.getUniqueId(), 19)) {
             setItem(new cItemStack(api.getItemHead("24001")).setDisplayName(c.red + c.bold + "December 19th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -832,7 +904,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 19th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "15,000" + c.gray + " Gold",
                     "",
                     c.green + "Click to open!"
             ), 32, (s,c,p) -> { });
@@ -844,23 +916,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23973")).setDisplayName(c.white + c.bold + "December 20th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
                     c.white + "Reward claimed!"
             ), 33, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 20 && isDateInBetween("11/21/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 20)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(20) && !API.adventOpenedAlready(pp.getUniqueId(), 20)) {
             setItem(new cItemStack(api.getItemHead("39796")).setDisplayName(c.aqua + c.bold + "December 20th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 33, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 20 && !isDateInBetween("11/21/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 20)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(20) && c1.get(Calendar.DAY_OF_MONTH) != 20 && !API.adventOpenedAlready(pp.getUniqueId(), 20)) {
             setItem(new cItemStack(api.getItemHead("24000")).setDisplayName(c.red + c.bold + "December 20th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -874,7 +946,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 20th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
                     "",
                     c.green + "Click to open!"
             ), 33, (s,c,p) -> { });
@@ -886,23 +958,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23972")).setDisplayName(c.white + c.bold + "December 21st").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Rare Crate Keys",
                     "",
                     c.white + "Reward claimed!"
             ), 34, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 21 && isDateInBetween("11/22/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 21)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(21) && !API.adventOpenedAlready(pp.getUniqueId(), 21)) {
             setItem(new cItemStack(api.getItemHead("39795")).setDisplayName(c.aqua + c.bold + "December 21st").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Rare Crate Keys",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 34, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 21 && !isDateInBetween("11/22/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 21)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(21) && c1.get(Calendar.DAY_OF_MONTH) != 21 && !API.adventOpenedAlready(pp.getUniqueId(), 21)) {
             setItem(new cItemStack(api.getItemHead("23999")).setDisplayName(c.red + c.bold + "December 21st").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -916,7 +988,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 21st").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Rare Crate Keys",
                     "",
                     c.green + "Click to open!"
             ), 34, (s,c,p) -> { });
@@ -928,23 +1000,23 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23971")).setDisplayName(c.white + c.bold + "December 22nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "50,000" + c.gray + " Network Coins",
                     "",
                     c.white + "Reward claimed!"
             ), 37, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 22 && isDateInBetween("11/23/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 22)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(22) && !API.adventOpenedAlready(pp.getUniqueId(), 22)) {
             setItem(new cItemStack(api.getItemHead("39794")).setDisplayName(c.aqua + c.bold + "December 22nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.gold + "50,000" + c.gray + " Network Coins",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 37, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 22 && !isDateInBetween("11/23/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 22)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(22) && c1.get(Calendar.DAY_OF_MONTH) != 22 && !API.adventOpenedAlready(pp.getUniqueId(), 22)) {
             setItem(new cItemStack(api.getItemHead("23998")).setDisplayName(c.red + c.bold + "December 22nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -958,7 +1030,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 22nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "50,000" + c.gray + " Network Coins",
                     "",
                     c.green + "Click to open!"
             ), 37, (s,c,p) -> { });
@@ -970,24 +1042,24 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23970")).setDisplayName(c.white + c.bold + "December 23rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "30,000" + c.gray + " Gold",
                     "",
                     c.white + "Reward claimed!"
             ), 38, (s,c,p) -> { });
         }
 
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 23 && isDateInBetween("11/24/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 23)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(23) && !API.adventOpenedAlready(pp.getUniqueId(), 23)) {
             setItem(new cItemStack(api.getItemHead("39793")).setDisplayName(c.aqua + c.bold + "December 23rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.gold + "30,000" + c.gray + " Gold",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 38, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 23 && !isDateInBetween("11/24/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 23)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(23) && c1.get(Calendar.DAY_OF_MONTH) != 23 && !API.adventOpenedAlready(pp.getUniqueId(), 23)) {
             setItem(new cItemStack(api.getItemHead("23997")).setDisplayName(c.red + c.bold + "December 23rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -1001,7 +1073,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 23rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.gold + "30,000" + c.gray + " Gold",
                     "",
                     c.green + "Click to open!"
             ), 38, (s,c,p) -> { });
@@ -1013,23 +1085,25 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23969")).setDisplayName(c.white + c.bold + "December 24th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "5x" + c.gray + " Netherite Ingots",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 3.0x " + c.gray + "Survival EXP Booster (" + c.aqua + "One Hour" + c.gray + ")",
                     "",
                     c.white + "Reward claimed!"
             ), 39, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 24 && isDateInBetween("11/25/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 24)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(24) && !API.adventOpenedAlready(pp.getUniqueId(), 24)) {
             setItem(new cItemStack(api.getItemHead("39792")).setDisplayName(c.aqua + c.bold + "December 24th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "5x" + c.gray + " Netherite Ingots",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 3.0x " + c.gray + "Survival EXP Booster (" + c.aqua + "One Hour" + c.gray + ")",
                     "",
-                    c.aqua + "Frozen!"
+                    c.aqua + "Oops! Reward missed!"
             ), 39, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 24 && !isDateInBetween("11/25/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 24)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(24) && c1.get(Calendar.DAY_OF_MONTH) != 24 && !API.adventOpenedAlready(pp.getUniqueId(), 24)) {
             setItem(new cItemStack(api.getItemHead("23996")).setDisplayName(c.red + c.bold + "December 24th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -1043,7 +1117,8 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 24th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "5x" + c.gray + " Netherite Ingots",
+                    c.dgray + "+" + c.aqua + "1x" + c.gold + " 3.0x " + c.gray + "Survival EXP Booster (" + c.aqua + "One Hour" + c.gray + ")",
                     "",
                     c.green + "Click to open!"
             ), 39, (s,c,p) -> { });
@@ -1055,23 +1130,31 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23968")).setDisplayName(c.white + c.bold + "December 25th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x " + c.gray + "VIP Rank Gift " + c.gray + "(" + c.aqua + "/gift" + c.gray + ")",
+                    c.dgray + "+" + c.aqua + "3x " + c.red + "3-star Mystery Box",
+                    "",
+                    c.dgray + "Open Mystery Boxes in",
+                    c.dgray + "the Main Lobby",
                     "",
                     c.white + "Reward claimed!"
             ), 40, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 25 && isDateInBetween("11/26/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 25)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(25) && !API.adventOpenedAlready(pp.getUniqueId(), 25)) {
             setItem(new cItemStack(api.getItemHead("39791")).setDisplayName(c.aqua + c.bold + "December 25th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "Oops! Reward missed!",
+                    c.dgray + "+" + c.aqua + "1x " + c.gray + "VIP Rank Gift " + c.gray + "(" + c.aqua + "/gift" + c.gray + ")",
+                    c.dgray + "+" + c.aqua + "3x " + c.red + "3-star Mystery Box",
                     "",
-                    c.aqua + "Frozen!"
+                    c.dgray + "Open Mystery Boxes in",
+                    c.dgray + "the Main Lobby",
+                    "",
+                    c.aqua + "Oops! Reward missed!"
             ), 40, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) != 25 && !isDateInBetween("11/26/2021", "11/31/2021") && !API.adventOpenedAlready(pp.getUniqueId(), 25)) {
+        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(25) && c1.get(Calendar.DAY_OF_MONTH) != 25 && !API.adventOpenedAlready(pp.getUniqueId(), 25)) {
             setItem(new cItemStack(api.getItemHead("23995")).setDisplayName(c.red + c.bold + "December 25th").addLore(
                     c.dgray + "Advent Reward",
                     "",
@@ -1085,7 +1168,11 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 25th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.gray + "",
+                    c.dgray + "+" + c.aqua + "1x " + c.gray + "VIP Rank Gift " + c.gray + "(" + c.aqua + "/gift" + c.gray + ")",
+                    c.dgray + "+" + c.aqua + "3x " + c.red + "3-star Mystery Box",
+                    "",
+                    c.dgray + "Open Mystery Boxes in",
+                    c.dgray + "the Main Lobby",
                     "",
                     c.green + "Click to open!"
             ), 40, (s,c,p) -> { });

@@ -7,12 +7,14 @@ import java.text.NumberFormat;
 import java.util.Random;
 import java.util.UUID;
 
+import com.sun.jna.platform.unix.solaris.LibKstat;
 import org.bukkit.entity.Player;
 
 import net.minecraft.world.item.ItemStack;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.util.errors.APIException;
+import twistedmc.core.Core;
 
 public class API {
 
@@ -51,7 +53,47 @@ public class API {
             s.printStackTrace();
         }
     }
-    
+
+    public static boolean isReady(int window){
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
+            Statement statement = MySQL.openConnection().createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM `adventStatus` WHERE day = '" + window + "' AND status = 'READY'");
+            while(res.next()){
+                return res.getString("day") != null;
+            }
+            return false;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isMissed(int window){
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
+            Statement statement = MySQL.openConnection().createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM `adventStatus` WHERE day = '" + window + "' AND status = 'MISSED'");
+            while(res.next()){
+                return res.getString("day") != null;
+            }
+            return false;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static void disableDay(int window) {
+
+        try {
+            MySQL MySQL = new MySQL(Main.sqlHostStats, Main.sqlPortStats, Main.sqlDbStats, Main.sqlUserStats, Main.sqlPwStats);
+            Statement statement = MySQL.openConnection().createStatement();
+            statement.executeUpdate("UPDATE `adventStatus` SET status = 'MISSED' WHERE `day` = '" + window + "'");
+        } catch (SQLException | ClassNotFoundException s) {
+            s.printStackTrace();
+        }
+    }
     
     public static ItemStack generateRandomItem(ItemStack[] items) {
         Random r = new Random();
