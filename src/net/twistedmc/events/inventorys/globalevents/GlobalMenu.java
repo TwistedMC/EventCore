@@ -1,5 +1,6 @@
 package net.twistedmc.events.inventorys.globalevents;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
 
 import org.bukkit.Material;
@@ -11,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.util.API;
 import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
 
@@ -32,6 +34,7 @@ public class GlobalMenu extends AbstractGUI {
     public static int Goal4 = 4000;
     public static int Goal5 = 5000;
     public static String PermPrefix = "twisted.events.globalrewards.";
+    NumberFormat format = NumberFormat.getInstance();
     // 
     private static final int BORDER_FILL[] = {0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,45,44,46,47,48,50,51,52,53};
 
@@ -43,9 +46,8 @@ public class GlobalMenu extends AbstractGUI {
                (c.gray + "Close this menu")
         , 49, (s,c,p) -> { });
 
-        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.green + "Contribution Overview").addLore
-               (c.gray + "Close this menu") // TO-DO:
-                                            // LORE
+        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + "Snowflake Contribution Overview").addLore
+               (c.gray + "Close this menu") 
         , 13, (s,c,p) -> { });
 
         setItems(player);
@@ -55,27 +57,36 @@ public class GlobalMenu extends AbstractGUI {
     }
     public void setItems(Player player) {
         int contri = Main.getContribution(player);
-        if (contri < 1000) {
-            if (!player.hasPermission(PermPrefix + "prize1")) {
-                setItem(new cItemStack(HEADapi.getItemHead("39760")).setDisplayName(c.green + "Event Prize #1").addLore
-                (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
-                c.red + "Required Contribution: 1,000",
-                c.gray + "Progress: %progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:1000% | (%progress_percentage_{events_contribution}_m:1000_d:0%"
+        if (API.CanShowItem(Goal1, player, "contribution")) {
 
-                ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS)
-         , 29, (s,c,p) -> { });
-            }
-        } else if (contri > 1000 && contri < 2000) {
+        } else {
+            setItem(new cItemStack(HEADapi.getItemHead("39760")).setDisplayName(c.green + "Event Prize #1").addLore
+                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
+                 c.red + "Required Contribution: 1,000",
+                 c.gray + "Progress: %progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:1000% | (%progress_percentage_{events_contribution}_m:1000_d:0%"
 
-        } else if (contri > 2000 && contri < 3000) {
-            
-        } else if (contri > 3000 && contri < 4000) {
-            
-        } else if (contri > 4000 && contri < 5000) {
-            
-        } else if (contri > 5000) {
+                 ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS)
+                , 29, (s,c,p) -> { });
+        }
+
+        if (API.CanShowItem(Goal2, player, "contribution")) {
+
+        } else {
+
+        }
+
+        if (API.CanShowItem(Goal2, player, "contribution")) {
+
+        } else {
             
         }
-    }
 
+        if (API.CanShowItem(Goal2, player, "contribution")) {
+
+        } else {
+            
+        }
+
+
+    }
 }

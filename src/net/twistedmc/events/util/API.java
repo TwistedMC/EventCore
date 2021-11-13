@@ -129,7 +129,7 @@ public class API {
      * @param checkPerms - Not setting this or setting it to false will skip the {@code userCantHavePerm} variable. 
      * @see org.bukkit.entity.Player
      * @return {@code Boolean (True/False)}
-     * @since API 1.1.0
+     * @since API 0.1.1
      */
     public static boolean canGetContributionItem(int requiredContribution, String userCantHavePerm, Player plr, boolean checkPerms) {
      int c = Main.getContribution(plr);
@@ -146,6 +146,25 @@ public class API {
             return false;
         }
      }
+    }
+    /**
+     * 
+     * @param price
+     * @param player
+     * @param currencyType
+     * @return {@code Boolean} 
+     * @since {@code API 0.1.2}
+     */
+    public static boolean CanShowItem(int price,Player player,String currencyType) {
+        if (currencyType == "contribution") {
+            int c = Main.getContribution(player);
+            if (c >= price) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     public static int getTotalContributionRAW() {
