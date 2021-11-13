@@ -39,7 +39,7 @@ public class PlaceholderListener extends PlaceholderExpansion {
 
     @Override
     public String getRequiredPlugin(){
-        return "EventCore";
+        return "EventCore1.17";
     }
 
     @Override
