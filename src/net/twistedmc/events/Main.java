@@ -43,7 +43,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -731,6 +730,7 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("hcc").setExecutor((CommandExecutor) new HolidayCurrencyCommand(this));
         getCommand("seasonal").setExecutor((CommandExecutor) new SeasonalMenuCommand());
         getCommand("adventcalendar").setExecutor((CommandExecutor) new AdventCalendarCommand());
+        getCommand("snowflakecontribution").setExecutor((CommandExecutor) new GlobalMenuTestCommand());
     }
 
     private void registerEvents() {

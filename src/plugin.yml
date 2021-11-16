@@ -31,3 +31,4 @@ commands:
    aliases: [candystore]
   adventcalendar:
    aliases: [calendar]
+  snowflakecontribution:
