@@ -4,6 +4,7 @@ package net.twistedmc.events.placeholders;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.util.API;
 
 import org.apache.logging.log4j.core.Core;
 import org.bukkit.Bukkit;
@@ -93,6 +94,12 @@ public class PlaceholderListener extends PlaceholderExpansion {
 
 
             return String.valueOf(contribution);
+        }
+        if(identifier.equals("globalcontributionraw")) {
+           return "" + API.getTotalContributionRAW() + ""; 
+        }
+        if (identifier.equals("globalcontributionf")) {
+            return API.getTotalContributionFormatted();
         }
 
         if(identifier.equals("color")) {
