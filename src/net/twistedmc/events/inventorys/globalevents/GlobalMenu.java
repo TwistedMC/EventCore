@@ -40,6 +40,7 @@ public class GlobalMenu extends AbstractGUI {
     NumberFormat format = NumberFormat.getInstance();
     // 
     private static final int BORDER_FILL[] = {0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,45,44,46,47,48,50,51,52,53};
+    private static final int INSIDE_FILL[] = {10,11,12,14,15,16,19,20,21,22,23,24,25,28,34,37,38,39,40,41,42,43};
 
     public GlobalMenu(Player player) {
         super(6, "2021 Winter Community Challenge", player);
@@ -51,8 +52,8 @@ public class GlobalMenu extends AbstractGUI {
         , 49, (s,c,p) -> { });
 
         setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + "Snowflake Contribution Overview").addLore
-               (c.gray + "Progress towards the global goal, which if unlocked,","will give ALL players who participated a reward!",
-                c.gray + "Goal: " + c.white + GlobalGoal + " Snowflakes"+ c.gray + ".",
+               (c.gray + "Progress towards the global goal,", c.gray + "which if unlocked, will give ALL players",c.gray + " who participated a reward!",
+                c.gray + "Goal: " + c.white + format.format(GlobalGoal) + " Snowflakes"+ c.gray + ".",
                 c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")","",
                 c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + c.gray + ".",
                 c.gray + "Your Contributed Snowflakes: " + c.white + Main.getContribution(player) + c.gray + ".","",
@@ -64,16 +65,20 @@ public class GlobalMenu extends AbstractGUI {
     }
     public void fill() {
         Arrays.stream(BORDER_FILL).forEach(slot -> setItem(new cItemStack(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(c.black  + "").addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS), slot, (s,c,p) -> { })); 
+        ItemStack Green = new cItemStack(Material.GREEN_STAINED_GLASS_PANE).setDisplayName(c.green + "").addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS);
+        ItemStack Red = new cItemStack(Material.RED_STAINED_GLASS_PANE).setDisplayName(c.red + "").addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS);
+        ItemStack[] items = {Green,Red};
+        Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(API.generateRandomItem(items),slot, (s,c,p) -> { }));
     }
     public void setItems(Player player) {
         // Prizes:
         // 1 - Gold; 2 - Sword; 3 - Shovel; 4 - Axe; 5 - Pickaxe
         // Placeholders
-        String prize1_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:1000%"); String prize1_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:1000_d:0%");
-        String prize2_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:2000%"); String prize2_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:2000_d:0%");
-        String prize3_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:3000%"); String prize3_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:3000_d:0%");
-        String prize4_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:4000%"); String prize4_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:4000_d:0%");
-        String prize5_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:5000%"); String prize5_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:5000_d:0%");
+        String prize1_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal1 +"%"); String prize1_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal1 +"_d:0%");
+        String prize2_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal2 +"%"); String prize2_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal2 +"_d:0%");
+        String prize3_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal3 +"%"); String prize3_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal3 +"_d:0%");
+        String prize4_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal4 +"%"); String prize4_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal4 +"_d:0%");
+        String prize5_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal5 +"%"); String prize5_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal5 +"_d:0%");
         if (API.CanShowItem(Goal1, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize1")) {
                 ItemStack i = ItemRewards.displayGold.clone();
@@ -96,9 +101,9 @@ public class GlobalMenu extends AbstractGUI {
             }
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39760")).setDisplayName(c.green + "Event Prize #1").addLore
-                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
+                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
                  c.red + "Required Contribution: 1,000",
-                 c.gray + "Progress:" + prize1_1 + "| (" + c.aqua + prize1_2 + c.gray + ")"
+                 c.gray + "Progress:" + prize1_1 + c.gray + " | (" + c.aqua + prize1_2 + "%"+ c.gray + ")"
                  ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
             , 29, (s,c,p) -> { });
         }
@@ -107,10 +112,9 @@ public class GlobalMenu extends AbstractGUI {
 
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39759")).setDisplayName(c.green + "Event Prize #2").addLore
-              (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
-              c.red + "Required Contribution: 2,000",
-                c.gray + "Progress:" + prize2_1 + "| (" + c.aqua + prize2_2 + c.gray + ")"
-
+            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
+            c.red + "Required Contribution: 2,000",
+            c.gray + "Progress:" + prize2_1 + c.gray + " | (" + c.aqua + prize2_2 + "%"+ c.gray + ")"
             ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
             , 30, (s,c,p) -> { });
         }
@@ -119,11 +123,10 @@ public class GlobalMenu extends AbstractGUI {
 
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39758")).setDisplayName(c.green + "Event Prize #3").addLore
-                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
-                 c.red + "Required Contribution: 3,000",
-                 c.gray + "Progress:" + prize3_1 + "| (" + c.aqua + prize3_2 + c.gray + ")"
-
-                 ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
+            c.red + "Required Contribution: 3,000",
+            c.gray + "Progress:" + prize3_1 + c.gray + " | (" + c.aqua + prize3_2 + "%"+ c.gray + ")"
+            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
             , 31, (s,c,p) -> { });
         }
 
@@ -131,11 +134,10 @@ public class GlobalMenu extends AbstractGUI {
 
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39757")).setDisplayName(c.green + "Event Prize #4").addLore
-                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
-                 c.red + "Required Contribution: 4,000",
-                c.gray + "Progress:" + prize4_1 + "| (" + c.aqua + prize4_2 + c.gray + ")"
-
-                 ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
+            c.red + "Required Contribution: 4,000",
+            c.gray + "Progress:" + prize4_1 + c.gray + " | (" + c.aqua + prize4_2 + "%"+ c.gray + ")"
+            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
             , 32, (s,c,p) -> { });
         }
 
@@ -143,11 +145,10 @@ public class GlobalMenu extends AbstractGUI {
 
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39756")).setDisplayName(c.green + "Event Prize #5").addLore
-                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using " + c.white + "Snowflakes" + c.gray + "to thaw the prize!","",
-                 c.red + "Required Contribution: 5,000",
-                 c.gray + "Progress:" + prize5_1 + "| (" + c.aqua + prize5_2 + c.gray + ")"
-
-                 ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
+            c.red + "Required Contribution: 5,000",
+            c.gray + "Progress:" + prize5_1 + c.gray + " | (" + c.aqua + prize5_2 + "%"+ c.gray + ")"
+            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
             , 33, (s,c,p) -> { });
         }
 

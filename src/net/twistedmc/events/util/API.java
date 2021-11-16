@@ -9,8 +9,8 @@ import java.util.UUID;
 
 import com.sun.jna.platform.unix.solaris.LibKstat;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
-import net.minecraft.world.item.ItemStack;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.util.errors.APIException;
