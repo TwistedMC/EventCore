@@ -529,7 +529,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23981")).setDisplayName(c.white + c.bold + "December 12th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.dgray + "+" + c.aqua + "1x " + c.red + "3-star Mystery Box",
+                    c.dgray + "+" + c.aqua + "3x " + c.red + "3-star Mystery Box",
                     "",
                     c.dgray + "Open Mystery Boxes in",
                     c.dgray + "the Main Lobby",
@@ -1131,7 +1131,7 @@ public class AdventCalendar extends AbstractGUI {
                     c.dgray + "Advent Reward",
                     "",
                     c.dgray + "+" + c.aqua + "1x " + c.gray + "VIP Rank Gift " + c.gray + "(" + c.aqua + "/gift" + c.gray + ")",
-                    c.dgray + "+" + c.aqua + "3x " + c.red + "3-star Mystery Box",
+                    c.dgray + "+" + c.aqua + "6x " + c.red + "3-star Mystery Box",
                     "",
                     c.dgray + "Open Mystery Boxes in",
                     c.dgray + "the Main Lobby",

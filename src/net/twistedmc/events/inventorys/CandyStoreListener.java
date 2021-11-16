@@ -56,12 +56,12 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest") && e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
-            new CandyStore(player);
+            player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
             return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe") && e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
-            player.sendMessage(c.red + "Winter event not active!");
+            player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Winter Store is currently disabled!");
             return;
         }
 

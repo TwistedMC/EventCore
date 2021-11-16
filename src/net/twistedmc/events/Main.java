@@ -26,6 +26,7 @@ import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
 import net.twistedmc.events.inventorys.advent.*;
 import net.twistedmc.events.listeners.JoinListener;
+import net.twistedmc.events.listeners.SnowflakeListener;
 import net.twistedmc.events.listeners.SuggestionsManager;
 import net.twistedmc.events.listeners.ToTListener;
 import net.twistedmc.events.commands.CandyStoreCommand;
@@ -42,6 +43,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -736,6 +738,7 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new JoinListener(), this);
         pm.registerEvents(new ClaimRewardCommand(this), this);
         pm.registerEvents(new ToTListener(), this);
+        pm.registerEvents(new SnowflakeListener(), this);
         pm.registerEvents(new CandyStoreListener(), this);
         pm.registerEvents(new AdventCalendarListener(), this);
 

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
 
+import com.connorlinfoot.titleapi.TitleAPI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.luckperms.api.LuckPermsProvider;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -275,12 +276,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
 
                 sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + currencyPlaceholderNoColor + " to " + c.yellow + target.getName() + c.green + "!");
 
-                TextComponent message = new TextComponent(fromLegacyText(ToTListener.format("#ff9500" + "+" + args[2] + "#710075" + " Candies (" + "#ff9500" + "Halloween Event" + "#710075" + ")")));
-
-                message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/seasonal"));
-                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Open Seasonal Menu").create()));
-
-                target.spigot().sendMessage(message);
+                TitleAPI.sendTitle(target, 3, 40, 5, c.aqua + "+" + args[2] + c.white + "❄", "");
                 return false;
             }
 

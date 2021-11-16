@@ -13,6 +13,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
+import org.bukkit.inventory.ItemFlag;
 import twistedmc.core.Core;
 import twistedmc.core.framework.ServerType;
 
@@ -37,31 +38,16 @@ public class MainMenu extends AbstractGUI implements Listener {
         String candies = formatter.format(Main.getCandies(pp));
         String snowflakes = formatter.format(Main.getSnowflakes(pp));
 
-        if (Main.getServerDataManager().getServerType() == ServerType.MINIGAME) {
             setItem(new cItemStack(api.getItemHead("40395")).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
                     c.gray + "All your Halloween seasonal currency",
                     c.gray + "has been contained in this chest, for safe keeping.",
                     c.gray + "This chest has been imbued with a magic to only allow",
                     c.gray + "you to open it and use it in the Candies shop.",
                     "",
-                    c.gray + "This chest is holding " + c.gold + candies + " Candies" + c.gray + ".",
+                    c.gray + "This chest is holding " + c.gold + candies + " Candies",
                     "",
-                    c.yellow + "Click to open Halloween Store!"
-            ), 13, (s, c, p) -> {
-            });
-        }
-
-        if (Main.getServerDataManager().getServerType() == ServerType.DEV) {
-            setItem(new cItemStack(api.getItemHead("40395")).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
-                    c.gray + "All your Halloween seasonal currency",
-                    c.gray + "has been contained in this chest, for safe keeping.",
-                    c.gray + "This chest has been imbued with a magic to only allow",
-                    c.gray + "you to open it and use it in the Candies shop.",
-                    "",
-                    c.gray + "This chest is holding " + c.gold + candies + " Candies" + c.gray + ".",
-                    "",
-                    c.yellow + "Click to open Halloween Store!"
-            ), 12, (s,c,p) -> { });
+                    c.red + "Closed!"
+            ), 14, (s,c,p) -> { });
 
             setItem(new cItemStack(api.getItemHead("41106")).setDisplayName(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe").addLore(
                     c.gray + "All your Winter seasonal currency",
@@ -69,13 +55,12 @@ public class MainMenu extends AbstractGUI implements Listener {
                     c.gray + "This globe has been imbued with a magic to only allow",
                     c.gray + "you to open it and use it in the Snowflakes shop.",
                     "",
-                    c.gray + "This chest is holding " + c.white + snowflakes + " Snowflakes" + c.gray + ".",
+                    c.gray + "This chest is holding " + c.white + snowflakes + "❄",
                     "",
                     c.yellow + "Click to open Winter Store!"
-            ), 14, (s,c,p) -> { });
-        }
+            ), 12, (s,c,p) -> { });
 
-        setItem(new cItemStack(Material.WRITTEN_BOOK).setDisplayName(c.yellow + "Information").addLore(
+        setItem(new cItemStack(Material.WRITTEN_BOOK).setDisplayName(c.yellow + "Information").addFlags(ItemFlag.HIDE_ATTRIBUTES).addLore(
                 c.gray + "Simply put, this menu will allow you to access",
                 c.gray + "the two currency stores for limited time rewards.",
                 "",
