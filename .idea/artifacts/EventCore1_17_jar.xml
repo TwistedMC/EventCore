@@ -3,8 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/EventCore1_17_jar</output-path>
     <root id="archive" name="EventCore1.17.jar">
       <element id="module-output" name="EventCore1.17" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../../jars/Discord-Webhooks-API-WithDependencies.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/../EnchantedCore/out/artifacts/EnchantedCore_jar/EnchantedCore1.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../jars/Discord-Webhooks-API-WithDependencies.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../jars/EnchantedCore1.17.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

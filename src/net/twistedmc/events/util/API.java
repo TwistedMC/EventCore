@@ -53,7 +53,11 @@ public class API {
             s.printStackTrace();
         }
     }
-
+    /**
+     *
+     *
+     *
+     * */
     public static boolean isReady(int window){
         try {
             MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
@@ -94,7 +98,11 @@ public class API {
             s.printStackTrace();
         }
     }
-    
+    /**
+     * @param items - The Array of given ItemStack(s) to randomly decide on.
+     *
+     *
+     * */
     public static ItemStack generateRandomItem(ItemStack[] items) {
         Random r = new Random();
         int ran = r.nextInt(items.length);

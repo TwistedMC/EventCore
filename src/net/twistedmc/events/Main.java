@@ -58,7 +58,7 @@ public class Main extends JavaPlugin implements Listener {
 
     private static ServerDataManager serverDataManager;
 
-    public static String holiday = "halloween"; // halloween, christmas, newyears, (add any here)
+    public static String holiday = "christmas"; // halloween, christmas, newyears, (add any here)
     public static Main instance;
 
     public String sqlHost = "173.44.44.251";
@@ -144,7 +144,6 @@ public class Main extends JavaPlugin implements Listener {
             }.runTaskLater(this, 30);
             return;
         }
-
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
             public void run() {
                 Date now = new java.sql.Date(System.currentTimeMillis());
