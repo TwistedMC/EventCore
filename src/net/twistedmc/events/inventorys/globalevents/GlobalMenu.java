@@ -46,39 +46,44 @@ public class GlobalMenu extends AbstractGUI {
         super(6, "2021 Winter Community Challenge", player);
         fill();
         //Placeholders
-        String global1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_m:"+ GlobalGoal+ "%"); String global2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_globalcontributionraw}_m:"+ GlobalGoal + "_d:0%");
+        String global1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_p:&c■_l:10_m:"+ GlobalGoal+ "%"); String global2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_globalcontributionraw}_m:"+ GlobalGoal + "_d:2%");
         setItem(new cItemStack(Material.ARROW).setDisplayName(c.green + "Close").addLore
                (c.gray + "Close this menu")
         , 49, (s,c,p) -> { });
 
-        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + "Snowflake Contribution Overview").addLore
-               (c.gray + "Progress towards the global goal,", c.gray + "which if unlocked, will give ALL players",c.gray + " who participated a reward!",
-                c.gray + "Goal: " + c.white + format.format(GlobalGoal) + " Snowflakes"+ c.gray + ".",
-                c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")","",
-                c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + c.gray + ".",
-                c.gray + "Your Contributed Snowflakes: " + c.white + Main.getContribution(player) + c.gray + ".","",
-                c.yellow + "Click to contribute " + c.white + "Snowflakes" + c.gray + "!" // Open the contribute menu
+        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + "Snowflake Contribution Overview").addLore(
+                        c.gray + "Progress towards the global goal,",
+                        c.gray + "which if unlocked, will give ALL players",
+                        c.gray + "who participated a reward!",
+                        "",
+                        c.gray + "Goal: " + c.white + format.format(GlobalGoal) + " Snowflakes" + c.gray + ".",
+                        c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
+                        "",
+                        c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + c.gray + ".",
+                        c.gray + "Your Contributed Snowflakes: " + c.white + Main.getContribution(player) + c.gray + ".",
+                        "",
+                        c.yellow + "Click to contribute " + c.white + "Snowflakes" + c.gray + "!" // Open the contribute menu
                ) 
         , 13, (s,c,p) -> { });
 
         setItems(player);
     }
     public void fill() {
-        Arrays.stream(BORDER_FILL).forEach(slot -> setItem(new cItemStack(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(c.black  + "").addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS), slot, (s,c,p) -> { })); 
-        ItemStack Green = new cItemStack(Material.GREEN_STAINED_GLASS_PANE).setDisplayName(c.green + "").addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS);
-        ItemStack Red = new cItemStack(Material.RED_STAINED_GLASS_PANE).setDisplayName(c.red + "").addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS);
-        ItemStack[] items = {Green,Red};
+        Arrays.stream(BORDER_FILL).forEach(slot -> setItem(new cItemStack(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(c.black  + "").addFlags(ItemFlag.HIDE_ENCHANTS), slot, (s,c,p) -> { }));
+        ItemStack Green = new cItemStack(Material.GREEN_STAINED_GLASS_PANE).setDisplayName(c.green + "").addFlags(ItemFlag.HIDE_ENCHANTS);
+        ItemStack Red = new cItemStack(Material.RED_STAINED_GLASS_PANE).setDisplayName(c.red + "").addFlags(ItemFlag.HIDE_ENCHANTS);
+        ItemStack[] items = {Green,Red,Red,Green};
         Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(API.generateRandomItem(items),slot, (s,c,p) -> { }));
     }
     public void setItems(Player player) {
         // Prizes:
-        // 1 - Gold; 2 - Sword; 3 - Shovel; 4 - Axe; 5 - Pickaxe
+        // 1 - Gold; 2 - Sword; 3 - Shovel; 4 - Axe; 5 - Pickaxe // TO-DO: put frozen on bottom and replace it on top with prize rarity (Maybe prize rarity)
         // Placeholders
-        String prize1_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal1 +"%"); String prize1_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal1 +"_d:0%");
-        String prize2_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal2 +"%"); String prize2_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal2 +"_d:0%");
-        String prize3_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal3 +"%"); String prize3_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal3 +"_d:0%");
-        String prize4_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal4 +"%"); String prize4_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal4 +"_d:0%");
-        String prize5_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&4■_c:&a■_l:10_p:&c■_m:"+ Goal5 +"%"); String prize5_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal5 +"_d:0%");
+        String prize1_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal1 +"%"); String prize1_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal1 +"_d:0%");
+        String prize2_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal2 +"%"); String prize2_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal2 +"_d:0%");
+        String prize3_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal3 +"%"); String prize3_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal3 +"_d:0%");
+        String prize4_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal4 +"%"); String prize4_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal4 +"_d:0%");
+        String prize5_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal5 +"%"); String prize5_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal5 +"_d:0%");
         if (API.CanShowItem(Goal1, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize1")) {
                 ItemStack i = ItemRewards.displayGold.clone();
@@ -100,58 +105,172 @@ public class GlobalMenu extends AbstractGUI {
                 setItem(i, 29, (s,c,p) -> { });
             }
         } else {
-            setItem(new cItemStack(HEADapi.getItemHead("39760")).setDisplayName(c.green + "Event Prize #1").addLore
-                 (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
-                 c.red + "Required Contribution: 1,000",
-                 c.gray + "Progress:" + prize1_1 + c.gray + " | (" + c.aqua + prize1_2 + "%"+ c.gray + ")"
+            setItem(new cItemStack(HEADapi.getItemHead("39760")).setDisplayName(c.green + "Event Prize #1").addLore(
+                            c.dgray + "Event Reward",
+                            c.gray + "✮ Common (Event)",
+                            "",
+                            c.gray + "Contribute toward the global goal using",
+                            c.white + "Snowflakes " + c.gray + "to thaw the prize!",
+                            "",
+                            c.red + "Required Contribution: " + c.white + "1,000❄",
+                            c.gray + "Progress: " + prize1_1 + c.gray + " | (" + c.aqua + prize1_2 + "%"+ c.gray + ")",
+                            "",
+                            c.aqua + "Frozen!"
                  ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
             , 29, (s,c,p) -> { });
         }
 
         if (API.CanShowItem(Goal2, player, "contribution")) {
-
+            if(!player.hasPermission(PermPrefix + "prize2")) {
+                ItemStack i = ItemRewards.displaySword.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.yellow + "Click to Claim!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 30, (s,c,p) -> { });
+            } else {
+                ItemStack i = ItemRewards.displaySword.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.red + "Already Claimed!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 30, (s,c,p) -> { });
+            }
         } else {
-            setItem(new cItemStack(HEADapi.getItemHead("39759")).setDisplayName(c.green + "Event Prize #2").addLore
-            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
-            c.red + "Required Contribution: 2,000",
-            c.gray + "Progress:" + prize2_1 + c.gray + " | (" + c.aqua + prize2_2 + "%"+ c.gray + ")"
-            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
-            , 30, (s,c,p) -> { });
+            setItem(new cItemStack(HEADapi.getItemHead("39759")).setDisplayName(c.green + "Event Prize #2").addLore(
+                            c.dgray + "Event Reward",
+                            c.green + "✮✮ Uncommon (Event)",
+                            "",
+                            c.gray + "Contribute toward the global goal using",
+                            c.white + "Snowflakes " + c.gray + "to thaw the prize!",
+                            "",
+                            c.red + "Required Contribution: " + c.white + "2,000❄",
+                            c.gray + "Progress: " + prize2_1 + c.gray + " | (" + c.aqua + prize2_2 + "%"+ c.gray + ")",
+                            "",
+                            c.aqua + "Frozen!"
+                    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+                    , 30, (s,c,p) -> { });
         }
 
         if (API.CanShowItem(Goal3, player, "contribution")) {
-
+            if(!player.hasPermission(PermPrefix + "prize3")) {
+                ItemStack i = ItemRewards.displayShovel.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.yellow + "Click to Claim!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 31, (s,c,p) -> { });
+            } else {
+                ItemStack i = ItemRewards.displayShovel.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.red + "Already Claimed!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 31, (s,c,p) -> { });
+            }
         } else {
-            setItem(new cItemStack(HEADapi.getItemHead("39758")).setDisplayName(c.green + "Event Prize #3").addLore
-            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
-            c.red + "Required Contribution: 3,000",
-            c.gray + "Progress:" + prize3_1 + c.gray + " | (" + c.aqua + prize3_2 + "%"+ c.gray + ")"
-            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
-            , 31, (s,c,p) -> { });
+            setItem(new cItemStack(HEADapi.getItemHead("39758")).setDisplayName(c.green + "Event Prize #3").addLore(
+                            c.dgray + "Event Reward",
+                            c.blue + "✮✮✮ Rare (Event)",
+                            "",
+                            c.gray + "Contribute toward the global goal using",
+                            c.white + "Snowflakes " + c.gray + "to thaw the prize!",
+                            "",
+                            c.red + "Required Contribution: " + c.white + "3,000❄",
+                            c.gray + "Progress: " + prize3_1 + c.gray + " | (" + c.aqua + prize3_2 + "%"+ c.gray + ")",
+                            "",
+                            c.aqua + "Frozen!"
+                    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+                    , 31, (s,c,p) -> { });
         }
 
         if (API.CanShowItem(Goal4, player, "contribution")) {
-
+            if(!player.hasPermission(PermPrefix + "prize4")) {
+                ItemStack i = ItemRewards.displayAxe.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.yellow + "Click to Claim!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 32, (s,c,p) -> { });
+            } else {
+                ItemStack i = ItemRewards.displayAxe.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.red + "Already Claimed!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 32, (s,c,p) -> { });
+            }
         } else {
-            setItem(new cItemStack(HEADapi.getItemHead("39757")).setDisplayName(c.green + "Event Prize #4").addLore
-            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
-            c.red + "Required Contribution: 4,000",
-            c.gray + "Progress:" + prize4_1 + c.gray + " | (" + c.aqua + prize4_2 + "%"+ c.gray + ")"
-            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
-            , 32, (s,c,p) -> { });
+            setItem(new cItemStack(HEADapi.getItemHead("39757")).setDisplayName(c.green + "Event Prize #4").addLore(
+                            c.dgray + "Event Reward",
+                            c.dpurple + "✮✮✮✮ Epic (Event)",
+                            "",
+                            c.gray + "Contribute toward the global goal using",
+                            c.white + "Snowflakes " + c.gray + "to thaw the prize!",
+                            "",
+                            c.red + "Required Contribution: " + c.white + "4,000❄",
+                            c.gray + "Progress: " + prize4_1 + c.gray + " | (" + c.aqua + prize4_2 + "%"+ c.gray + ")",
+                            "",
+                            c.aqua + "Frozen!"
+                    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+                    , 32, (s,c,p) -> { });
         }
 
         if (API.CanShowItem(Goal5, player, "contribution")) {
-
+            if(!player.hasPermission(PermPrefix + "prize5")) {
+                ItemStack i = ItemRewards.displayPickaxe.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.yellow + "Click to Claim!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 33, (s,c,p) -> { });
+            } else {
+                ItemStack i = ItemRewards.displayPickaxe.clone();
+                ItemMeta im = i.getItemMeta();
+                List<String> il = im.getLore();
+                il.add("");
+                il.add(c.red + "Already Claimed!");
+                im.setLore(il);
+                i.setItemMeta(im);
+                setItem(i, 33, (s,c,p) -> { });
+            }
         } else {
-            setItem(new cItemStack(HEADapi.getItemHead("39756")).setDisplayName(c.green + "Event Prize #5").addLore
-            (c.aqua + "Frozen!",c.gray + "Contribute toward the global goal using", c.white + "Snowflakes " + c.gray + "to thaw the prize!","",
-            c.red + "Required Contribution: 5,000",
-            c.gray + "Progress:" + prize5_1 + c.gray + " | (" + c.aqua + prize5_2 + "%"+ c.gray + ")"
-            ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
-            , 33, (s,c,p) -> { });
+            setItem(new cItemStack(HEADapi.getItemHead("39756")).setDisplayName(c.green + "Event Prize #5").addLore(
+                            c.dgray + "Event Reward",
+                            c.gold + "✮✮✮✮✮ Legendary (Event)",
+                            "",
+                            c.gray + "Contribute toward the global goal using",
+                            c.white + "Snowflakes " + c.gray + "to thaw the prize!",
+                            "",
+                            c.red + "Required Contribution: " + c.white + "5,000❄",
+                            c.gray + "Progress: " + prize5_1 + c.gray + " | (" + c.aqua + prize5_2 + "%"+ c.gray + ")",
+                            "",
+                            c.aqua + "Frozen!"
+                    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES)
+                    , 33, (s,c,p) -> { });
         }
-
+/*
+    00 01 02 03 04 05 06 07 08
+    09 10 11 12    14 15 16 17
+    18 19 20 21 22 23 24 25 26
+    27 28 P1 P2 P3 P4 P5 34 35
+    36 37 38 39 40 41 42 43 44
+    45 46 47 48    50 51 52 53
+     */
 
     }
 }
