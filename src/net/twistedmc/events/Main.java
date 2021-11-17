@@ -925,15 +925,17 @@ public class Main extends JavaPlugin implements Listener {
     public void onEntityClick(PlayerInteractAtEntityEvent event) {
 
         Player p = event.getPlayer();
-        if (event.getRightClicked() instanceof ArmorStand) {
-            ArmorStand armorStand = (ArmorStand) event.getRightClicked();
+        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
+            if (event.getRightClicked() instanceof ArmorStand) {
+                ArmorStand armorStand = (ArmorStand) event.getRightClicked();
 
-            if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
-                try {
-                    new AdventCalendar(p);
-                } catch (ParseException e) {
-                    p.sendMessage(c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
-                    e.printStackTrace();
+                if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+                    try {
+                        new AdventCalendar(p);
+                    } catch (ParseException e) {
+                        p.sendMessage(c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -941,12 +943,16 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onClickArmorStand(PlayerArmorStandManipulateEvent e){
-        if (e.getRightClicked().getName().equalsIgnoreCase("2021adventcalendarfigure")) {
-            e.setCancelled(true);
+        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
+            if (e.getRightClicked().getName().equalsIgnoreCase("2021adventcalendarfigure")) {
+                e.setCancelled(true);
+            }
         }
 
-        if (e.getRightClicked().getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
-            e.setCancelled(true);
+        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
+            if (e.getRightClicked().getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+                e.setCancelled(true);
+            }
         }
     }
 
