@@ -22,7 +22,6 @@ import net.ranktw.DiscordWebHooks.DiscordWebhook;
 import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
 import net.twistedmc.events.commands.*;
 import net.twistedmc.events.commands.advent.AdventCalendarCommand;
-import net.twistedmc.events.commands.advent.ToggleArmorStandCommand;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
 import net.twistedmc.events.inventorys.advent.*;
@@ -59,8 +58,7 @@ public class Main extends JavaPlugin implements Listener {
 
     private static ServerDataManager serverDataManager;
 
-    public static String holiday = "christmas"; // halloween, christmas, newyears, (add any here)
-    public static boolean ACArmorStandEnabled = true;
+    public static String holiday = "halloween"; // halloween, christmas, newyears, (add any here)
     public static Main instance;
 
     public String sqlHost = "173.44.44.251";
@@ -146,6 +144,7 @@ public class Main extends JavaPlugin implements Listener {
             }.runTaskLater(this, 30);
             return;
         }
+
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
             public void run() {
                 Date now = new java.sql.Date(System.currentTimeMillis());
@@ -732,7 +731,6 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("seasonal").setExecutor((CommandExecutor) new SeasonalMenuCommand());
         getCommand("adventcalendar").setExecutor((CommandExecutor) new AdventCalendarCommand());
         getCommand("snowflakecontribution").setExecutor((CommandExecutor) new GlobalMenuTestCommand());
-        getCommand("toggleacas").setExecutor((CommandExecutor) new ToggleArmorStandCommand());
     }
 
     private void registerEvents() {
@@ -927,20 +925,15 @@ public class Main extends JavaPlugin implements Listener {
     public void onEntityClick(PlayerInteractAtEntityEvent event) {
 
         Player p = event.getPlayer();
-        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
-            if (event.getRightClicked() instanceof ArmorStand) {
-                ArmorStand armorStand = (ArmorStand) event.getRightClicked();
+        if (event.getRightClicked() instanceof ArmorStand) {
+            ArmorStand armorStand = (ArmorStand) event.getRightClicked();
 
-                if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
-                    if (Main.ACArmorStandEnabled == false) {
-                        return;
-                    }
-                    try {
-                        new AdventCalendar(p);
-                    } catch (ParseException e) {
-                        p.sendMessage(c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
-                        e.printStackTrace();
-                    }
+            if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+                try {
+                    new AdventCalendar(p);
+                } catch (ParseException e) {
+                    p.sendMessage(c.red + "An error occurred while getting your Advent Calendar! Please contact an administrator. (Error code: 1)");
+                    e.printStackTrace();
                 }
             }
         }
@@ -948,16 +941,12 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onClickArmorStand(PlayerArmorStandManipulateEvent e){
-        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
-            if (e.getRightClicked().getName().equalsIgnoreCase("2021adventcalendarfigure")) {
-                e.setCancelled(true);
-            }
+        if (e.getRightClicked().getName().equalsIgnoreCase("2021adventcalendarfigure")) {
+            e.setCancelled(true);
         }
 
-        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
-            if (e.getRightClicked().getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
-                e.setCancelled(true);
-            }
+        if (e.getRightClicked().getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+            e.setCancelled(true);
         }
     }
 
