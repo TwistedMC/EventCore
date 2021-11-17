@@ -146,6 +146,21 @@ public class JoinListener implements Listener {
                 s.printStackTrace();
             }
         }
+        if(!inContributionDB(player.getUniqueId())) {
+            String sqlHostContribution = "173.44.44.253";
+            String sqlPortContribution = "3306";
+            String sqlDbContribution = "events_main?useSSL=false";
+            String sqlUserContribution = "events_main"; 
+            String sqlPwContribution = "2LRyqtCbRkzcRFlI";
+    
+            try {
+                MySQL MySQL = new MySQL(sqlHostContribution, sqlPortContribution, sqlDbContribution, sqlUserContribution, sqlPwContribution);
+                Statement statement = MySQL.openConnection().createStatement();
+                statement.executeUpdate("INSERT INTO contribution (uuid, contribution) VALUES ('" + player.getUniqueId() + "', '0')");
+            } catch (SQLException | ClassNotFoundException s) {
+                s.printStackTrace();
+            }
+        }
 
         if(!inSnowflakesCurrencyDB(player.getUniqueId())) {
             String sqlHostCurrency = "173.44.44.251";
@@ -228,6 +243,27 @@ public class JoinListener implements Listener {
             MySQL MySQL = new MySQL(sqlHostCurrency, sqlPortCurrency, sqlDbCurrency, sqlUserCurrency, sqlPwCurrency);
             Statement statement = MySQL.openConnection().createStatement();
             ResultSet res = statement.executeQuery("SELECT * FROM snowflakes WHERE UUID = '" + uuid.toString() + "'");
+            while(res.next()){
+                return res.getString("uuid") != null;
+            }
+            return false;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean inContributionDB(UUID uuid){
+        String sqlHostContribution = "173.44.44.253";
+        String sqlPortContribution = "3306";
+        String sqlDbContribution = "events_main?useSSL=false";
+        String sqlUserContribution = "events_main"; 
+        String sqlPwContribution = "2LRyqtCbRkzcRFlI";
+
+        try {
+            MySQL MySQL = new MySQL(sqlHostContribution, sqlPortContribution, sqlDbContribution, sqlUserContribution, sqlPwContribution);
+            Statement statement = MySQL.openConnection().createStatement();
+            ResultSet res = statement.executeQuery("SELECT * FROM contribution WHERE UUID = '" + uuid.toString() + "'");
             while(res.next()){
                 return res.getString("uuid") != null;
             }
