@@ -32,3 +32,4 @@ commands:
   adventcalendar:
    aliases: [calendar]
   snowflakecontribution:
+  toggleacas:

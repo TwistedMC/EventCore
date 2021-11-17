@@ -147,7 +147,7 @@ public class JoinListener implements Listener {
             }
         }
         if(!inContributionDB(player.getUniqueId())) {
-            String sqlHostContribution = "173.44.44.253";
+            String sqlHostContribution = "173.44.44.251";
             String sqlPortContribution = "3306";
             String sqlDbContribution = "events_main?useSSL=false";
             String sqlUserContribution = "events_main"; 
@@ -254,7 +254,7 @@ public class JoinListener implements Listener {
     }
 
     public static boolean inContributionDB(UUID uuid){
-        String sqlHostContribution = "173.44.44.253";
+        String sqlHostContribution = "173.44.44.251";
         String sqlPortContribution = "3306";
         String sqlDbContribution = "events_main?useSSL=false";
         String sqlUserContribution = "events_main"; 

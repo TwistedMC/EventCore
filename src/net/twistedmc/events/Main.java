@@ -22,6 +22,7 @@ import net.ranktw.DiscordWebHooks.DiscordWebhook;
 import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
 import net.twistedmc.events.commands.*;
 import net.twistedmc.events.commands.advent.AdventCalendarCommand;
+import net.twistedmc.events.commands.advent.ToggleArmorStandCommand;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
 import net.twistedmc.events.inventorys.advent.*;
@@ -59,6 +60,7 @@ public class Main extends JavaPlugin implements Listener {
     private static ServerDataManager serverDataManager;
 
     public static String holiday = "christmas"; // halloween, christmas, newyears, (add any here)
+    public static boolean ACArmorStandEnabled = true;
     public static Main instance;
 
     public String sqlHost = "173.44.44.251";
@@ -730,6 +732,7 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("seasonal").setExecutor((CommandExecutor) new SeasonalMenuCommand());
         getCommand("adventcalendar").setExecutor((CommandExecutor) new AdventCalendarCommand());
         getCommand("snowflakecontribution").setExecutor((CommandExecutor) new GlobalMenuTestCommand());
+        getCommand("toggleacas").setExecutor((CommandExecutor) new ToggleArmorStandCommand());
     }
 
     private void registerEvents() {
@@ -928,6 +931,7 @@ public class Main extends JavaPlugin implements Listener {
             ArmorStand armorStand = (ArmorStand) event.getRightClicked();
 
             if (armorStand.getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
+                if (Main.ACArmorStandEnabled == false) { return; }
                 try {
                     new AdventCalendar(p);
                 } catch (ParseException e) {
