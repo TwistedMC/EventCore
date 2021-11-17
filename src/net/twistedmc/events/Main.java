@@ -93,7 +93,7 @@ public class Main extends JavaPlugin implements Listener {
     public static String sqlUserStats = "networkStats";
     public static String sqlPwStats = "gKEB57G.jxu3_xAB";
     // Contribution Login Info
-    public static String sqlHostContribution = "173.44.44.253";
+    public static String sqlHostContribution = "173.44.44.251";
     public static String sqlPortContribution = "3306";
     public static String sqlDbContribution = "events_main?useSSL=false";
     public static String sqlUserContribution = "events_main";
