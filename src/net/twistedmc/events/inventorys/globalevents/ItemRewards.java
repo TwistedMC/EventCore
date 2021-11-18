@@ -8,49 +8,75 @@ import java.text.NumberFormat;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 public class ItemRewards {
 
     public static ItemStack displayPickaxe = new cItemStack(Material.DIAMOND_PICKAXE).setDisplayName(c.aqua + c.italics + "Frosty Pickaxe").addLore(
-        c.aqua + "This pickaxe has been infused", c.aqua + "with ancient ice magic.",
-        c.aqua + "Thus, giving it increased mining speeds,", c.aqua + "and the ability to regenerate.",
-        c.aqua + "As well as a sharper edge,", c.aqua + "it's also been infused with", c.aqua + " a multiplier spell.",
-        "",
-        c.gold + "✮✮✮✮✮ Legendary (Event)"
+            c.dgray + "Event Reward",
+            c.gold + "✮✮✮✮✮ Legendary (Event)",
+            "",
+            c.aqua + "This pickaxe has been infused with ancient",
+            c.aqua + "ice magic. Thus, giving it " + c.yellow + "increased mining speeds, ",
+            c.aqua + "and the " + c.yellow + "ability to regenerate" + c.aqua + ". As well",
+            c.aqua + "as a" + c.yellow + "sharper edge" + c.aqua + ". It's also been",
+            c.aqua + "infused with " +"a " + c.yellow + "multiplier spell" + c.aqua + ".",
+            "",
+            c.gray + "Efficiency VII, Fortune VII, Mending I,",
+            c.gray + "Sharpness III, Unbreaking V"
 
-    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,7).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,7).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,3);
+    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
 
     public static ItemStack displayAxe = new cItemStack(Material.DIAMOND_AXE).setDisplayName(c.aqua + c.italics + "Frosty Axe").addLore(
-        c.aqua + "This axe has been infused", c.aqua + " with ancient ice magic.",
-        c.aqua + "Thus, giving it increased mining speeds,", c.aqua + "and the ability to regenerate.",
-        c.aqua + "This axe's sharp edge has been", c.aqua + "favored more then", c.aqua + " it's other abilities. ",
-        "",
-        c.dpurple + "✮✮✮✮ Very Rare (Event)"
-    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,5).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,5).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7);
+            c.dgray + "Event Reward",
+            c.dpurple + "✮✮✮✮ Epic (Event)",
+            "",
+            c.aqua + "This axe has been infused with ancient",
+            c.aqua + "ice magic. Thus, giving it " + c.yellow + "increased mining speeds, ",
+            c.aqua + "and the " + c.yellow + "ability to regenerate" + c.aqua + ". The",
+            c.yellow + "sharp edge" + c.aqua + " on this axe, has been",
+            c.aqua + "favored more than it's other abilities.",
+            "",
+            c.gray + "Efficiency V, Fortune V, Mending I,",
+            c.gray + "Sharpness VII, Unbreaking V"
+    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
 
     public static ItemStack displayShovel = new cItemStack(Material.DIAMOND_SHOVEL).setDisplayName(c.aqua + c.italics + "Frosty Shovel").addLore(
-        c.aqua + "This shovel has been infused", c.aqua + "with ancient ice magic.",
-        c.aqua + "Thus, giving it increased mining speeds,", c.aqua + "and the ability to regenerate.",
-        c.aqua + "This shovel's excavation speed has been", c.aqua + "favored more then", c.aqua + " it's other abilities. ",
-        "",
-        c.blue + "✮✮✮ Rare (Event)"
-    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,8).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,3).addEnchant(Enchantment.DURABILITY,4).addEnchant(Enchantment.DAMAGE_ALL,2);
+            c.dgray + "Event Reward",
+            c.blue + "✮✮✮ Rare (Event)",
+            "",
+            c.aqua + "This shovel has been infused with ancient",
+            c.aqua + "ice magic. Thus, giving it " + c.yellow + "increased mining speeds, ",
+            c.aqua + "and the " + c.yellow + "ability to regenerate" + c.aqua + ". The",
+            c.yellow + "excavation speed" + c.aqua + " on this shovel, has been",
+            c.aqua + "favored more than it's other abilities.",
+            "",
+            c.gray + "Efficiency VIII, Fortune III, Mending I,",
+            c.gray + "Sharpness II, Unbreaking IV"
+    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
 
     public static ItemStack displaySword = new cItemStack(Material.DIAMOND_SWORD).setDisplayName(c.aqua + c.italics + "Frosty Sword").addLore(
-        c.aqua + "This sword has been infused", c.aqua + "with ancient ice magic.",
-        c.aqua + "Thus, giving it increased damage,", c.aqua + "and the ability to regenerate.",
-        c.aqua + "It has also been infused ", c.aqua + "with a higher sweeping edge.",
-        "",
-        c.green + "✮✮ Uncommon (Event)"
-    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7).addEnchant(Enchantment.SWEEPING_EDGE, 5);
+            c.dgray + "Event Reward",
+            c.aqua + "✮✮ Uncommon (Event)",
+            "",
+            c.aqua + "This sword has been infused with ancient",
+            c.aqua + "ice magic. Thus, giving it " + c.yellow + "increased damage, and ",
+            c.aqua + "the " + c.yellow + "ability to regenerate" + c.aqua + ". It has",
+            c.aqua + "also been infused with a " + c.yellow + "higher sweeping edge" + c.aqua + ".",
+            "",
+            c.gray + "Mending I, Sharpness VII, Sweeping Edge V,",
+            c.gray + "Unbreaking V"
+    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
 
     NumberFormat f = NumberFormat.getInstance();
     static HeadDatabaseAPI HAPI = new HeadDatabaseAPI();
     public static ItemStack displayGold = new cItemStack(HAPI.getItemHead("46945")).setDisplayName(c.gold + "Gold Cache").addLore(
-        c.gray + "Receive " + c.gold + "5,000 Gold" + c.gray + " upon opening this cache.",
+        c.dgray + "Event Reward",
+        c.green + "✮ Common (Event)",
         "",
-        c.gray + "✮ Common (Event)");
+        c.dgray + "+" + c.gold + "5,000 Gold"
+    );
 }
 
 /*

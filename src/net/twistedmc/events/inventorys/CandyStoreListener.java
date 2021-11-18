@@ -38,6 +38,10 @@ public class CandyStoreListener implements Listener {
         if (e.getView().getTitle().equalsIgnoreCase("2021 Winter Community Challenge")) {
             e.setCancelled(true);
         }
+
+        if (e.getView().getTitle().equalsIgnoreCase("Contribute Snowflakes")) {
+            e.setCancelled(true);
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -55,6 +59,10 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getView().getTitle().equalsIgnoreCase("2021 Winter Community Challenge")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getView().getTitle().equalsIgnoreCase("Contribute Snowflakes")) {
             e.setCancelled(true);
         }
 

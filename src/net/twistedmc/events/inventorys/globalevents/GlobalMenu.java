@@ -46,21 +46,20 @@ public class GlobalMenu extends AbstractGUI {
         super(6, "2021 Winter Community Challenge", player);
         fill();
         //Placeholders
-        String global1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_p:&c■_l:10_m:"+ GlobalGoal+ "%"); String global2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_globalcontributionraw}_m:"+ GlobalGoal + "_d:2%");
-        setItem(new cItemStack(Material.ARROW).setDisplayName(c.green + "Close").addLore
-               (c.gray + "Close this menu")
-        , 49, (s,c,p) -> { });
+        String global1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_globalcontributionraw}_r:&c■_c:&a■_p:&c■_l:10_m:"+ GlobalGoal+ "%"); String global2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_globalcontributionraw}_m:"+ GlobalGoal + "_d:2%");
 
-        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + "Snowflake Contribution Overview").addLore(
+        setItem(new cItemStack(Material.ARROW).setDisplayName(c.red + "Close"), 49, (s,c,p) -> { });
+
+        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
                         c.gray + "Progress towards the global goal,",
                         c.gray + "which if unlocked, will give ALL players",
                         c.gray + "who participated a reward!",
                         "",
-                        c.gray + "Goal: " + c.white + format.format(GlobalGoal) + " Snowflakes" + c.gray + ".",
+                        c.gray + "Goal: " + c.white + format.format(GlobalGoal) + "❄",
                         c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
                         "",
-                        c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + c.gray + ".",
-                        c.gray + "Your Contributed Snowflakes: " + c.white + Main.getContribution(player) + c.gray + ".",
+                        c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + "❄",
+                        c.gray + "Your Contributed Snowflakes: " + c.white + format.format(Main.getContribution(player)) + "❄",
                         "",
                         c.yellow + "Click to contribute " + c.white + "Snowflakes" + c.gray + "!" // Open the contribute menu
                ) 
@@ -90,7 +89,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.yellow + "Click to Claim!");
+                il.add(c.yellow + "Click to claim!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 29, (s,c,p) -> { });
@@ -99,7 +98,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.red + "Already Claimed!");
+                il.add(c.red + "Already claimed!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 29, (s,c,p) -> { });
@@ -126,7 +125,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.yellow + "Click to Claim!");
+                il.add(c.yellow + "Click to claim!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 30, (s,c,p) -> { });
@@ -135,7 +134,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.red + "Already Claimed!");
+                il.add(c.red + "Already claimed!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 30, (s,c,p) -> { });
@@ -162,7 +161,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.yellow + "Click to Claim!");
+                il.add(c.yellow + "Click to claim!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 31, (s,c,p) -> { });
@@ -171,7 +170,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.red + "Already Claimed!");
+                il.add(c.red + "Already claimed!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 31, (s,c,p) -> { });
@@ -198,7 +197,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.yellow + "Click to Claim!");
+                il.add(c.yellow + "Click to claim!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 32, (s,c,p) -> { });
@@ -207,7 +206,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.red + "Already Claimed!");
+                il.add(c.red + "Already claimed!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 32, (s,c,p) -> { });
@@ -234,7 +233,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.yellow + "Click to Claim!");
+                il.add(c.yellow + "Click to claim!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 33, (s,c,p) -> { });
@@ -243,7 +242,7 @@ public class GlobalMenu extends AbstractGUI {
                 ItemMeta im = i.getItemMeta();
                 List<String> il = im.getLore();
                 il.add("");
-                il.add(c.red + "Already Claimed!");
+                il.add(c.red + "Already claimed!");
                 im.setLore(il);
                 i.setItemMeta(im);
                 setItem(i, 33, (s,c,p) -> { });
