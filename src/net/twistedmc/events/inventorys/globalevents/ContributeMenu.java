@@ -6,11 +6,8 @@ import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 
-public class ContributeMenu extends AbstractGUI implements Listener {
+public class ContributeMenu extends AbstractGUI {
     HeadDatabaseAPI HEADapi = new HeadDatabaseAPI();
     private static final int BORDER_FILL[] = {0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,45,44,46,47,48,50,51,52,53};
     /*
@@ -23,12 +20,8 @@ public class ContributeMenu extends AbstractGUI implements Listener {
      */
     public ContributeMenu(Player player) {
         super(6,"Contribute Snowflakes",player);
-        setItem(new cItemStack(Material.ARROW).setDisplayName(c.green + "Close").addLore
+        setItem(new cItemStack(Material.ARROW).setDisplayName(c.green + "Back").addLore
                         (c.gray + "Close this menu")
                 , 49, (s,c,p) -> { });
     }
-
-
-  //  @EventHandler(priority = EventPriority.NORMAL,ignoreCancelled = true)
-
 }
