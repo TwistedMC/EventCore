@@ -157,7 +157,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     if (args.length < 3) {
                         sender.sendMessage(c.gray + c.strike + "------------------------------");
                         sender.sendMessage(c.red + c.bold + "Incorrect Usage!");
-                        sender.sendMessage(c.red + "/hcc (player) (get|set|add|remove|reset|block) (add amount)");
+                        sender.sendMessage(c.red + "/hcc (player) (get|set|add|remove|reset|block) (remove amount)");
                         sender.sendMessage(c.gray + c.strike + "------------------------------");
                         return false;
                     }
@@ -284,7 +284,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                 if (args.length < 3) {
                     sender.sendMessage(c.gray + c.strike + "------------------------------");
                     sender.sendMessage(c.red + c.bold + "Incorrect Usage!");
-                    sender.sendMessage(c.red + "/hcc (player) (get|set|add|remove|reset|block) (add amount)");
+                    sender.sendMessage(c.red + "/hcc (player) (get|set|add|remove|reset|block) (remove amount)");
                     sender.sendMessage(c.gray + c.strike + "------------------------------");
                     return false;
                 }
