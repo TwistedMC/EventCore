@@ -3,3 +3,4 @@ EventCore1.17.iml
 *.class
 *.class
 *.jar
+./out
