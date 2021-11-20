@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class ContributeMenu extends AbstractGUI {
     HeadDatabaseAPI HEADapi = new HeadDatabaseAPI();
-    public static int GlobalGoal = 250000;
+    private static int GlobalGoal = Main.GlobalGoal;
     NumberFormat format = NumberFormat.getInstance();
     private static final int BORDER_FILL[] = {0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,45,44,46,47,48,50,51,52,53};
     private static final int INSIDE_FILL[] = {10,11,12,14,15,16,19,20,21,22,23,24,25,28,34,37,38,39,40,41,42,43};
@@ -35,8 +35,8 @@ public class ContributeMenu extends AbstractGUI {
         // Placeholders
         String global1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_globalcontributionraw}_r:&c■_c:&a■_p:&c■_l:10_m:"+ GlobalGoal+ "%"); String global2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_globalcontributionraw}_m:"+ GlobalGoal + "_d:2%");
 
-        setItem(new cItemStack(Material.ARROW).setDisplayName(c.green + "Go Back").addLore
-                        (c.gray + "To ")
+        setItem(new cItemStack(Material.ARROW).setDisplayName(c.red + "Go Back").addLore
+                        (c.gray + "To the Main Menu")
                 , 49, (s,c,p) -> { });
 
         setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
@@ -52,9 +52,9 @@ public class ContributeMenu extends AbstractGUI {
     }
     public void fill() {
         Arrays.stream(BORDER_FILL).forEach(slot -> setItem(new cItemStack(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(c.black  + "").addFlags(ItemFlag.HIDE_ENCHANTS), slot, (s, c, p) -> { }));
-        ItemStack Cyan = new cItemStack(Material.CYAN_STAINED_GLASS_PANE).setDisplayName(c.green + "").addFlags(ItemFlag.HIDE_ENCHANTS);
-        ItemStack White = new cItemStack(Material.WHITE_STAINED_GLASS_PANE).setDisplayName(c.red + "").addFlags(ItemFlag.HIDE_ENCHANTS);
-        ItemStack LBlue = new cItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE);
+        ItemStack Cyan = new cItemStack(Material.CYAN_STAINED_GLASS_PANE).setDisplayName(c.black + "").addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ItemStack White = new cItemStack(Material.WHITE_STAINED_GLASS_PANE).setDisplayName(c.black + "").addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES);
+        ItemStack LBlue = new cItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setDisplayName(c.black + "").addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES);
         ItemStack[] items = {Cyan,White,LBlue};
         Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(API.generateRandomItem(items),slot, (s,c,p) -> { }));
     }

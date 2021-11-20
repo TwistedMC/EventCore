@@ -25,6 +25,7 @@ import net.twistedmc.events.commands.advent.AdventCalendarCommand;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.CandyStoreListener;
 import net.twistedmc.events.inventorys.advent.*;
+import net.twistedmc.events.inventorys.globalevents.MenuListener;
 import net.twistedmc.events.listeners.JoinListener;
 import net.twistedmc.events.listeners.SnowflakeListener;
 import net.twistedmc.events.listeners.SuggestionsManager;
@@ -57,10 +58,12 @@ public class Main extends JavaPlugin implements Listener {
     public static List<UUID> mobSpawner = new ArrayList<>();
 
     private static ServerDataManager serverDataManager;
-
+    //Holiday Configuration
     public static String holiday = "halloween"; // halloween, christmas, newyears, (add any here)
     public static Main instance;
-
+    public static int GlobalGoal = 250000;
+    public static boolean AllContributionGetsPrize = false; // Anybody who donates any snowflakes (even after the goal is reached) will get the prize
+    //
     public String sqlHost = "173.44.44.251";
     public String sqlPort = "3306";
     public String sqlDb = "survivalEnchanted_events?useSSL=false";
@@ -741,6 +744,7 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new SnowflakeListener(), this);
         pm.registerEvents(new CandyStoreListener(), this);
         pm.registerEvents(new AdventCalendarListener(), this);
+        pm.registerEvents(new MenuListener(),this);
 
     }
 

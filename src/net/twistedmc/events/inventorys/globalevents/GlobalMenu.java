@@ -30,7 +30,7 @@ public class GlobalMenu extends AbstractGUI {
     45 46 47 48    50 51 52 53
      */
     // Config
-    public static int GlobalGoal = 250000;
+    private static int GlobalGoal = Main.GlobalGoal;
     public static int Goal1 = 1000;
     public static int Goal2 = 2000;
     public static int Goal3 = 3000;

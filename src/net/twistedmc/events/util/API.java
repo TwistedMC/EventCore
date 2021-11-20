@@ -11,6 +11,7 @@ import java.util.UUID;
 
 import com.sun.jna.platform.unix.solaris.LibKstat;
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -104,10 +105,11 @@ public class API {
             s.printStackTrace();
         }
     }
-    private static ArrayList<String> CTDebounce = new ArrayList<>();
-    private static HashMap<String, String> CTDAntiSpam = new HashMap<>();
+    public static ArrayList<String> CTDebounce = new ArrayList<>();
+    public static HashMap<String, String> CTDAntiSpam = new HashMap<>();
     public static void ContributionTransaction(Player player,int contributed) {
         boolean isGood = true;
+        boolean CanGetPrize;
         player.sendMessage(c.green + "Processing Transaction...");
         if (!CTDebounce.contains(player.getUniqueId().toString())) {
             CTDebounce.add(player.getUniqueId().toString());
@@ -118,6 +120,19 @@ public class API {
                     MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
                     Statement statement = MySQL.openConnection().createStatement();
                     statement.executeUpdate("UPDATE `contribution` SET `contribution` = `contribution` + "+ contributed +" WHERE UUID = '" + player.getUniqueId() + "'");
+                   if (Main.AllContributionGetsPrize == false) {
+                    if (API.getTotalContributionRAW() < Main.GlobalGoal) {
+                       Statement statement1 = MySQL.openConnection().createStatement();
+                       ResultSet res = statement1.executeQuery("SELECT `canGetPrize` VALUE FROM `contribution` WHERE `UUID` = `"+player.getUniqueId() + "`");
+                       while (res.next()){
+                           int a = res.getInt("VALUE");
+                           if (a == 0) {
+                              Statement statement2 = MySQL.openConnection().createStatement();
+                              statement2.executeUpdate("UPDATE `contribution` SET `canGetPrize` = 1 WHERE `UUID` = '" +player.getUniqueId()+"'");
+                           }
+                       }
+                    }
+                   }
                 } catch (SQLException | ClassNotFoundException exp) {
                     exp.printStackTrace();
                     player.sendMessage(c.red + "There was an error processing your transaction.");
