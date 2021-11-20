@@ -118,7 +118,6 @@ public class API {
                     MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
                     Statement statement = MySQL.openConnection().createStatement();
                     statement.executeUpdate("UPDATE `contribution` SET `contribution` = `contribution` + "+ contributed +" WHERE UUID = '" + player.getUniqueId() + "'");
-                    // "UPDATE `" + currencyTab + "` SET " + currencyTab + " = " + currencyTab + " + " + args[2] + " WHERE UUID = '" + op.getUniqueId() + "'");
                 } catch (SQLException | ClassNotFoundException exp) {
                     exp.printStackTrace();
                     player.sendMessage(c.red + "There was an error processing your transaction.");
