@@ -4,10 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
 
 import com.sun.jna.platform.unix.solaris.LibKstat;
+import net.twistedmc.events.data.c;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -98,10 +104,52 @@ public class API {
             s.printStackTrace();
         }
     }
+    private static ArrayList<String> CTDebounce = new ArrayList<>();
+    private static HashMap<String, String> CTDAntiSpam = new HashMap<>();
+    public static void ContributionTransaction(Player player,int contributed) {
+        boolean isGood = true;
+        player.sendMessage(c.green + "Processing Transaction...");
+        if (!CTDebounce.contains(player.getUniqueId().toString())) {
+            CTDebounce.add(player.getUniqueId().toString());
+            int s = Main.getSnowflakes(player);
+            if (s > contributed) {  // Safeguard
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"hcc "+ player.getName() + "remove " +contributed);
+                try {
+                    MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
+                    Statement statement = MySQL.openConnection().createStatement();
+                    statement.executeUpdate("UPDATE `contribution` SET `contribution` = `contribution` + "+ contributed +" WHERE UUID = '" + player.getUniqueId() + "'");
+                    // "UPDATE `" + currencyTab + "` SET " + currencyTab + " = " + currencyTab + " + " + args[2] + " WHERE UUID = '" + op.getUniqueId() + "'");
+                } catch (SQLException | ClassNotFoundException exp) {
+                    exp.printStackTrace();
+                    player.sendMessage(c.red + "There was an error processing your transaction.");
+                    isGood = false;
+                }
+            }
+            if (isGood == true) {
+                player.sendMessage(c.green + "Transaction successful!");
+                player.sendMessage("-" + contributed +"❄ "+c.gray+"("+c.white+"Winter Event Contribution"+c.gray+")");
+            } else {
+                player.sendMessage(c.red + "Transaction failed, please try again later.");
+            }
+            CTDAntiSpam.remove(player.getUniqueId().toString());
+            CTDebounce.remove(player.getUniqueId().toString());
+        } else {
+            player.sendMessage(c.red + "You already have a transaction in progress!");
+            if (CTDAntiSpam.get(player.getUniqueId().toString()) == "7") {
+                player.kickPlayer("ur gay"); // beautiful. -N
+            } else {
+                Integer inte = Integer.parseInt(CTDAntiSpam.get(player.getUniqueId().toString()));
+                CTDAntiSpam.put(player.getUniqueId().toString(),"" + (inte + 1) + "");
+            }
+        }
+
+
+    }
+
     /**
      * @param items - The Array of given ItemStack(s) to randomly decide on.
-     *
-     *
+     * @return ItemStack - The randomly chosen item
+     * @since API 0.1.0
      * */
     public static ItemStack generateRandomItem(ItemStack[] items) {
         Random r = new Random();
