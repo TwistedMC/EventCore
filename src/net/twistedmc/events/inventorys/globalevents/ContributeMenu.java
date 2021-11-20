@@ -48,7 +48,7 @@ public class ContributeMenu extends AbstractGUI {
                 )
                 , 13, (s,c,p) -> { });
 
-
+    setItems(player);
     }
     public void fill() {
         Arrays.stream(BORDER_FILL).forEach(slot -> setItem(new cItemStack(Material.BLACK_STAINED_GLASS_PANE).setDisplayName(c.black  + "").addFlags(ItemFlag.HIDE_ENCHANTS), slot, (s, c, p) -> { }));
@@ -60,30 +60,41 @@ public class ContributeMenu extends AbstractGUI {
     }
     public void setItems(Player plr) {
         if (API.canBuy(50,"snowflakes",plr)) {
-            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄").addLore("",c.yellow + "Click to Contribute!")
                     ,29, (s,c,p) -> { });
         } else {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+                    ,29, (s,c,p) -> { });
         }
         if (API.canBuy(100,"snowflakes",plr)) {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 100❄").addLore("",c.yellow + "Click to Contribute!")
+                    ,30, (s,c,p) -> { });
         } else {
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 10❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+                    ,30, (s,c,p) -> { });
 
         }
         if (API.canBuy(200,"snowflakes",plr)) {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 200❄").addLore("",c.yellow + "Click to Contribute!")
+                    ,31, (s,c,p) -> { });
         } else {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 200❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+                    ,31, (s,c,p) -> { });
         }
         if (API.canBuy(500,"snowflakes",plr)) {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 500❄").addLore("",c.yellow + "Click to Contribute!")
+                    ,32, (s,c,p) -> { });
         } else {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 500❄").addLore("", c.red + "Not enough " + c.white + "Snowflakes" + c.red + "!")
+                    , 32, (s, c, p) -> {
+                    });
         }
         if (API.canBuy(1000,"snowflakes",plr)) {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.yellow + "Click to Contribute!")
+                    ,33, (s,c,p) -> { });
         } else {
-
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+                    ,33, (s,c,p) -> { });
         }
     }
 }
