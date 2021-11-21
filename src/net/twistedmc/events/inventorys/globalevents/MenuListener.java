@@ -3,7 +3,6 @@ package net.twistedmc.events.inventorys.globalevents;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.API;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -21,7 +20,7 @@ public class MenuListener implements Listener{
                 return;
             }
             if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white+ c.line + "Snowflake Contribution Overview")) {
-              if (API.getTotalContributionRAW() < Main.GlobalGoal && !Main.AllContributionGetsPrize) {
+              if (API.getTotalContributionRAW() < GlobalMenu.GlobalGoal && !GlobalMenu.AllContributionGetsPrize) {
                 Player plr = (Player) e.getWhoClicked();
                 new ContributeMenu(plr);
                 return;
@@ -56,7 +55,7 @@ public class MenuListener implements Listener{
                     API.ContributionTransaction(pp,500);
                     return;
                 }
-                if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 1000❄")) {
+                if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 1,000❄")) {
                     API.ContributionTransaction(pp,1000);
                     return;
                 }

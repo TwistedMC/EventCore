@@ -276,7 +276,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
 
                 sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + currencyPlaceholderNoColor + " to " + c.yellow + target.getName() + c.green + "!");
 
-                TitleAPI.sendTitle(target, 3, 40, 5, c.aqua + "+" + args[2] + c.white + "❄", "");
+                if (Main.holiday == "christmas") {TitleAPI.sendTitle(target, 3, 40, 5, c.aqua + "+" + args[2] + c.white + "❄", ""); }
                 return false;
             }
 

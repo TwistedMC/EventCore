@@ -17,7 +17,7 @@ import java.util.Arrays;
 
 public class ContributeMenu extends AbstractGUI {
     HeadDatabaseAPI HEADapi = new HeadDatabaseAPI();
-    private static int GlobalGoal = Main.GlobalGoal;
+    static int GlobalGoal = GlobalMenu.GlobalGoal;
     NumberFormat format = NumberFormat.getInstance();
     private static final int BORDER_FILL[] = {0,1,2,3,4,5,6,7,8,9,17,18,26,27,35,36,45,44,46,47,48,50,51,52,53};
     private static final int INSIDE_FILL[] = {10,11,12,14,15,16,19,20,21,22,23,24,25,28,34,37,38,39,40,41,42,43};

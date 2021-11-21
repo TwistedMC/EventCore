@@ -11,6 +11,7 @@ import java.util.UUID;
 
 import com.sun.jna.platform.unix.solaris.LibKstat;
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.inventorys.globalevents.ContributeMenu;
 import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -108,22 +109,22 @@ public class API {
     public static ArrayList<String> CTDebounce = new ArrayList<>();
     public static HashMap<String, String> CTDAntiSpam = new HashMap<>();
     public static void ContributionTransaction(Player player,int contributed) {
-        boolean isGood = true;
-        boolean CanGetPrize;
+        boolean isGood = false;
+        NumberFormat f = NumberFormat.getInstance();
         player.sendMessage(c.green + "Processing Transaction...");
         if (!CTDebounce.contains(player.getUniqueId().toString())) {
             CTDebounce.add(player.getUniqueId().toString());
             int s = Main.getSnowflakes(player);
             if (s > contributed) {  // Safeguard
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"hcc "+ player.getName() + "remove " +contributed);
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"hcc "+ player.getName() + " remove " +contributed);
                 try {
                     MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
                     Statement statement = MySQL.openConnection().createStatement();
                     statement.executeUpdate("UPDATE `contribution` SET `contribution` = `contribution` + "+ contributed +" WHERE UUID = '" + player.getUniqueId() + "'");
-                   if (Main.AllContributionGetsPrize == false) {
-                    if (API.getTotalContributionRAW() < Main.GlobalGoal) {
+                   if (!GlobalMenu.AllContributionGetsPrize) {
+                    if (API.getTotalContributionRAW() < GlobalMenu.GlobalGoal) {
                        Statement statement1 = MySQL.openConnection().createStatement();
-                       ResultSet res = statement1.executeQuery("SELECT `canGetPrize` VALUE FROM `contribution` WHERE `UUID` = `"+player.getUniqueId() + "`");
+                       ResultSet res = statement1.executeQuery("SELECT `canGetPrize` VALUE FROM `contribution` WHERE `UUID` = '"+player.getUniqueId() + "'");
                        while (res.next()){
                            int a = res.getInt("VALUE");
                            if (a == 0) {
@@ -133,15 +134,17 @@ public class API {
                        }
                     }
                    }
+                   isGood = true;
                 } catch (SQLException | ClassNotFoundException exp) {
                     exp.printStackTrace();
                     player.sendMessage(c.red + "There was an error processing your transaction.");
                     isGood = false;
                 }
             }
-            if (isGood == true) {
+            if (isGood) {
+                new ContributeMenu(player);
                 player.sendMessage(c.green + "Transaction successful!");
-                player.sendMessage("-" + contributed +"❄ "+c.gray+"("+c.white+"Winter Event Contribution"+c.gray+")");
+                player.sendMessage("-" + f.format(contributed) +"❄ "+c.gray+"("+c.white+"Winter Event Contribution"+c.gray+")");
             } else {
                 player.sendMessage(c.red + "Transaction failed, please try again later.");
             }

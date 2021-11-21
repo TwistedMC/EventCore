@@ -59,10 +59,8 @@ public class Main extends JavaPlugin implements Listener {
 
     private static ServerDataManager serverDataManager;
     //Holiday Configuration
-    public static String holiday = "halloween"; // halloween, christmas, newyears, (add any here)
+    public static String holiday = "christmas"; // halloween, christmas, newyears, (add any here)
     public static Main instance;
-    public static int GlobalGoal = 250000;
-    public static boolean AllContributionGetsPrize = false; // Anybody who donates any snowflakes (even after the goal is reached) will get the prize
     //
     public String sqlHost = "173.44.44.251";
     public String sqlPort = "3306";
