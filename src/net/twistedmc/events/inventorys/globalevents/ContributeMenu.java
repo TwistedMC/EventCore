@@ -44,7 +44,8 @@ public class ContributeMenu extends AbstractGUI {
                         c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
                         "",
                         c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + "❄",
-                        c.gray + "Your Contributed Snowflakes: " + c.white + format.format(Main.getContribution(player)) + "❄"
+                        c.gray + "Your Contributed Snowflakes: " + c.white + format.format(Main.getContribution(player)) + "❄",
+                        c.gray + "You currently have: " + c.white + format.format(Main.getSnowflakes(player) + "❄")
                 )
                 , 13, (s,c,p) -> { });
 
@@ -70,7 +71,7 @@ public class ContributeMenu extends AbstractGUI {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 100❄").addLore("",c.yellow + "Click to Contribute!")
                     ,30, (s,c,p) -> { });
         } else {
-            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 10❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 100❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,30, (s,c,p) -> { });
 
         }

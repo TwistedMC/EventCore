@@ -16,7 +16,7 @@
 ################################################################################
 
 name: EventCore1.17
-version: H0.9.6|C0.1.5|AC0.0.4|API0.1.8.5
+version: H0.9.6|C0.1.6|AC0.0.4|API0.1.9
 author: [shastagrande,MCEpic_Nation]
 main: net.twistedmc.events.Main
 api-version: 1.16

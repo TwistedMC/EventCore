@@ -1,6 +1,7 @@
 package net.twistedmc.events.commands;
 
 import java.sql.Statement;
+import java.text.NumberFormat;
 import java.util.logging.Level;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,6 +35,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
     // Player is self-explanitory, Currency is any of the holiday currencies, function is add/set/remove/reset, and amount is the amount to add/remove/set. 
     //Reset has no amount argument.
     private Main plugin;
+    NumberFormat f = NumberFormat.getInstance();
     private static String currencyTab = "";
     private static String holidayCurrency = "";
     private static String holidayCurrencyNoColor = "";

@@ -115,7 +115,7 @@ public class API {
         if (!CTDebounce.contains(player.getUniqueId().toString())) {
             CTDebounce.add(player.getUniqueId().toString());
             int s = Main.getSnowflakes(player);
-            if (s > contributed) {  // Safeguard
+            if (s >= contributed) {  // Safeguard
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"hcc "+ player.getName() + " remove " +contributed);
                 try {
                     MySQL MySQL = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);

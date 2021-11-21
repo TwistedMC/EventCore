@@ -58,6 +58,9 @@ public class PlaceholderListener extends PlaceholderExpansion {
         if(identifier.equals("progresstotal")){
             return "20";
         }
+        if(identifier.equalsIgnoreCase("registered")) {
+            return c.green + c.bold + "REGISTERED";
+        }
 
         if(identifier.equals("progress")){
 
