@@ -38,14 +38,14 @@ public class ContributeMenu extends AbstractGUI {
         setItem(new cItemStack(Material.ARROW).setDisplayName(c.red + "Go Back").addLore
                         (c.gray + "To the Main Menu")
                 , 49, (s,c,p) -> { });
-
+        int sf = Main.getSnowflakes(player);
         setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
                         c.gray + "Goal: " + c.white + format.format(GlobalGoal) + "❄",
                         c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
                         "",
                         c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + "❄",
                         c.gray + "Your Contributed Snowflakes: " + c.white + format.format(Main.getContribution(player)) + "❄",
-                        c.gray + "You currently have: " + c.white + format.format(Main.getSnowflakes(player) + "❄")
+                        c.gray + "You currently have: " + c.white + format.format(sf) + "❄"
                 )
                 , 13, (s,c,p) -> { });
 

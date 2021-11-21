@@ -2,6 +2,7 @@ package net.twistedmc.events.commands;
 
 import java.sql.Statement;
 import java.text.NumberFormat;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -278,7 +279,9 @@ public class HolidayCurrencyCommand implements CommandExecutor {
 
                 sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + currencyPlaceholderNoColor + " to " + c.yellow + target.getName() + c.green + "!");
 
-                if (Main.holiday == "christmas") {TitleAPI.sendTitle(target, 3, 40, 5, c.aqua + "+" + args[2] + c.white + "❄", ""); }
+                if (Main.holiday.equalsIgnoreCase("christmas")) {
+                    TitleAPI.sendTitle(target, 3, 40, 5, c.aqua + "+" + args[2] + c.white + "❄", "");
+                }
                 return false;
             }
 
