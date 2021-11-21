@@ -21,7 +21,7 @@ author: [shastagrande,MCEpic_Nation]
 main: net.twistedmc.events.Main
 api-version: 1.16
 website: https://twistedmc.net
-depend: [PlaceholderAPI, EnchantedCore]
+depend: [PlaceholderAPI, EnchantedCore, TitleAPI]
 commands:
   eventprogress:
   rewards:
