@@ -27,12 +27,13 @@ public class AdventCalendarListener implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
 
-        if (e.getCurrentItem() == null) {
+        if (e.getCurrentItem() == null
+                || e.getCurrentItem().getItemMeta() == null
+                || e.getCurrentItem().getItemMeta().getLore() == null
+                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
             return;
         }
-        if (e.getCurrentItem().getItemMeta() == null) {
-            return;
-        }
+
 
         if (e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
             e.setCancelled(true);

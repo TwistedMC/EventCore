@@ -15,10 +15,10 @@ import org.bukkit.inventory.ItemStack;
 public class MenuListener implements Listener{
     @EventHandler(priority = EventPriority.LOW)
     public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getCurrentItem() == null) {
-            return;
-        }
-        if (e.getCurrentItem().getItemMeta() == null) {
+        if (e.getCurrentItem() == null
+                || e.getCurrentItem().getItemMeta() == null
+                || e.getCurrentItem().getItemMeta().getLore() == null
+                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
             return;
         }
         Player pp = (Player) e.getWhoClicked();
