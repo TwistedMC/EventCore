@@ -14,6 +14,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import twistedmc.core.framework.ServerGameType;
 import twistedmc.core.util.api.APICoins;
@@ -43,6 +44,11 @@ public class CandyStoreListener implements Listener {
             e.setCancelled(true);
         }
     }
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onCreativeEvent(InventoryCreativeEvent e) {
+       return;
+    }
+
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent e) {
