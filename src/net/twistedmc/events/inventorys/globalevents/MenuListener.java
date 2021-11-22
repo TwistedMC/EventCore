@@ -18,6 +18,9 @@ public class MenuListener implements Listener{
         if (e.getCurrentItem() == null) {
             return;
         }
+        if (e.getCurrentItem().getItemMeta() == null) {
+            return;
+        }
         Player pp = (Player) e.getWhoClicked();
         if (e.getView().getTitle().equalsIgnoreCase("2021 Winter Community Challenge")) {
             if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "Close")) {

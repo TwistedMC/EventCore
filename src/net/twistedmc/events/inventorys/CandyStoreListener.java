@@ -57,6 +57,9 @@ public class CandyStoreListener implements Listener {
         if (e.getCurrentItem() == null) {
             return;
         }
+        if (e.getCurrentItem().getItemMeta() == null) {
+            return;
+        }
         Player player = (Player) e.getWhoClicked();
 
         NumberFormat formatter = NumberFormat.getIntegerInstance();

@@ -11,10 +11,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 
 public class AdventCalendarListener implements Listener {
-
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInventoryClick(InventoryDragEvent e) {
@@ -28,6 +28,9 @@ public class AdventCalendarListener implements Listener {
         Player player = (Player) e.getWhoClicked();
 
         if (e.getCurrentItem() == null) {
+            return;
+        }
+        if (e.getCurrentItem().getItemMeta() == null) {
             return;
         }
 
