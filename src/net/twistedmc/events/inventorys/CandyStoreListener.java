@@ -46,12 +46,17 @@ public class CandyStoreListener implements Listener {
     }
     @EventHandler(priority = EventPriority.HIGH)
     public void onCreativeEvent(InventoryCreativeEvent e) {
-       return;
+        if (e.getCurrentItem() == null) {
+            return;
+        }
     }
 
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent e) {
+        if (e.getCurrentItem() == null) {
+            return;
+        }
         Player player = (Player) e.getWhoClicked();
 
         NumberFormat formatter = NumberFormat.getIntegerInstance();

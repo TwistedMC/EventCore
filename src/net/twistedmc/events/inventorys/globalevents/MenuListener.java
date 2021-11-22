@@ -15,6 +15,9 @@ import org.bukkit.inventory.ItemStack;
 public class MenuListener implements Listener{
     @EventHandler(priority = EventPriority.LOW)
     public void onInventoryClick(InventoryClickEvent e) {
+        if (e.getCurrentItem() == null) {
+            return;
+        }
         Player pp = (Player) e.getWhoClicked();
         if (e.getView().getTitle().equalsIgnoreCase("2021 Winter Community Challenge")) {
             if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.red + "Close")) {
