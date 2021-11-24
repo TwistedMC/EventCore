@@ -4,18 +4,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
+import java.util.logging.Level;
 
 import com.sun.jna.platform.unix.solaris.LibKstat;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.globalevents.ContributeMenu;
 import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.craftbukkit.libs.jline.internal.Log;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -193,7 +193,50 @@ public class API {
         }
         return false;
     }
+    /**
+     * {@code Prize Dispatcher} is a function to either add a standby permission
+     *                          or dispatch rewards for those eligible.
+     * @return void
+     * @throws APIException
+     * */
+    public static void PrizeDispatcher(Player p) throws APIException {
+        String[] PrizeCommands = {"givegold " + p.getName() + " 5 Test 1","givegold " + p.getName() + " 10 Test 2"};
+        if (PrizeCommands.length == 0) {
+           throw new APIException("Commands list empty. Please add some to the prize!");
+        }
+        try {
+            MySQL m = new MySQL(Main.sqlHostContribution,Main.sqlPortContribution,Main.sqlDbContribution,Main.sqlUserContribution,Main.sqlPwContribution);
+            Statement s = m.openConnection().createStatement();
+            ResultSet set = s.executeQuery("SELECT `UUID` VALUE FROM `contribution` WHERE `canGetPrize` = 1");
+            while(set.next()) {
+                UUID id = UUID.fromString(set.getString("VALUE"));
+                if (Bukkit.getServer().getPlayer(id) == null) {
+                    OfflinePlayer op = Bukkit.getOfflinePlayer(id);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + op.getName() + " permission set twisted.events.global.joinrewards true");
+                } else {
+                    for (Player plr : Bukkit.getServer().getOnlinePlayers()) {
 
+                    }
+                    Arrays.stream(PrizeCommands).forEach(cmd -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(),cmd));
+                }
+            }
+            m.closeConnection();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            Bukkit.getLogger().log(Level.SEVERE,"Error Dispensing prize!");
+        }
+    }
+    public static void PrizeDispatchJoin(Player p) {
+        String[] PrizeCommands = {};
+        Arrays.stream(PrizeCommands).forEach(cmd -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(),cmd));
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + p.getName() + " permission set twisted.events.global.joinrewards false");
+    }
+
+    public static void GoalCheck() {
+        if (API.getTotalContributionRAW() >= GlobalMenu.GlobalGoal) {
+
+        }
+    }
     /**
      * 
      * @param requiredContribution - The amount of contribution to unlock {@code <item>}
@@ -250,6 +293,7 @@ public class API {
                 int res = result.getInt("VALUE");
                 int_ = int_ + res;
             }
+            MySQL.closeConnection();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -266,6 +310,7 @@ public class API {
                 int res = result.getInt("VALUE");
                 int_ = int_ + res;
             }
+            MySQL.closeConnection();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -281,6 +326,7 @@ public class API {
             while(res.next()){
                 return res.getString("uuid") != null;
             }
+
             return false;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

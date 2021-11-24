@@ -44,22 +44,17 @@ public class CandyStoreListener implements Listener {
             e.setCancelled(true);
         }
     }
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onCreativeEvent(InventoryCreativeEvent e) {
-        if (e.getCurrentItem() == null) {
-            return;
-        }
-    }
+   // @EventHandler(priority = EventPriority.HIGH)
+   // public void onCreativeEvent(InventoryCreativeEvent e) {
+   //     if (e.getCurrentItem() == null) {
+   //         return;
+   //     }
+   // }
 
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getCurrentItem() == null
-                || e.getCurrentItem().getItemMeta() == null
-                || e.getCurrentItem().getItemMeta().getLore() == null
-                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
-            return;
-        }
+
         Player player = (Player) e.getWhoClicked();
 
         NumberFormat formatter = NumberFormat.getIntegerInstance();
@@ -694,7 +689,12 @@ public class CandyStoreListener implements Listener {
             player.sendMessage(c.red + "You do not have enough candy! (Need " + formatter.format(d3) + " Candy)");
             return;
         }
-
+        if (e.getCurrentItem() == null
+                || e.getCurrentItem().getItemMeta() == null
+                || e.getCurrentItem().getItemMeta().getLore() == null
+                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
+            return;
+        }
 
     }
 

@@ -20,7 +20,7 @@ public class ItemRewards {
             c.aqua + "This pickaxe has been infused with ancient",
             c.aqua + "ice magic. Thus, giving it " + c.yellow + "increased mining speeds, ",
             c.aqua + "and the " + c.yellow + "ability to regenerate" + c.aqua + ". As well",
-            c.aqua + "as a" + c.yellow + "sharper edge" + c.aqua + ". It's also been",
+            c.aqua + "as a " + c.yellow + "sharper edge" + c.aqua + ". It's also been",
             c.aqua + "infused with " +"a " + c.yellow + "multiplier spell" + c.aqua + ".",
             "",
             c.gray + "Efficiency VII, Fortune VII, Mending I,",

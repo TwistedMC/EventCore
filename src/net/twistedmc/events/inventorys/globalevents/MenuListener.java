@@ -15,10 +15,10 @@ import org.bukkit.inventory.ItemStack;
 public class MenuListener implements Listener{
     @EventHandler(priority = EventPriority.LOW)
     public void onInventoryClick(InventoryClickEvent e) {
-        if (e.getCurrentItem() == null
-                || e.getCurrentItem().getItemMeta() == null
-                || e.getCurrentItem().getItemMeta().getLore() == null
-                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
+        if (e.getCurrentItem() == null) {
+            return;
+        }
+        if (e.getCurrentItem().getItemMeta() == null) {
             return;
         }
         Player pp = (Player) e.getWhoClicked();
@@ -36,6 +36,7 @@ public class MenuListener implements Listener{
             }
             if (e.getCurrentItem().getItemMeta().getLore().contains(c.red + "Already claimed!")) {
                 pp.sendMessage(c.red + "You have already claimed this prize!");
+                return;
             }
             if (e.getCurrentItem().getItemMeta().getLore().contains(c.yellow + "Click to claim!")) {
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + "Gold Cache")) {
@@ -43,6 +44,7 @@ public class MenuListener implements Listener{
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"givegold " + pp.getName() + " 5000 Winter Event Reward");
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + pp.getName() + " permission set " + GlobalMenu.PermPrefix + "prize1 true");
                     new GlobalMenu(pp);
+                    return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + c.italics + "Frosty Sword")) {
                     if (pp.getInventory().firstEmpty() != -1){
@@ -56,6 +58,7 @@ public class MenuListener implements Listener{
                     // no empty slot found.
                         pp.sendMessage("Please have at least one empty slot.");
                     }
+                    return;
                     new GlobalMenu(pp);
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + c.italics + "Frosty Shovel")) {
@@ -71,6 +74,7 @@ public class MenuListener implements Listener{
                         pp.sendMessage("Please have at least one empty slot.");
                     }
                     new GlobalMenu(pp);
+                    return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + c.italics + "Frosty Axe")) {
                     if (pp.getInventory().firstEmpty() != -1){
@@ -99,6 +103,7 @@ public class MenuListener implements Listener{
                         pp.sendMessage("Please have at least one empty slot.");
                     }
                     new GlobalMenu(pp);
+                    return;
                 }
             }
             if (e.getCurrentItem().getItemMeta().getLore().contains(c.aqua + "Frozen!")) {

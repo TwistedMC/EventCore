@@ -156,7 +156,8 @@ public class JoinListener implements Listener {
             try {
                 MySQL MySQL = new MySQL(sqlHostContribution, sqlPortContribution, sqlDbContribution, sqlUserContribution, sqlPwContribution);
                 Statement statement = MySQL.openConnection().createStatement();
-                statement.executeUpdate("INSERT INTO contribution (uuid, contribution) VALUES ('" + player.getUniqueId() + "', '0')");
+                statement.executeUpdate("INSERT INTO `contribution` (uuid, contribution, cangetprize) VALUES ('" + player.getUniqueId() + "', '0','0')");
+                MySQL.closeConnection();
             } catch (SQLException | ClassNotFoundException s) {
                 s.printStackTrace();
             }
@@ -267,6 +268,7 @@ public class JoinListener implements Listener {
             while(res.next()){
                 return res.getString("uuid") != null;
             }
+            MySQL.closeConnection();
             return false;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

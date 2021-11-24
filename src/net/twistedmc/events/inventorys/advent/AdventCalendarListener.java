@@ -27,13 +27,6 @@ public class AdventCalendarListener implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
 
-        if (e.getCurrentItem() == null
-                || e.getCurrentItem().getItemMeta() == null
-                || e.getCurrentItem().getItemMeta().getLore() == null
-                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
-            return;
-        }
-
 
         if (e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
             e.setCancelled(true);
@@ -928,6 +921,13 @@ public class AdventCalendarListener implements Listener {
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + c.bold + "December 25th") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
             player.sendMessage(c.aqua + c.bold + "Oops!" + c.aqua + " Seems like you've missed this reward!");
             player.closeInventory();
+            return;
+        }
+
+        if (e.getCurrentItem() == null
+                || e.getCurrentItem().getItemMeta() == null
+                || e.getCurrentItem().getItemMeta().getLore() == null
+                || e.getCurrentItem().getItemMeta().getDisplayName() == null) {
             return;
         }
 
