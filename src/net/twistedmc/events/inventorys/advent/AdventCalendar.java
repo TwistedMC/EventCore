@@ -130,7 +130,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23990")).setDisplayName(c.white + c.bold + "December 3rd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Bed Wars Coins",
                     "",
                     c.white + "Reward claimed!"
             ), 12, (s,c,p) -> { });
@@ -301,7 +301,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23986")).setDisplayName(c.white + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Survival Coins",
                     "",
                     c.white + "Reward claimed!"
             ), 16, (s,c,p) -> { });
@@ -473,7 +473,7 @@ public class AdventCalendar extends AbstractGUI {
                     c.dgray + "Advent Reward",
                     "",
                     c.dgray + "+" + c.green + "Snowball Punch Messages",
-                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Network Coins",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Bed Wars Coins",
                     "",
                     c.dgray + "Requires Titan to use Punch",
                     c.dgray + "Messages. Find Customize Appearance",
@@ -1000,7 +1000,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("23971")).setDisplayName(c.white + c.bold + "December 22nd").addLore(
                     c.dgray + "Advent Reward",
                     "",
-                    c.dgray + "+" + c.gold + "50,000" + c.gray + " Network Coins",
+                    c.dgray + "+" + c.gold + "50,000" + c.gray + " Survival Coins",
                     "",
                     c.white + "Reward claimed!"
             ), 37, (s,c,p) -> { });
@@ -1047,7 +1047,6 @@ public class AdventCalendar extends AbstractGUI {
                     c.white + "Reward claimed!"
             ), 38, (s,c,p) -> { });
         }
-
 
         if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(23) && !API.adventOpenedAlready(pp.getUniqueId(), 23)) {
             setItem(new cItemStack(api.getItemHead("39793")).setDisplayName(c.aqua + c.bold + "December 23rd").addLore(

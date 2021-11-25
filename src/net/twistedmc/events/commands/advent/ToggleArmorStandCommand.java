@@ -25,7 +25,7 @@ public class ToggleArmorStandCommand implements CommandExecutor {
             }
 
             if (!API.systemDisabled("adventCalendarNpc")) {
-                sender.sendMessage(c.green + "Disabled adventCalendarNpc: " + c.yellow + "Advent Calendar Figure");
+                sender.sendMessage(c.green + "Disabled System: " + c.yellow + "Advent Calendar Figure");
                 API.disableSystem("adventCalendarNpc");
                 return false;
             }

@@ -59,7 +59,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 3);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000 bedwarsCoins");
             player.closeInventory();
         }
 
@@ -104,7 +104,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 7);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000 survivalCoins");
             player.closeInventory();
         }
 
@@ -150,7 +150,7 @@ public class AdventCalendarListener implements Listener {
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 11);
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "lp user " + player.getName() + " permission set twisted.hub.punch.snowball true");
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000 survivalCoins");
             player.closeInventory();
         }
 
@@ -273,7 +273,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 22);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 50000");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 50000 survivalCoins");
             player.closeInventory();
         }
 
@@ -284,7 +284,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 23);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givegold " + player.getName() + " 3-000 Advent Reward");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givegold " + player.getName() + " 3000 Advent Reward");
             player.closeInventory();
         }
 
