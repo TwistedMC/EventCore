@@ -56,7 +56,7 @@ public class MenuListener implements Listener{
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + pp.getName() + " permission set " + GlobalMenu.PermPrefix + "prize2 true");
                     } else {
                     // no empty slot found.
-                        pp.sendMessage("Please have at least one empty slot.");
+                        pp.sendMessage(c.red + "Your inventory is full!");
                     }
                     new GlobalMenu(pp);
                     return;
@@ -71,7 +71,7 @@ public class MenuListener implements Listener{
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + pp.getName() + " permission set " + GlobalMenu.PermPrefix + "prize3 true");
                     } else {
                         // no empty slot found.
-                        pp.sendMessage("Please have at least one empty slot.");
+                        pp.sendMessage(c.red + "Your inventory is full!");
                     }
                     new GlobalMenu(pp);
                     return;
@@ -86,7 +86,7 @@ public class MenuListener implements Listener{
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + pp.getName() + " permission set " + GlobalMenu.PermPrefix + "prize4 true");
                     } else {
                         // no empty slot found.
-                        pp.sendMessage("Please have at least one empty slot.");
+                        pp.sendMessage(c.red + "Your inventory is full!");
                     }
                     new GlobalMenu(pp);
                 }
@@ -100,7 +100,7 @@ public class MenuListener implements Listener{
                         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + pp.getName() + " permission set " + GlobalMenu.PermPrefix + "prize5 true");
                     } else {
                         // no empty slot found.
-                        pp.sendMessage("Please have at least one empty slot.");
+                        pp.sendMessage(c.red + "Your inventory is full!");
                     }
                     new GlobalMenu(pp);
                     return;
