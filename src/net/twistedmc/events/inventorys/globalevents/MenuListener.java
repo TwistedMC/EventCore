@@ -58,8 +58,8 @@ public class MenuListener implements Listener{
                     // no empty slot found.
                         pp.sendMessage("Please have at least one empty slot.");
                     }
-                    return;
                     new GlobalMenu(pp);
+                    return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.aqua + c.italics + "Frosty Shovel")) {
                     if (pp.getInventory().firstEmpty() != -1){
