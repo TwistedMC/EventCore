@@ -42,24 +42,56 @@ public class AdventCalendar extends AbstractGUI {
 
         // December 1 R
 
-        if (API.adventOpenedAlready(pp.getUniqueId(), 1) && c1.get(Calendar.MONTH) == Calendar.NOVEMBER) {
-            setItem(new cItemStack(api.getItemHead("23992")).setDisplayName(c.white + c.bold + "December 1st").addLore(
-                    c.dgray + "Advent Reward",
-                    "",
-                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
-                    "",
-                    c.white + "Reward claimed!"
-            ), 10, (s,c,p) -> { });
+        if (pp.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (API.adventOpenedAlready(pp.getUniqueId(), 1) && c1.get(Calendar.MONTH) == Calendar.NOVEMBER) {
+                setItem(new cItemStack(api.getItemHead("23992")).setDisplayName(c.white + c.bold + "December 1st").addLore(
+                        c.dgray + "Advent Reward",
+                        "",
+                        c.dgray + "+" + c.aqua + "1x" + c.gray + " Pharaoh Rank",
+                        "",
+                        c.white + "Reward claimed!"
+                ), 10, (s, c, p) -> {
+                });
+            }
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(1) && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
-            setItem(new cItemStack(api.getItemHead("39760")).setDisplayName(c.aqua + c.bold + "December 1st").addLore(
-                    c.dgray + "Advent Reward",
-                    "",
-                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
-                    "",
-                    c.aqua + "Oops! Reward missed!"
-            ), 10, (s,c,p) -> { });
+        if (!pp.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (API.adventOpenedAlready(pp.getUniqueId(), 1) && c1.get(Calendar.MONTH) == Calendar.NOVEMBER) {
+                setItem(new cItemStack(api.getItemHead("23992")).setDisplayName(c.white + c.bold + "December 1st").addLore(
+                        c.dgray + "Advent Reward",
+                        "",
+                        c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
+                        "",
+                        c.white + "Reward claimed!"
+                ), 10, (s, c, p) -> {
+                });
+            }
+        }
+
+        if (pp.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(1) && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
+                setItem(new cItemStack(api.getItemHead("39760")).setDisplayName(c.aqua + c.bold + "December 1st").addLore(
+                        c.dgray + "Advent Reward",
+                        "",
+                        c.dgray + "+" + c.aqua + "1x" + c.gray + " Pharaoh Rank",
+                        "",
+                        c.aqua + "Oops! Reward missed!"
+                ), 10, (s, c, p) -> {
+                });
+            }
+        }
+
+        if (!pp.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isMissed(1) && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
+                setItem(new cItemStack(api.getItemHead("39760")).setDisplayName(c.aqua + c.bold + "December 1st").addLore(
+                        c.dgray + "Advent Reward",
+                        "",
+                        c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
+                        "",
+                        c.aqua + "Oops! Reward missed!"
+                ), 10, (s, c, p) -> {
+                });
+            }
         }
 
         if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && API.isReady(1) && c1.get(Calendar.DAY_OF_MONTH) != 1 && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
@@ -72,14 +104,30 @@ public class AdventCalendar extends AbstractGUI {
             ), 10, (s,c,p) -> { });
         }
 
-        if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) == 1 && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
-            setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 1st").addLore(
-                    c.dgray + "Advent Reward",
-                    "",
-                    c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
-                    "",
-                    c.green + "Click to open!"
-            ), 10, (s,c,p) -> { });
+        if (pp.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) == 1 && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
+                setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 1st").addLore(
+                        c.dgray + "Advent Reward",
+                        "",
+                        c.dgray + "+" + c.aqua + "1x" + c.gray + " Pharaoh Rank",
+                        "",
+                        c.green + "Click to open!"
+                ), 10, (s, c, p) -> {
+                });
+            }
+        }
+
+        if (!pp.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (c1.get(Calendar.MONTH) == Calendar.NOVEMBER && c1.get(Calendar.DAY_OF_MONTH) == 1 && !API.adventOpenedAlready(pp.getUniqueId(), 1)) {
+                setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 1st").addLore(
+                        c.dgray + "Advent Reward",
+                        "",
+                        c.dgray + "+" + c.aqua + "3x" + c.gray + " Winter Crate Keys",
+                        "",
+                        c.green + "Click to open!"
+                ), 10, (s, c, p) -> {
+                });
+            }
         }
 
         // December 2 G

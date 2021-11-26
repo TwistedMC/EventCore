@@ -32,13 +32,26 @@ public class AdventCalendarListener implements Listener {
             e.setCancelled(true);
         }
 
-        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.green + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
-            player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
-            player.sendMessage(c.green + "Happy Holidays!");
-            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
-            API.addAdvent(player, 1);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "crate give p winter 3 " + player.getName());
-            player.closeInventory();
+        if (player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.green + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
+                player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
+                player.sendMessage(c.green + "Happy Holidays!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+                API.addAdvent(player, 1);
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "storerank " + player.getName() + " PHARAOH");
+                player.closeInventory();
+            }
+        }
+
+        if (player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.green + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
+                player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
+                player.sendMessage(c.green + "Happy Holidays!");
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+                API.addAdvent(player, 1);
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "crate give p winter 3 " + player.getName());
+                player.closeInventory();
+            }
         }
 
         //
