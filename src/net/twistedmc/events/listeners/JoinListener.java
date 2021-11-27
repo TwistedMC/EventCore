@@ -8,6 +8,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.util.API;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -87,6 +88,13 @@ public class JoinListener implements Listener {
         }
     }*/
 
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void join(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
+        if (p.hasPermission("twisted.events.global.joinrewards")) {
+            API.PrizeDispatchJoin(p);
+        }
+    }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void eventJoin(PlayerLoginEvent e) {

@@ -3,6 +3,7 @@ package net.twistedmc.events.inventorys.globalevents;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.errors.APIException;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class MenuListener implements Listener{
     @EventHandler(priority = EventPriority.LOW)
-    public void onInventoryClick(InventoryClickEvent e) {
+    public void onInventoryClick(InventoryClickEvent e) throws APIException {
         if (e.getCurrentItem() == null) {
             return;
         }
@@ -28,11 +29,12 @@ public class MenuListener implements Listener{
                 return;
             }
             if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white+ c.line + "Snowflake Contribution Overview")) {
-              if (API.getTotalContributionRAW() < GlobalMenu.GlobalGoal && !GlobalMenu.AllContributionGetsPrize) {
+             //if (API.getTotalContributionRAW() < GlobalMenu.GlobalGoal && !GlobalMenu.AllContributionGetsPrize) {
                 Player plr = (Player) e.getWhoClicked();
                 new ContributeMenu(plr);
                 return;
-             }
+             //} // Eligibility locked out in API, this will let players still get the completion reward
+
             }
             if (e.getCurrentItem().getItemMeta().getLore().contains(c.red + "Already claimed!")) {
                 pp.sendMessage(c.red + "You have already claimed this prize!");

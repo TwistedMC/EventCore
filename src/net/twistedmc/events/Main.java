@@ -33,6 +33,7 @@ import net.twistedmc.events.listeners.ToTListener;
 import net.twistedmc.events.commands.CandyStoreCommand;
 import net.twistedmc.events.placeholders.PlaceholderListener;
 import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.errors.APIException;
 import org.bukkit.*;
 import org.bukkit.command.*;
 import org.bukkit.entity.ArmorStand;
@@ -108,6 +109,11 @@ public class Main extends JavaPlugin implements Listener {
 
         getServerDataManager().setServerType(ServerType.MINIGAME);
 
+        try {
+            API.GoalCheck();
+        } catch (APIException e) {
+            e.printStackTrace();
+        }
         if (!serverInDB(getIP() + ":" + getServer().getPort())) {
 
             String webhook = "https://discord.com/api/webhooks/853063307137515550/_SFH-Kru3klRQ_2O4zh1TTi6FnGX-4pWeqaIcpBiM--DYkIpWnFdfmhUSfcwxqewe1Bv";

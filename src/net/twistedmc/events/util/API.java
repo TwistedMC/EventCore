@@ -7,22 +7,19 @@ import java.text.NumberFormat;
 import java.util.*;
 import java.util.logging.Level;
 
-import com.sun.jna.platform.unix.solaris.LibKstat;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.globalevents.ContributeMenu;
 import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
+import net.twistedmc.events.util.api_annotations.Unused;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.craftbukkit.libs.jline.internal.Log;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.util.errors.APIException;
-import twistedmc.core.Core;
 
 public class API {
 
@@ -108,7 +105,7 @@ public class API {
     }
     public static ArrayList<String> CTDebounce = new ArrayList<>();
     public static HashMap<String, String> CTDAntiSpam = new HashMap<>();
-    public static void ContributionTransaction(Player player,int contributed) {
+    public static void ContributionTransaction(Player player,int contributed) throws APIException {
         boolean isGood = false;
         NumberFormat f = NumberFormat.getInstance();
         player.sendMessage(c.green + "Processing Transaction...");
@@ -145,6 +142,7 @@ public class API {
                 new ContributeMenu(player);
                 player.sendMessage(c.green + "Transaction successful!");
                 player.sendMessage("-" + f.format(contributed) +"❄ "+c.gray+"("+c.white+"Winter Event Contribution"+c.gray+")");
+                API.GoalCheck();
             } else {
                 player.sendMessage(c.red + "Transaction failed, please try again later.");
             }
@@ -193,14 +191,17 @@ public class API {
         }
         return false;
     }
+
+    private static String[] PrizeCommands = {"givegold %s 5 Test 1","givegold %s 10 Test 2"};
+    //Elimination of the requirement for a playername made it possible to make this static. ^
     /**
      * {@code Prize Dispatcher} is a function to either add a standby permission
      *                          or dispatch rewards for those eligible.
      * @return void
      * @throws APIException
      * */
-    public static void PrizeDispatcher(Player p) throws APIException {
-        String[] PrizeCommands = {"givegold " + p.getName() + " 5 Test 1","givegold " + p.getName() + " 10 Test 2"};
+    public static void PrizeDispatcher() throws APIException {
+        //String[] PrizeCommands = {"givegold %s 5 Test 1","givegold %s 10 Test 2",""};
         if (PrizeCommands.length == 0) {
            throw new APIException("Commands list empty. Please add some to the prize!");
         }
@@ -214,10 +215,18 @@ public class API {
                     OfflinePlayer op = Bukkit.getOfflinePlayer(id);
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + op.getName() + " permission set twisted.events.global.joinrewards true");
                 } else {
-                    for (Player plr : Bukkit.getServer().getOnlinePlayers()) {
+                    Player plr = Bukkit.getServer().getPlayer(id);
+                    plr.playSound(plr.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 2.0F);
+                    plr.sendMessage(c.green + "You were eligible for the Winter 2021 Community Challenge's rewards! They are being dispensed to you!");
+                    for (int i=0;i<PrizeCommands.length; i++) {
+                        String command = PrizeCommands[i];
+                        if (command.contains("%s")) {
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),String.format(command,plr.getName()));
+                        } else {
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),command);
+                        }
 
                     }
-                    Arrays.stream(PrizeCommands).forEach(cmd -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(),cmd));
                 }
             }
             m.closeConnection();
@@ -226,15 +235,33 @@ public class API {
             Bukkit.getLogger().log(Level.SEVERE,"Error Dispensing prize!");
         }
     }
+    @Unused
+    public static boolean rankChecker(String rankperm,Player p) {
+        if (p.hasPermission(rankperm)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public static void PrizeDispatchJoin(Player p) {
-        String[] PrizeCommands = {};
-        Arrays.stream(PrizeCommands).forEach(cmd -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(),cmd));
+        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 2.0F);
+        p.sendMessage(c.green + "You were eligible for the Winter 2021 Community Challenge's rewards! They are being dispensed to you!");
+        for (int i=0;i<PrizeCommands.length; i++) {
+            String command = PrizeCommands[i];
+            if (command.contains("%s")) {
+                String newcmd = String.format(command,p.getName());
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),newcmd);
+            } else {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),command);
+            }
+        }
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + p.getName() + " permission set twisted.events.global.joinrewards false");
     }
 
-    public static void GoalCheck() {
+    public static void GoalCheck() throws APIException {
         if (API.getTotalContributionRAW() >= GlobalMenu.GlobalGoal) {
-
+            Bukkit.getServer().broadcastMessage(c.green + "The Winter 2021 Community Challenge has been completed! Prizes will be dispatched!");
+            API.PrizeDispatcher();
         }
     }
     /**
@@ -386,6 +413,13 @@ public class API {
         }
     }
 
+
+
+    public static String convertUUIDToName(String uuid) {
+        UUID id = UUID.fromString(uuid);
+        OfflinePlayer plr = Bukkit.getOfflinePlayer(id);
+        return plr.getName();
+    }
     /** 
      *    For any of TwistedMC's plugins that use databases with playernames.
      *    For use with TwistedMC & Specified Partner Servers (If any) only. DO NOT DISTRIBUTE.
