@@ -738,6 +738,7 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("seasonal").setExecutor((CommandExecutor) new SeasonalMenuCommand());
         getCommand("adventcalendar").setExecutor((CommandExecutor) new AdventCalendarCommand());
         getCommand("snowflakecontribution").setExecutor((CommandExecutor) new GlobalMenuTestCommand());
+        getCommand("rankgive").setExecutor((CommandExecutor) new RankGiveCommand());
     }
 
     private void registerEvents() {

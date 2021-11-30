@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.util.errors.APIException;
+import twistedmc.core.util.api.APICoins;
 
 public class API {
 
@@ -192,7 +193,7 @@ public class API {
         return false;
     }
 
-    private static String[] PrizeCommands = {"givegold %s 5 Test 1","givegold %s 10 Test 2"};
+    private static String[] PrizeCommands = {"rankgive %s","givecoins %s 20000 Winter Event Reward"};
     //Elimination of the requirement for a playername made it possible to make this static. ^
     /**
      * {@code Prize Dispatcher} is a function to either add a standby permission
@@ -203,27 +204,27 @@ public class API {
     public static void PrizeDispatcher() throws APIException {
         //String[] PrizeCommands = {"givegold %s 5 Test 1","givegold %s 10 Test 2",""};
         if (PrizeCommands.length == 0) {
-           throw new APIException("Commands list empty. Please add some to the prize!");
+            throw new APIException("Commands list empty. Please add some to the prize!");
         }
         try {
-            MySQL m = new MySQL(Main.sqlHostContribution,Main.sqlPortContribution,Main.sqlDbContribution,Main.sqlUserContribution,Main.sqlPwContribution);
+            MySQL m = new MySQL(Main.sqlHostContribution, Main.sqlPortContribution, Main.sqlDbContribution, Main.sqlUserContribution, Main.sqlPwContribution);
             Statement s = m.openConnection().createStatement();
             ResultSet set = s.executeQuery("SELECT `UUID` VALUE FROM `contribution` WHERE `canGetPrize` = 1");
-            while(set.next()) {
+            while (set.next()) {
                 UUID id = UUID.fromString(set.getString("VALUE"));
                 if (Bukkit.getServer().getPlayer(id) == null) {
                     OfflinePlayer op = Bukkit.getOfflinePlayer(id);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),"lp user " + op.getName() + " permission set twisted.events.global.joinrewards true");
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + op.getName() + " permission set twisted.events.global.joinrewards true");
                 } else {
                     Player plr = Bukkit.getServer().getPlayer(id);
                     plr.playSound(plr.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 2.0F);
-                    plr.sendMessage(c.green + "You were eligible for the Winter 2021 Community Challenge's rewards! They are being dispensed to you!");
-                    for (int i=0;i<PrizeCommands.length; i++) {
+                    plr.sendMessage(c.aqua + "You were eligible for the Winter 2021 Community Challenge's rewards! They are being dispensed to you!");
+                    for (int i = 0; i < PrizeCommands.length; i++) {
                         String command = PrizeCommands[i];
                         if (command.contains("%s")) {
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),String.format(command,plr.getName()));
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), String.format(command, plr.getName()));
                         } else {
-                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),command);
+                            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
                         }
 
                     }
@@ -232,10 +233,9 @@ public class API {
             m.closeConnection();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            Bukkit.getLogger().log(Level.SEVERE,"Error Dispensing prize!");
+            Bukkit.getLogger().log(Level.SEVERE, "Error Dispensing prize!");
         }
     }
-    @Unused
     public static boolean rankChecker(String rankperm,Player p) {
         if (p.hasPermission(rankperm)) {
             return true;
