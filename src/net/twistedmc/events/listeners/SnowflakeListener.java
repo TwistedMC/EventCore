@@ -55,22 +55,51 @@ public class SnowflakeListener implements Listener {
         if (!Main.systemDisabled("christmasSurvival") /*&& Main.mob.contains(event.getEntity().getUniqueId())*/) {
             if (event.getEntity().getType() == EntityType.ENDERMAN && event.getEntity().getKiller() instanceof Player
                     || event.getEntity().getType() == EntityType.POLAR_BEAR && event.getEntity().getKiller() instanceof Player
-                    || (((Fox) event.getEntity()).getFoxType() == Fox.Type.SNOW) && event.getEntity().getKiller() instanceof Player
                     || event.getEntity().getType() == EntityType.STRAY && event.getEntity().getKiller() instanceof Player
                     || event.getEntity().getType() == EntityType.GOAT && event.getEntity().getKiller() instanceof Player
-                    || (((Villager) event.getEntity()).getVillagerType() == Villager.Type.SNOW) && event.getEntity().getKiller() instanceof Player
-                    || (((Villager) event.getEntity()).getVillagerType() == Villager.Type.TAIGA) && event.getEntity().getKiller() instanceof Player
                     || event.getEntity().getType() == EntityType.GLOW_SQUID && event.getEntity().getKiller() instanceof Player
                     || event.getEntity().getType() == EntityType.DOLPHIN && event.getEntity().getKiller() instanceof Player) {
 
                 Player p = event.getEntity().getKiller().getPlayer();
 
-                Main.mob.remove(event.getEntity().getUniqueId());
+                Random random = new Random();
+                int randomNumber = random.nextInt(max - min) + min;
+
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
+                return;
+            }
+
+            if (event.getEntity().getType() == EntityType.FOX && (((Fox) event.getEntity()).getFoxType() == Fox.Type.SNOW) && event.getEntity().getKiller() instanceof Player) {
+
+                Player p = event.getEntity().getKiller().getPlayer();
 
                 Random random = new Random();
                 int randomNumber = random.nextInt(max - min) + min;
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
+                return;
+            }
+
+            if (event.getEntity().getType() == EntityType.VILLAGER && (((Villager) event.getEntity()).getVillagerType() == Villager.Type.SNOW) && event.getEntity().getKiller() instanceof Player) {
+
+                Player p = event.getEntity().getKiller().getPlayer();
+
+                Random random = new Random();
+                int randomNumber = random.nextInt(max - min) + min;
+
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
+                return;
+            }
+
+            if (event.getEntity().getType() == EntityType.VILLAGER &&(((Villager) event.getEntity()).getVillagerType() == Villager.Type.TAIGA) && event.getEntity().getKiller() instanceof Player) {
+
+                Player p = event.getEntity().getKiller().getPlayer();
+
+                Random random = new Random();
+                int randomNumber = random.nextInt(max - min) + min;
+
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
+                return;
             }
         }
     }
