@@ -48,7 +48,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
             holidayCurrency = c.gold + "candies";
             holidayCurrencyNoColor = "candies";
             holidayColor = c.gold;
-            Bukkit.getLogger().log(Level.CONFIG, "[Events] Chosen Currency: Candy");
+            Bukkit.getLogger().log(Level.CONFIG, "[Events] Chosen Currency: Flakes");
         } else if (Main.holiday == "christmas") {
             currencyTab = "snowflakes";
             holidayCurrency = c.white + "snowflakes";
@@ -96,7 +96,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
 
             }
 
-            if(!JoinListener.inCandyCurrencyDB(uuid) || !JoinListener.inSnowflakesCurrencyDB(uuid)){
+            if(!!JoinListener.inSnowflakesCurrencyDB(uuid)){
 
                 sender.sendMessage(c.red + "We are sorry, but we cannot find a player with the username " + c.red + c.bold + args[0] + c.red + " in our database.");
 
@@ -150,7 +150,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.addCandyOffline(op, Integer.parseInt(args[2]));
+                    API.addSnowflakesOffline(op, Integer.parseInt(args[2]));
 
                     sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + holidayCurrencyNoColor + " to " + c.yellow + op.getName() + c.green + "!");
                     return false;
@@ -195,7 +195,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.setCandy(op, Integer.parseInt(args[2]));
+                    API.setSnowflakes(op, Integer.parseInt(args[2]));
 
                     sender.sendMessage(c.green + "Set " + c.yellow + op.getName() + c.green + "'s " + holidayCurrencyNoColor + " to " + c.yellow + args[2] + c.green + "!");
                     return false;
@@ -212,7 +212,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.resetCandy(op);
+                    API.resetSnowflakes(op);
 
                     sender.sendMessage(c.green + "Reset " + c.yellow + op.getName() + c.green + "'s " + holidayCurrencyNoColor + c.green + " currency!");
                     return false;
@@ -275,7 +275,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     s.printStackTrace();
                 }
 
-                API.addCandy(target, Integer.parseInt(args[2]));
+                API.addSnowflakes(target, Integer.parseInt(args[2]));
 
                 sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + currencyPlaceholderNoColor + " to " + c.yellow + target.getName() + c.green + "!");
                 NumberFormat f = NumberFormat.getInstance();
@@ -327,7 +327,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     s.printStackTrace();
                 }
 
-                API.setCandy(target, Integer.parseInt(args[2]));
+                API.setSnowflakes(target, Integer.parseInt(args[2]));
 
                 sender.sendMessage(c.green + "Set " + c.yellow + target.getName() + c.green + "'s " + currencyPlaceholderNoColor + " to " + c.yellow + args[2] + c.green + "!");
                 return false;
@@ -344,7 +344,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     s.printStackTrace();
                 }
 
-                API.resetCandy(target);
+                API.resetSnowflakes(target);
 
                 sender.sendMessage(c.green + "Reset " + c.yellow + target.getName() + c.green + "'s " + currencyPlaceholderNoColor + c.green + " currency!");
                 return false;

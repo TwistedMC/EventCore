@@ -16,7 +16,7 @@
 ################################################################################
 
 name: EventCore1.17
-version: H0.9.6|C0.3.1|AC0.0.6|API0.2.0
+version: H0.9.6|C0.3.3|AC0.0.6|API0.2.0
 author: [shastagrande,MCEpic_Nation]
 main: net.twistedmc.events.Main
 api-version: 1.16
@@ -30,7 +30,7 @@ commands:
   candy:
    aliases: [candystore]
   adventcalendar:
-   aliases: [calendar]
+   aliases: [calendar, advent]
   snowflakecontribution:
   toggleacas:
   rankgive:

@@ -30,7 +30,7 @@ commands:
   candy:
    aliases: [candystore]
   adventcalendar:
-   aliases: [calendar]
+   aliases: [calendar, advent]
   snowflakecontribution:
   toggleacas:
   rankgive:

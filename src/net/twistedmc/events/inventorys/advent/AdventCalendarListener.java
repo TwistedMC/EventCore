@@ -13,6 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
+import twistedmc.core.achievements.Achievement;
+import twistedmc.core.achievements.AchievementType;
 
 public class AdventCalendarListener implements Listener {
 
@@ -323,6 +325,10 @@ public class AdventCalendarListener implements Listener {
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "giverankgift " + player.getName() + " vip");
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gmysterybox give " + player.getName() + " 6 3");
             player.closeInventory();
+
+            if (!twistedmc.core.util.api.API.hasAchievement(player, Achievement.DEC_25_2021)) {
+                twistedmc.core.util.api.API.unlockAchievement(player, Achievement.DEC_25_2021, AchievementType.NORMAL);
+            }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

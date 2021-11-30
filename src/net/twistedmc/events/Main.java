@@ -49,6 +49,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import twistedmc.core.achievements.Achievement;
+import twistedmc.core.achievements.AchievementType;
 import twistedmc.core.framework.ServerDataManager;
 import twistedmc.core.framework.ServerType;
 
@@ -170,7 +172,7 @@ public class Main extends JavaPlugin implements Listener {
                     if (format.format(now).equals("11/30/2021 11:50:00PM ET")) {
                         // 1 window Show
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
                     }
 
                     if (format.format(now).equals("12/01/2021 12:00:00AM ET")) {
@@ -179,6 +181,11 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         p.spigot().sendMessage(click);
                         p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+
+                        if (!twistedmc.core.util.api.API.hasAchievement(p, Achievement.SO_THIS_IS_CHRISTMAS)) {
+                            twistedmc.core.util.api.API.unlockAchievement(p, Achievement.SO_THIS_IS_CHRISTMAS, AchievementType.NORMAL);
+                        }
+
                     }
 
 
