@@ -96,7 +96,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
 
             }
 
-            if(!!JoinListener.inSnowflakesCurrencyDB(uuid)){
+            if(!JoinListener.inSnowflakesCurrencyDB(uuid)){
 
                 sender.sendMessage(c.red + "We are sorry, but we cannot find a player with the username " + c.red + c.bold + args[0] + c.red + " in our database.");
 
