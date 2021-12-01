@@ -49,18 +49,12 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import twistedmc.core.achievements.Achievement;
-import twistedmc.core.achievements.AchievementType;
-import twistedmc.core.framework.ServerDataManager;
-import twistedmc.core.framework.ServerType;
 
 @SuppressWarnings("deprecated")
 public class Main extends JavaPlugin implements Listener {
 
     public static List<UUID> mob = new ArrayList<>();
     public static List<UUID> mobSpawner = new ArrayList<>();
-
-    private static ServerDataManager serverDataManager;
     //Holiday Configuration
     public static String holiday = "christmas"; // halloween, christmas, newyears, (add any here)
     public static Main instance;
@@ -106,10 +100,6 @@ public class Main extends JavaPlugin implements Listener {
     public static Connection connection = null;
 
     public void onEnable() {
-
-        serverDataManager = new ServerDataManager();
-
-        getServerDataManager().setServerType(ServerType.MINIGAME);
 
         try {
             API.GoalCheck();
@@ -159,421 +149,478 @@ public class Main extends JavaPlugin implements Listener {
                 Date now = new java.sql.Date(System.currentTimeMillis());
                 SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa 'ET'");
 
-                if (getServerDataManager().getServerType() == ServerType.DEV) {
-                    Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
-                }
+                Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
 
-                for (final Player p : Bukkit.getOnlinePlayers()) {
 
-                    TextComponent click = new TextComponent(c.yellow + "Type /warp advent or click here to claim!");
-                    click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/advent"));
-                    click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Click to open Advent Calendar!").create()));
+                for (Player p : Bukkit.getOnlinePlayers()) {
 
-                    if (format.format(now).equals("11/30/2021 11:50:00PM ET")) {
-                        // 1 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
-                    }
-
-                    if (format.format(now).equals("12/01/2021 12:00:00AM ET")) {
-                        // 1 window
+                    if (format.format(now).equals("12/01/2021 04:27:00AM ET")) {
+                        // test
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
-
-                        if (!twistedmc.core.util.api.API.hasAchievement(p, Achievement.SO_THIS_IS_CHRISTMAS)) {
-                            twistedmc.core.util.api.API.unlockAchievement(p, Achievement.SO_THIS_IS_CHRISTMAS, AchievementType.NORMAL);
-                        }
-
+                        click();
+                        Bukkit.broadcastMessage("");
+                        return;
                     }
 
-
-                    if (format.format(now).equals("12/01/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/01/2021 11:35:00PM ET")) {
                         // 2 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/02/2021 12:00:00AM ET")) {
                         // 2 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(1);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/02/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/02/2021 11:35:00PM ET")) {
                         // 3 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/03/2021 12:00:00AM ET")) {
                         // 3 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(2);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/03/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/03/2021 11:35:00PM ET")) {
                         // 4 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/04/2021 12:00:00AM ET")) {
                         // 4 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(3);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/04/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/04/2021 11:35:00PM ET")) {
                         // 5 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/05/2021 12:00:00AM ET")) {
                         // 5 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(4);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/05/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/05/2021 11:35:00PM ET")) {
                         // 6 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/06/2021 12:00:00AM ET")) {
                         // 6 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(5);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/06/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/06/2021 11:35:00PM ET")) {
                         // 7 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/07/2021 12:00:00AM ET")) {
                         // 7 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(6);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/07/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/07/2021 11:35:00PM ET")) {
                         // 8 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/08/2021 12:00:00AM ET")) {
                         // 8 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(7);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/08/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/08/2021 11:35:00PM ET")) {
                         // 9 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/09/2021 12:00:00AM ET")) {
                         // 9 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(8);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/09/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/09/2021 11:35:00PM ET")) {
                         // 10 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/10/2021 12:00:00AM ET")) {
                         // 10 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(9);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/10/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/10/2021 11:35:00PM ET")) {
                         // 11 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/11/2021 12:00:00AM ET")) {
                         // 11 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(10);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/11/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/11/2021 11:35:00PM ET")) {
                         // 12 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/12/2021 12:00:00AM ET")) {
                         // 12 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(11);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/12/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/12/2021 11:35:00PM ET")) {
                         // 13 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/13/2021 12:00:00AM ET")) {
                         // 13 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(12);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/13/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/13/2021 11:35:00PM ET")) {
                         // 14 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/14/2021 12:00:00AM ET")) {
                         // 14 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(13);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/14/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/14/2021 11:35:00PM ET")) {
                         // 15 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/15/2021 12:00:00AM ET")) {
                         // 15 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(14);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/15/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/15/2021 11:35:00PM ET")) {
                         // 16 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/16/2021 12:00:00AM ET")) {
                         // 16 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(15);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/16/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/16/2021 11:35:00PM ET")) {
                         // 17 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/17/2021 12:00:00AM ET")) {
                         // 17 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(16);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/17/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/17/2021 11:35:00PM ET")) {
                         // 18 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/18/2021 12:00:00AM ET")) {
                         // 18 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(17);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/18/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/18/2021 11:35:00PM ET")) {
                         // 19 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
                     }
 
                     if (format.format(now).equals("12/19/2021 12:00:00AM ET")) {
                         // 19 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(18);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/19/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/19/2021 11:35:00PM ET")) {
                         // 20 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/20/2021 12:00:00AM ET")) {
                         // 20 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(19);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/20/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/20/2021 11:35:00PM ET")) {
                         // 21 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/21/2021 12:00:00AM ET")) {
                         // 21 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(20);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/21/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/21/2021 11:35:00PM ET")) {
                         // 22 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/22/2021 12:00:00AM ET")) {
                         // 22 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(21);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/22/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/22/2021 11:35:00PM ET")) {
                         // 23 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/23/2021 12:00:00AM ET")) {
                         // 23 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(22);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/23/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/23/2021 11:35:00PM ET")) {
                         // 24 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start advent");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/24/2021 12:00:00AM ET")) {
                         // 24 window
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(23);
+                        return;
                     }
 
 
-                    if (format.format(now).equals("12/24/2021 11:50:00PM ET")) {
+                    if (format.format(now).equals("12/24/2021 11:35:00PM ET")) {
                         // 25 window Show
-                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
-                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "show start adventlast");
+                        ding();
+                        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "sudo shastagrande show start adventStart");
+                        return;
                     }
 
                     if (format.format(now).equals("12/25/2021 12:00:00AM ET")) {
+                        Bukkit.broadcastMessage("");
                         Bukkit.broadcastMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
-                        p.spigot().sendMessage(click);
-                        p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+                        click();
+                        Bukkit.broadcastMessage("");
                         API.disableDay(24);
+                        return;
                         // 25 window
                     }
 
                     if (format.format(now).equals("12/26/2021 12:00:00AM ET")) {
                         API.disableDay(25);
+                        return;
                         // 25 window
                     }
                 }
@@ -760,10 +807,6 @@ public class Main extends JavaPlugin implements Listener {
 
     }
 
-    public static ServerDataManager getServerDataManager() {
-        return serverDataManager;
-    }
-
     public static Main getInstance() {
         return Main.instance;
     }
@@ -941,7 +984,7 @@ public class Main extends JavaPlugin implements Listener {
     public void onEntityClick(PlayerInteractAtEntityEvent event) {
 
         Player p = event.getPlayer();
-        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
+        if (!net.twistedmc.api.API.systemDisabled("adventCalendarNpc")) {
             if (event.getRightClicked() instanceof ArmorStand) {
                 ArmorStand armorStand = (ArmorStand) event.getRightClicked();
 
@@ -959,15 +1002,35 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onClickArmorStand(PlayerArmorStandManipulateEvent e){
-        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
+        if (!net.twistedmc.api.API.systemDisabled("adventCalendarNpc")) {
             if (e.getRightClicked().getName().equalsIgnoreCase("2021adventcalendarfigure")) {
                 e.setCancelled(true);
             }
         }
 
-        if (!twistedmc.core.util.api.API.systemDisabled("adventCalendarNpc")) {
+        if (!net.twistedmc.api.API.systemDisabled("adventCalendarNpc")) {
             if (e.getRightClicked().getCustomName().equalsIgnoreCase("2021adventcalendarfigure")) {
                 e.setCancelled(true);
+            }
+        }
+    }
+
+    public void click() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player != null && player.isOnline() && player.hasPermission("rank.all")) {
+                TextComponent click = new TextComponent(c.yellow + "Type /warp advent or click here to claim!");
+                click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/advent"));
+                click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Click to open Advent Calendar!").create()));
+                player.spigot().sendMessage(click);
+                player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1.0F, 1.0F);
+            }
+        }
+    }
+
+    public void ding() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player != null && player.isOnline() && player.hasPermission("rank.all")) {
+                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
             }
         }
     }

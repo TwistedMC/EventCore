@@ -2,7 +2,6 @@ package net.twistedmc.events.commands;
 
 import java.sql.Statement;
 import java.text.NumberFormat;
-import java.util.Objects;
 import java.util.logging.Level;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,24 +10,16 @@ import java.util.UUID;
 import com.connorlinfoot.titleapi.TitleAPI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.luckperms.api.LuckPermsProvider;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.listeners.JoinListener;
-import net.twistedmc.events.listeners.ToTListener;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import twistedmc.core.util.api.API;
-
-import static net.md_5.bungee.api.chat.TextComponent.fromLegacyText;
 
 public class HolidayCurrencyCommand implements CommandExecutor {
     // So this command will be an all in one for holiday currency manipulation. Similar to hcc's format,
@@ -150,7 +141,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.addSnowflakesOffline(op, Integer.parseInt(args[2]));
+                    net.twistedmc.api.API.addSnowflakesOffline(op, Integer.parseInt(args[2]));
 
                     sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + holidayCurrencyNoColor + " to " + c.yellow + op.getName() + c.green + "!");
                     return false;
@@ -195,7 +186,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.setSnowflakes(op, Integer.parseInt(args[2]));
+                    net.twistedmc.api.API.setSnowflakes(op, Integer.parseInt(args[2]));
 
                     sender.sendMessage(c.green + "Set " + c.yellow + op.getName() + c.green + "'s " + holidayCurrencyNoColor + " to " + c.yellow + args[2] + c.green + "!");
                     return false;
@@ -212,7 +203,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                         s.printStackTrace();
                     }
 
-                    API.resetSnowflakes(op);
+                    net.twistedmc.api.API.resetSnowflakes(op);
 
                     sender.sendMessage(c.green + "Reset " + c.yellow + op.getName() + c.green + "'s " + holidayCurrencyNoColor + c.green + " currency!");
                     return false;
@@ -275,7 +266,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     s.printStackTrace();
                 }
 
-                API.addSnowflakes(target, Integer.parseInt(args[2]));
+                net.twistedmc.api.API.addSnowflakes(target, Integer.parseInt(args[2]));
 
                 sender.sendMessage(c.green + "Added " + c.yellow + args[2] + c.green + " " + currencyPlaceholderNoColor + " to " + c.yellow + target.getName() + c.green + "!");
                 NumberFormat f = NumberFormat.getInstance();
@@ -327,7 +318,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     s.printStackTrace();
                 }
 
-                API.setSnowflakes(target, Integer.parseInt(args[2]));
+                net.twistedmc.api.API.setSnowflakes(target, Integer.parseInt(args[2]));
 
                 sender.sendMessage(c.green + "Set " + c.yellow + target.getName() + c.green + "'s " + currencyPlaceholderNoColor + " to " + c.yellow + args[2] + c.green + "!");
                 return false;
@@ -344,7 +335,7 @@ public class HolidayCurrencyCommand implements CommandExecutor {
                     s.printStackTrace();
                 }
 
-                API.resetSnowflakes(target);
+                net.twistedmc.api.API.resetSnowflakes(target);
 
                 sender.sendMessage(c.green + "Reset " + c.yellow + target.getName() + c.green + "'s " + currencyPlaceholderNoColor + c.green + " currency!");
                 return false;

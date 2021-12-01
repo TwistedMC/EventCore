@@ -7,6 +7,8 @@ import java.text.NumberFormat;
 import java.util.*;
 import java.util.logging.Level;
 
+import net.twistedmc.api.achievements.Achievement;
+import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.globalevents.ContributeMenu;
 import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
@@ -20,9 +22,6 @@ import org.bukkit.inventory.ItemStack;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.util.errors.APIException;
-import twistedmc.core.achievements.Achievement;
-import twistedmc.core.achievements.AchievementType;
-import twistedmc.core.util.api.APICoins;
 
 public class API {
 
@@ -64,28 +63,28 @@ public class API {
         Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("EnchantedCore"), new Runnable(){
             @Override
             public void run(){
-                if (twistedmc.core.util.api.API.getOpenedWindows(player) == 1 && !twistedmc.core.util.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_I)) {
-                    twistedmc.core.util.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_I, AchievementType.NORMAL);
+                if (net.twistedmc.api.API.getOpenedWindows(player) == 1 && !net.twistedmc.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_I)) {
+                    net.twistedmc.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_I, AchievementType.NORMAL);
                 }
 
-                if (twistedmc.core.util.api.API.getOpenedWindows(player) == 3 && !twistedmc.core.util.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_II)) {
-                    twistedmc.core.util.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_II, AchievementType.TIERED);
+                if (net.twistedmc.api.API.getOpenedWindows(player) == 3 && !net.twistedmc.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_II)) {
+                    net.twistedmc.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_II, AchievementType.TIERED);
                 }
 
-                if (twistedmc.core.util.api.API.getOpenedWindows(player) == 7 && !twistedmc.core.util.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_III)) {
-                    twistedmc.core.util.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_III, AchievementType.TIERED);
+                if (net.twistedmc.api.API.getOpenedWindows(player) == 7 && !net.twistedmc.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_III)) {
+                    net.twistedmc.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_III, AchievementType.TIERED);
                 }
 
-                if (twistedmc.core.util.api.API.getOpenedWindows(player) == 14 && !twistedmc.core.util.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_IV)) {
-                    twistedmc.core.util.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_IV, AchievementType.TIERED);
+                if (net.twistedmc.api.API.getOpenedWindows(player) == 14 && !net.twistedmc.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_IV)) {
+                    net.twistedmc.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_IV, AchievementType.TIERED);
                 }
 
-                if (twistedmc.core.util.api.API.getOpenedWindows(player) == 21 && !twistedmc.core.util.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_V)) {
-                    twistedmc.core.util.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_V, AchievementType.TIERED);
+                if (net.twistedmc.api.API.getOpenedWindows(player) == 21 && !net.twistedmc.api.API.hasAchievement(player, Achievement.ADVENT_CALENDAR_V)) {
+                    net.twistedmc.api.API.unlockAchievement(player, Achievement.ADVENT_CALENDAR_V, AchievementType.TIERED);
                 }
 
-                if (twistedmc.core.util.api.API.getOpenedWindows(player) == 25 && !twistedmc.core.util.api.API.hasAchievement(player, Achievement.MERRY_CHRISTMAS_2021)) {
-                    twistedmc.core.util.api.API.unlockAchievement(player, Achievement.MERRY_CHRISTMAS_2021, AchievementType.NORMAL);
+                if (net.twistedmc.api.API.getOpenedWindows(player) == 25 && !net.twistedmc.api.API.hasAchievement(player, Achievement.MERRY_CHRISTMAS_2021)) {
+                    net.twistedmc.api.API.unlockAchievement(player, Achievement.MERRY_CHRISTMAS_2021, AchievementType.NORMAL);
                 }
             }
         }, 40L);

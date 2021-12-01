@@ -4,9 +4,9 @@ import net.ranktw.DiscordWebHooks.DiscordEmbed;
 import net.ranktw.DiscordWebHooks.DiscordMessage;
 import net.ranktw.DiscordWebHooks.DiscordWebhook;
 import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
+import net.twistedmc.api.framework.ServerGameType;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.inventorys.store.CandyStore;
 import net.twistedmc.events.util.API;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,11 +14,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
-import twistedmc.core.framework.ServerGameType;
-import twistedmc.core.util.api.APICoins;
-import twistedmc.core.util.api.APIMoney;
 
 import java.awt.*;
 import java.text.NumberFormat;
@@ -554,7 +550,7 @@ public class CandyStoreListener implements Listener {
             }
 
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "10,000 Coins" + c.green + "!");
-            APICoins.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Seasonal Purchase");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 10000");
             API.addCandyStorePurchase(player, 1);
@@ -592,7 +588,7 @@ public class CandyStoreListener implements Listener {
             }
 
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "30,000 Coins" + c.green + "!");
-            APICoins.giveCoins(player, ServerGameType.ENCHANTED, 30000, true, "Seasonal Purchase");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 30000, true, "Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 25000");
             API.addCandyStorePurchase(player, 1);
@@ -630,7 +626,7 @@ public class CandyStoreListener implements Listener {
             }
 
             player.sendMessage(c.green + "Thank you for your purchase of " + c.gold + "60,000 Coins" + c.green + "!");
-            APICoins.giveCoins(player, ServerGameType.ENCHANTED, 60000, true, "Seasonal Purchase");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 60000, true, "Seasonal Purchase");
             player.closeInventory();
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + player.getName() + " remove 40000");
             API.addCandyStorePurchase(player, 1);

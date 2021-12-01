@@ -1,6 +1,8 @@
 package net.twistedmc.events.inventorys.advent;
 
 
+import net.twistedmc.api.achievements.Achievement;
+import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.API;
 import net.twistedmc.events.util.CanBuyItem;
@@ -11,10 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
-import twistedmc.core.achievements.Achievement;
-import twistedmc.core.achievements.AchievementType;
 
 public class AdventCalendarListener implements Listener {
 
@@ -34,26 +33,22 @@ public class AdventCalendarListener implements Listener {
             e.setCancelled(true);
         }
 
-        if (player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.green + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
-                player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
-                player.sendMessage(c.green + "Happy Holidays!");
-                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
-                API.addAdvent(player, 1);
-                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "storerank " + player.getName() + " PHARAOH");
-                player.closeInventory();
-            }
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar") && player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
+            player.sendMessage(c.green + "Happy Holidays!");
+            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+            API.addAdvent(player, 1);
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "storerank " + player.getName() + " PHARAOH");
+            player.closeInventory();
         }
 
-        if (player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.green + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
-                player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
-                player.sendMessage(c.green + "Happy Holidays!");
-                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
-                API.addAdvent(player, 1);
-                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "crate give p winter 3 " + player.getName());
-                player.closeInventory();
-            }
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.green + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar") && !player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
+            player.sendMessage(c.green + "You claimed the " + c.aqua + "Advent Calendar " + c.green + "reward for " + c.aqua + "December 1st" + c.green + "!");
+            player.sendMessage(c.green + "Happy Holidays!");
+            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
+            API.addAdvent(player, 1);
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "crate give p winter 3 " + player.getName());
+            player.closeInventory();
         }
 
         //
@@ -326,8 +321,8 @@ public class AdventCalendarListener implements Listener {
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "gmysterybox give " + player.getName() + " 6 3");
             player.closeInventory();
 
-            if (!twistedmc.core.util.api.API.hasAchievement(player, Achievement.DEC_25_2021)) {
-                twistedmc.core.util.api.API.unlockAchievement(player, Achievement.DEC_25_2021, AchievementType.NORMAL);
+            if (!net.twistedmc.api.API.hasAchievement(player, Achievement.DEC_25_2021)) {
+                net.twistedmc.api.API.unlockAchievement(player, Achievement.DEC_25_2021, AchievementType.NORMAL);
             }
         }
 

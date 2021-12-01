@@ -5,6 +5,8 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.twistedmc.api.achievements.Achievement;
+import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
@@ -22,6 +24,7 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.UUID;
 
 public class JoinListener implements Listener {
@@ -53,47 +56,36 @@ public class JoinListener implements Listener {
             return;
         }
     }
-/**
-    @EventHandler(priority = EventPriority.HIGH)
-    public void summerEvent(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-
-        TextComponent click = new TextComponent(c.yellow + "CLICK " + c.green + "to participate!");
-        click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/events"));
-        click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Click!").create()));
-
-        int progress = 0;
-        try {
-            MySQL MySQL = new MySQL(plugin.sqlHost, plugin.sqlPort, plugin.sqlDb, plugin.sqlUser, plugin.sqlPw);
-            Statement statement = MySQL.openConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
-            while (result.next()) {
-                progress = result.getInt("VALUE");
-            }
-        } catch (SQLException | ClassNotFoundException s) {
-            s.printStackTrace();
-        }
-
-        Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "lp user " + p.getName() + " permission set twisted.events.redeem.reward true");
-
-        if (progress != 20) {
-            p.sendMessage(c.gray + "--------------------------------------------");
-            p.sendMessage(c.green + c.bold + "Our Summer Event is active!");
-            p.sendMessage(c.green + "Win prizes up to a " + c.aqua + "1x VIP Rank (30 days) Voucher");
-            p.sendMessage(c.green + "");
-            p.spigot().sendMessage(click);
-            p.sendMessage(c.gray + "--------------------------------------------");
-            p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 2.0F);
-            return;
-        }
-    }*/
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void join(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         if (p.hasPermission("twisted.events.global.joinrewards")) {
             API.PrizeDispatchJoin(p);
+            return;
         }
+
+        Calendar cal = Calendar.getInstance();
+        int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+
+        if (!API.adventOpenedAlready(p.getUniqueId(), dayOfMonth)) {
+            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin(Main.instance.getDescription().getName()), new Runnable() {
+                @Override
+                public void run() {
+                    TextComponent click = new TextComponent(c.yellow + "Type /warp advent or click here to claim!");
+                    click.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/advent"));
+                    click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Click to open Advent Calendar!").create()));
+                    p.sendMessage("");
+                    p.sendMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
+                    p.sendMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
+                    p.spigot().sendMessage(click);
+                    p.sendMessage("");
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
+                    return;
+                }
+            }, 70L);
+        }
+
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

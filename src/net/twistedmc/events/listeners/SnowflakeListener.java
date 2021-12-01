@@ -6,15 +6,14 @@ import java.util.regex.Pattern;
 
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import net.md_5.bungee.api.ChatColor;
+import net.twistedmc.api.achievements.Achievement;
+import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.events.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import twistedmc.core.achievements.Achievement;
-import twistedmc.core.achievements.AchievementType;
-import twistedmc.core.util.api.API;
 
 public class SnowflakeListener implements Listener {
 
@@ -70,8 +69,8 @@ public class SnowflakeListener implements Listener {
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
 
-                if (!API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
-                    API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
+                if (!net.twistedmc.api.API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
+                    net.twistedmc.api.API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
                 }
                 return;
             }
@@ -85,8 +84,8 @@ public class SnowflakeListener implements Listener {
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
 
-                if (!API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
-                    API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
+                if (!net.twistedmc.api.API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
+                    net.twistedmc.api.API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
                 }
                 return;
             }
@@ -100,8 +99,8 @@ public class SnowflakeListener implements Listener {
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
 
-                if (!API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
-                    API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
+                if (!net.twistedmc.api.API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
+                    net.twistedmc.api.API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
                 }
                 return;
             }
@@ -115,8 +114,8 @@ public class SnowflakeListener implements Listener {
 
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "hcc " + p.getName() + " add " + randomNumber);
 
-                if (!API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
-                    API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
+                if (!net.twistedmc.api.API.hasAchievement(p, Achievement.SUGAR_RUSH)) {
+                    net.twistedmc.api.API.unlockAchievement(p, Achievement.WINTERY_DEVOTION, AchievementType.NORMAL);
                 }
                 return;
             }

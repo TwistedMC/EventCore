@@ -45,7 +45,7 @@ public class PlaceholderListener extends PlaceholderExpansion {
 
     @Override
     public String getVersion(){
-        return Main.instance.getDescription().getVersion().toString();
+        return Main.instance.getDescription().getVersion();
     }
 
     @Override

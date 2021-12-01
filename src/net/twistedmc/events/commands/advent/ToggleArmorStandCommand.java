@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import twistedmc.core.util.api.API;
 
 public class ToggleArmorStandCommand implements CommandExecutor {
     @Override
@@ -18,15 +17,15 @@ public class ToggleArmorStandCommand implements CommandExecutor {
                 return false;
             }
 
-            if (API.systemDisabled("adventCalendarNpc")) {
+            if (net.twistedmc.api.API.systemDisabled("adventCalendarNpc")) {
                 sender.sendMessage(c.green + "Enabled System: " + c.yellow + "Advent Calendar Figure");
-                API.enableSystem("adventCalendarNpc");
+                net.twistedmc.api.API.enableSystem("adventCalendarNpc");
                 return false;
             }
 
-            if (!API.systemDisabled("adventCalendarNpc")) {
+            if (!net.twistedmc.api.API.systemDisabled("adventCalendarNpc")) {
                 sender.sendMessage(c.green + "Disabled System: " + c.yellow + "Advent Calendar Figure");
-                API.disableSystem("adventCalendarNpc");
+                net.twistedmc.api.API.disableSystem("adventCalendarNpc");
                 return false;
             }
         }

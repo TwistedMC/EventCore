@@ -2,20 +2,14 @@ package net.twistedmc.events.inventorys;
 
 import net.twistedmc.events.Main;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
 
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
-import me.clip.placeholderapi.PlaceholderAPI;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
 import org.bukkit.inventory.ItemFlag;
-import twistedmc.core.Core;
-import twistedmc.core.framework.ServerType;
 
 import java.text.NumberFormat;
 

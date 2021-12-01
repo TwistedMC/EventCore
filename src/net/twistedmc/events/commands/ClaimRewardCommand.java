@@ -1,39 +1,13 @@
 package net.twistedmc.events.commands;
 
 
-import me.clip.placeholderapi.PlaceholderAPI;
-import net.ranktw.DiscordWebHooks.DiscordEmbed;
-import net.ranktw.DiscordWebHooks.DiscordMessage;
-import net.ranktw.DiscordWebHooks.DiscordWebhook;
-import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
 import net.twistedmc.events.Main;
-import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.framework.essentials.StatsMenu;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scheduler.BukkitRunnable;
-
-import java.awt.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 
 public class ClaimRewardCommand implements CommandExecutor, Listener {
@@ -54,7 +28,6 @@ public class ClaimRewardCommand implements CommandExecutor, Listener {
             Player player = (Player)sender;
 
             player.sendMessage(c.red + "No events are currently active.");
-            new StatsMenu(player);
 
             /**int progress = 0;
 
