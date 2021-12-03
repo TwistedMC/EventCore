@@ -86,6 +86,23 @@ public class JoinListener implements Listener {
             }, 70L);
         }
 
+            Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin(Main.instance.getDescription().getName()), new Runnable() {
+                @Override
+                public void run() {
+                    TextComponent active = new TextComponent(c.green + "Our Seasonal Event is active! Click ");
+                    TextComponent info = new TextComponent(c.green + "for more info!");
+                    TextComponent click = new TextComponent(c.yellow + c.bold + "HERE ");
+                    click.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://twistedmc.net/seasonal-info/"));
+                    click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(c.yellow + "Click here for info on our Event!").create()));
+                    p.sendMessage("");
+                    p.sendMessage(c.red + c.bold + "HAPPY HOLIDAYS " + c.white + c.bold + "FROM TWISTEDMC");
+                    p.spigot().sendMessage(active, click, info);
+                    p.sendMessage("");
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
+                    return;
+                }
+            }, 50L);
+
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

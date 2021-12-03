@@ -26,7 +26,7 @@ public class ItemRewards {
             c.gray + "Efficiency VII, Fortune VII, Mending I,",
             c.gray + "Sharpness III, Unbreaking V"
 
-    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
+    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,7).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,7).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,3).addFlags(ItemFlag.HIDE_ENCHANTS);
 
     public static ItemStack displayAxe = new cItemStack(Material.DIAMOND_AXE).setDisplayName(c.aqua + c.italics + "Frosty Axe").addLore(
             c.dgray + "Event Reward",
@@ -40,7 +40,7 @@ public class ItemRewards {
             "",
             c.gray + "Efficiency V, Fortune V, Mending I,",
             c.gray + "Sharpness VII, Unbreaking V"
-    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
+    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,5).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,5).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7).addFlags(ItemFlag.HIDE_ENCHANTS);
 
     public static ItemStack displayShovel = new cItemStack(Material.DIAMOND_SHOVEL).setDisplayName(c.aqua + c.italics + "Frosty Shovel").addLore(
             c.dgray + "Event Reward",
@@ -54,7 +54,7 @@ public class ItemRewards {
             "",
             c.gray + "Efficiency VIII, Fortune III, Mending I,",
             c.gray + "Sharpness II, Unbreaking IV"
-    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
+    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DIG_SPEED,8).addEnchant(Enchantment.LOOT_BONUS_BLOCKS,3).addEnchant(Enchantment.DURABILITY,4).addEnchant(Enchantment.DAMAGE_ALL,2).addFlags(ItemFlag.HIDE_ENCHANTS);
 
     public static ItemStack displaySword = new cItemStack(Material.DIAMOND_SWORD).setDisplayName(c.aqua + c.italics + "Frosty Sword").addLore(
             c.dgray + "Event Reward",
@@ -67,7 +67,7 @@ public class ItemRewards {
             "",
             c.gray + "Mending I, Sharpness VII, Sweeping Edge V,",
             c.gray + "Unbreaking V"
-    ).addEnchant(Enchantment.LUCK, 1).addFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
+    ).addEnchant(Enchantment.MENDING,1).addEnchant(Enchantment.DURABILITY,5).addEnchant(Enchantment.DAMAGE_ALL,7).addEnchant(Enchantment.SWEEPING_EDGE, 5).addFlags(ItemFlag.HIDE_ENCHANTS);
 
     NumberFormat f = NumberFormat.getInstance();
     static HeadDatabaseAPI HAPI = new HeadDatabaseAPI();

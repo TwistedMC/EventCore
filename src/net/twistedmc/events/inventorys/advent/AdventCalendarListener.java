@@ -3,6 +3,7 @@ package net.twistedmc.events.inventorys.advent;
 
 import net.twistedmc.api.achievements.Achievement;
 import net.twistedmc.api.achievements.AchievementType;
+import net.twistedmc.api.framework.ServerGameType;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.API;
 import net.twistedmc.events.util.CanBuyItem;
@@ -58,7 +59,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 2);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " ENCHANTED 1 2 3");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "levels addexp " + player.getName() + " 3000");
             player.closeInventory();
         }
 
@@ -69,7 +70,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 3);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000 bedwarsCoins");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.BEDWARS, 10000, true, "Advent Reward");
             player.closeInventory();
         }
 
@@ -103,7 +104,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 6);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " ENCHANTED 1 2 3");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " ENCHANTED coins3h2x");
             player.closeInventory();
         }
 
@@ -114,7 +115,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 7);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000 survivalCoins");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Advent Reward");
             player.closeInventory();
         }
 
@@ -160,7 +161,7 @@ public class AdventCalendarListener implements Listener {
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 11);
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "lp user " + player.getName() + " permission set twisted.hub.punch.snowball true");
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 10000 survivalCoins");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Advent Reward");
             player.closeInventory();
         }
 
@@ -217,7 +218,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 16);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " BEDWARS 1 2 3");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " BEDWARS coins3h2x");
             player.closeInventory();
         }
 
@@ -228,7 +229,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 17);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givexpbooster " + player.getName() + " ENCHANTED 1 2 1");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " ENCHANTED exp1h2x");
             player.closeInventory();
         }
 
@@ -283,7 +284,7 @@ public class AdventCalendarListener implements Listener {
             player.sendMessage(c.green + "Happy Holidays!");
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 22);
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "coins add " + player.getName() + " 50000 survivalCoins");
+            net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Advent Reward");
             player.closeInventory();
         }
 
@@ -306,7 +307,7 @@ public class AdventCalendarListener implements Listener {
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 24);
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "consolegive " + player.getName() + " netherite_ingot 5");
-            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givexpbooster " + player.getName() + " ENCHANTED 1 3 1");
+            Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "givebooster " + player.getName() + " ENCHANTED 1 exp1h3x");
             player.closeInventory();
         }
 

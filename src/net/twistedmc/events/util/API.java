@@ -127,7 +127,7 @@ public class API {
     public static void disableDay(int window) {
 
         try {
-            MySQL MySQL = new MySQL(Main.sqlHostStats, Main.sqlPortStats, Main.sqlDbStats, Main.sqlUserStats, Main.sqlPwStats);
+            MySQL MySQL = new MySQL(Main.sqlHostAdvent, Main.sqlPortAdvent, Main.sqlDbAdvent, Main.sqlUserAdvent, Main.sqlPwAdvent);
             Statement statement = MySQL.openConnection().createStatement();
             statement.executeUpdate("UPDATE `adventStatus` SET status = 'MISSED' WHERE `day` = '" + window + "'");
         } catch (SQLException | ClassNotFoundException s) {
@@ -173,6 +173,10 @@ public class API {
                 new ContributeMenu(player);
                 player.sendMessage(c.green + "Transaction successful!");
                 player.sendMessage("-" + f.format(contributed) +"❄ "+c.gray+"("+c.white+"Winter Event Contribution"+c.gray+")");
+                Bukkit.broadcastMessage("");
+                Bukkit.broadcastMessage(c.white + player.getName() + c.aqua + " contributed " + c.white + f.format(contributed) + "❄ " + c.aqua + "to the Global Event Goal!");
+                Bukkit.broadcastMessage("");
+                Main.chime();
                 API.GoalCheck();
             } else {
                 player.sendMessage(c.red + "Transaction failed, please try again later.");

@@ -149,7 +149,7 @@ public class Main extends JavaPlugin implements Listener {
                 Date now = new java.sql.Date(System.currentTimeMillis());
                 SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy hh:mm:ssa 'ET'");
 
-                Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
+                //Bukkit.getLogger().log(Level.INFO, "[EVENT CORE] Time: " + format.format(now));
 
 
                 for (Player p : Bukkit.getOnlinePlayers()) {
@@ -1027,10 +1027,18 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
 
-    public void ding() {
+    public static void ding() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player != null && player.isOnline() && player.hasPermission("rank.all")) {
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0F, 1.0F);
+            }
+        }
+    }
+
+    public static void chime() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player != null && player.isOnline() && player.hasPermission("rank.all")) {
+                player.playSound(player.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_CHIME, 1.0F, 1.0F);
             }
         }
     }
