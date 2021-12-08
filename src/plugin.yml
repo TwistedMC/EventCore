@@ -16,12 +16,12 @@
 ################################################################################
 
 name: EventCore1.17
-version: H0.9.6|C0.3.4|AC0.0.7|API0.2.1
+version: H0.9.6|C0.3.4|AC0.0.7|API0.2.2
 author: [shastagrande,MCEpic_Nation]
 main: net.twistedmc.events.Main
 api-version: 1.16
 website: https://twistedmc.net
-depend: [TwistedAPI, PlaceholderAPI, EnchantedCore, TitleAPI]
+depend: [PlaceholderAPI, EnchantedCore, Coins, TitleAPI]
 commands:
   eventprogress:
   rewards:

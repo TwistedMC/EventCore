@@ -801,7 +801,6 @@ public class Main extends JavaPlugin implements Listener {
         pm.registerEvents(new ClaimRewardCommand(this), this);
         pm.registerEvents(new ToTListener(), this);
         pm.registerEvents(new SnowflakeListener(), this);
-        pm.registerEvents(new CandyStoreListener(), this);
         pm.registerEvents(new AdventCalendarListener(), this);
         pm.registerEvents(new MenuListener(),this);
 

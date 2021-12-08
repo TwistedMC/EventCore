@@ -4,6 +4,7 @@ package net.twistedmc.events.inventorys.advent;
 import net.twistedmc.api.achievements.Achievement;
 import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.api.framework.ServerGameType;
+import net.twistedmc.enchanted.util.api.APIMoney;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.util.API;
 import net.twistedmc.events.util.CanBuyItem;
@@ -23,6 +24,10 @@ public class AdventCalendarListener implements Listener {
         if (e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
             e.setCancelled(true);
         }
+
+        if (!e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
+            return;
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
@@ -32,6 +37,10 @@ public class AdventCalendarListener implements Listener {
 
         if (e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
             e.setCancelled(true);
+        }
+
+        if (!e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar")) {
+            return;
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.gold + c.bold + "December 1st") && e.getView().getTitle().equalsIgnoreCase("2021 Advent Calendar") && player.getUniqueId().equals("5c208957-df9b-40f7-a4cf-38df9c0d1774")) {
@@ -116,6 +125,7 @@ public class AdventCalendarListener implements Listener {
             player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
             API.addAdvent(player, 7);
             net.twistedmc.api.API.giveCoins(player, ServerGameType.ENCHANTED, 10000, true, "Advent Reward");
+            APIMoney.giveMoney(player, ServerGameType.ENCHANTED, 3000, true, "Advent Reward");
             player.closeInventory();
         }
 

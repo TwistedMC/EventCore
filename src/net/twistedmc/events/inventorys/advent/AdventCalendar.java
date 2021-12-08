@@ -352,6 +352,7 @@ public class AdventCalendar extends AbstractGUI {
                     c.dgray + "Advent Reward",
                     "",
                     c.dgray + "+" + c.gold + "10,000" + c.gray + " Survival Coins",
+                    c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.white + "Reward claimed!"
             ), 16, (s,c,p) -> { });
@@ -361,6 +362,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("39754")).setDisplayName(c.aqua + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Survival Coins",
                     c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.aqua + "Oops! Reward missed!"
@@ -381,6 +383,7 @@ public class AdventCalendar extends AbstractGUI {
             setItem(new cItemStack(api.getItemHead("2487")).setDisplayName(c.green + c.bold + "December 7th").addLore(
                     c.dgray + "Advent Reward",
                     "",
+                    c.dgray + "+" + c.gold + "10,000" + c.gray + " Survival Coins",
                     c.dgray + "+" + c.gold + "3,000" + c.gray + " Gold",
                     "",
                     c.green + "Click to open!"
