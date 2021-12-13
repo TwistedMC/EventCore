@@ -39,7 +39,7 @@ public class ContributeMenu extends AbstractGUI {
                         (c.gray + "To the Main Menu")
                 , 49, (s,c,p) -> { });
         int sf = Main.getSnowflakes(player);
-        setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
+        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
                         c.gray + "Goal: " + c.white + format.format(GlobalGoal) + "❄",
                         c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
                         "",
@@ -61,40 +61,40 @@ public class ContributeMenu extends AbstractGUI {
     }
     public void setItems(Player plr) {
         if (EventAPI.canBuy(50,"snowflakes",plr)) {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 50❄").addLore("",c.yellow + "Click to Contribute!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄").addLore("",c.yellow + "Click to Contribute!")
                     ,29, (s,c,p) -> { });
         } else {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 50❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,29, (s,c,p) -> { });
         }
         if (EventAPI.canBuy(100,"snowflakes",plr)) {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 100❄").addLore("",c.yellow + "Click to Contribute!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 100❄").addLore("",c.yellow + "Click to Contribute!")
                     ,30, (s,c,p) -> { });
         } else {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 100❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 100❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,30, (s,c,p) -> { });
 
         }
         if (EventAPI.canBuy(200,"snowflakes",plr)) {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 200❄").addLore("",c.yellow + "Click to Contribute!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 200❄").addLore("",c.yellow + "Click to Contribute!")
                     ,31, (s,c,p) -> { });
         } else {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 200❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 200❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,31, (s,c,p) -> { });
         }
         if (EventAPI.canBuy(500,"snowflakes",plr)) {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 500❄").addLore("",c.yellow + "Click to Contribute!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 500❄").addLore("",c.yellow + "Click to Contribute!")
                     ,32, (s,c,p) -> { });
         } else {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 500❄").addLore("", c.red + "Not enough " + c.white + "Snowflakes" + c.red + "!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 500❄").addLore("", c.red + "Not enough " + c.white + "Snowflakes" + c.red + "!")
                     , 32, (s, c, p) -> {
                     });
         }
         if (EventAPI.canBuy(1000,"snowflakes",plr)) {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.yellow + "Click to Contribute!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.yellow + "Click to Contribute!")
                     ,33, (s,c,p) -> { });
         } else {
-            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
+            setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,33, (s,c,p) -> { });
         }
     }

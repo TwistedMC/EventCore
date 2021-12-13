@@ -51,7 +51,7 @@ public class GlobalMenu extends AbstractGUI {
 
         setItem(new cItemStack(Material.ARROW).setDisplayName(c.red + "Close"), 49, (s,c,p) -> { });
 
-        setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
+        setItem(new cItemStack(HEADapi.getItemHead("41106")).setDisplayName(c.white + c.line + "Snowflake Contribution Overview").addLore(
                         c.gray + "Progress towards the global goal,",
                         c.gray + "which if unlocked, will give ALL players",
                         c.gray + "who participated a reward!",
@@ -105,7 +105,7 @@ public class GlobalMenu extends AbstractGUI {
                 setItem(i, 29, (s,c,p) -> { });
             }
         } else {
-            setItem(new cItemStack(Material.IRON_INGOT).setDisplayName(c.green + "Event Prize #1").addLore(
+            setItem(new cItemStack(HEADapi.getItemHead("39760")).setDisplayName(c.green + "Event Prize #1").addLore(
                             c.dgray + "Event Reward",
                             c.gray + "✮ Common (Event)",
                             "",
@@ -141,7 +141,7 @@ public class GlobalMenu extends AbstractGUI {
                 setItem(i, 30, (s,c,p) -> { });
             }
         } else {
-            setItem(new cItemStack(Material.GOLD_INGOT).setDisplayName(c.green + "Event Prize #2").addLore(
+            setItem(new cItemStack(HEADapi.getItemHead("39759")).setDisplayName(c.green + "Event Prize #2").addLore(
                             c.dgray + "Event Reward",
                             c.green + "✮✮ Uncommon (Event)",
                             "",
@@ -177,7 +177,7 @@ public class GlobalMenu extends AbstractGUI {
                 setItem(i, 31, (s,c,p) -> { });
             }
         } else {
-            setItem(new cItemStack(Material.DIAMOND).setDisplayName(c.green + "Event Prize #3").addLore(
+            setItem(new cItemStack(HEADapi.getItemHead("39758")).setDisplayName(c.green + "Event Prize #3").addLore(
                             c.dgray + "Event Reward",
                             c.blue + "✮✮✮ Rare (Event)",
                             "",
@@ -213,7 +213,7 @@ public class GlobalMenu extends AbstractGUI {
                 setItem(i, 32, (s,c,p) -> { });
             }
         } else {
-            setItem(new cItemStack(Material.EMERALD).setDisplayName(c.green + "Event Prize #4").addLore(
+            setItem(new cItemStack(HEADapi.getItemHead("39757")).setDisplayName(c.green + "Event Prize #4").addLore(
                             c.dgray + "Event Reward",
                             c.dpurple + "✮✮✮✮ Epic (Event)",
                             "",
@@ -249,7 +249,7 @@ public class GlobalMenu extends AbstractGUI {
                 setItem(i, 33, (s,c,p) -> { });
             }
         } else {
-            setItem(new cItemStack(Material.NETHERITE_INGOT).setDisplayName(c.green + "Event Prize #5").addLore(
+            setItem(new cItemStack(HEADapi.getItemHead("39756")).setDisplayName(c.green + "Event Prize #5").addLore(
                             c.dgray + "Event Reward",
                             c.gold + "✮✮✮✮✮ Legendary (Event)",
                             "",
