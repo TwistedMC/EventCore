@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/Java 17"/>
+	<classpathentry kind="src" path="/EventCore1.18/src"/>
+	<classpathentry kind="lib" path="C:/jars/coins.jar"/>
+	<classpathentry kind="lib" path="C:/jars/EnchantedCore1.18.jar"/>
+	<classpathentry kind="lib" path="C:/jars/HeadDatabase-4.15.1.jar"/>
+	<classpathentry kind="lib" path="C:/jars/luckperms.jar"/>
+	<classpathentry kind="lib" path="C:/jars/placeholderapi.jar"/>
+	<classpathentry kind="lib" path="C:/jars/Discord-Webhooks-API-WithDependencies.jar"/>
+	<classpathentry kind="lib" path="C:/jars/spigot-api-1.18.1-R0.1-SNAPSHOT-shaded.jar"/>
+	<classpathentry kind="lib" path="C:/jars/TitleAPI-1.8.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
