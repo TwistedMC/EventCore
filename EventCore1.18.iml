@@ -37,15 +37,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jars/HeadDatabase-4.13.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/../../jars/TitleAPI-1.8.1.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -74,6 +65,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../EnchantedCore/out/artifacts/EnchantedCore_jar/EnchantedCore1.18.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../jars/HeadDatabase-4.15.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

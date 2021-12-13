@@ -32,7 +32,7 @@ public class MainMenu extends AbstractGUI implements Listener {
         String candies = formatter.format(Main.getCandies(pp));
         String snowflakes = formatter.format(Main.getSnowflakes(pp));
 
-            setItem(new cItemStack(api.getItemHead("40395")).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
+            setItem(new cItemStack(Material.CANDLE).setDisplayName(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest").addLore(
                     c.gray + "All your Halloween seasonal currency",
                     c.gray + "has been contained in this chest, for safe keeping.",
                     c.gray + "This chest has been imbued with a magic to only allow",
@@ -43,7 +43,7 @@ public class MainMenu extends AbstractGUI implements Listener {
                     c.red + "Closed!"
             ), 14, (s,c,p) -> { });
 
-            setItem(new cItemStack(api.getItemHead("41106")).setDisplayName(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe").addLore(
+            setItem(new cItemStack(Material.SNOWBALL).setDisplayName(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe").addLore(
                     c.gray + "All your Winter seasonal currency",
                     c.gray + "has been contained in this chest, for safe keeping.",
                     c.gray + "This globe has been imbued with a magic to only allow",
@@ -51,7 +51,7 @@ public class MainMenu extends AbstractGUI implements Listener {
                     "",
                     c.gray + "This chest is holding " + c.white + snowflakes + "❄",
                     "",
-                    c.yellow + "Click to open Winter Store!"
+                    c.yellow + "Click to open Snowflake Contribution!"
             ), 12, (s,c,p) -> { });
 
         setItem(new cItemStack(Material.WRITTEN_BOOK).setDisplayName(c.yellow + "Information").addFlags(ItemFlag.HIDE_ATTRIBUTES).addLore(

@@ -7,6 +7,8 @@ import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
 import net.twistedmc.api.framework.ServerGameType;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.inventorys.globalevents.ContributeMenu;
+import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
 import net.twistedmc.events.util.EventAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -82,7 +84,7 @@ public class CandyStoreListener implements Listener {
         }
 
         if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe") && e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
-            player.sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Winter Store is currently disabled!");
+            new GlobalMenu(player);
             return;
         }
 

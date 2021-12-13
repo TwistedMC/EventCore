@@ -32,5 +32,6 @@ commands:
   adventcalendar:
    aliases: [calendar, advent]
   snowflakecontribution:
+    aliases: [snow, winterstore, winter]
   toggleacas:
   rankgive:

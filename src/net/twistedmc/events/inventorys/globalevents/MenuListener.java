@@ -1,6 +1,7 @@
 package net.twistedmc.events.inventorys.globalevents;
 
 import net.twistedmc.events.data.c;
+import net.twistedmc.events.inventorys.MainMenu;
 import net.twistedmc.events.util.EventAPI;
 import net.twistedmc.events.util.errors.APIException;
 import org.bukkit.Bukkit;
@@ -9,10 +10,64 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 
 public class MenuListener implements Listener{
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onInventoryDrag(InventoryDragEvent e) {
+        if (e.getView().getTitle().equalsIgnoreCase("2021 Winter Community Challenge")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getView().getTitle().equalsIgnoreCase("Contribute Snowflakes")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onInventoryDrag(InventoryClickEvent e) {
+        if (e.getView().getTitle().equalsIgnoreCase("2021 Winter Community Challenge")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getView().getTitle().equalsIgnoreCase("Contribute Snowflakes")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
+            e.setCancelled(true);
+        }
+
+        if (e.getCurrentItem().getItemMeta().getLore().contains(c.gray + "To Currency Menu") && e.getView().getTitle().equalsIgnoreCase("Halloween Store")) {
+            new MainMenu((Player) e.getWhoClicked());
+            return;
+        }
+
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.purple + "Your Halloween " + c.gold + "Candies " + c.purple + "Chest") && e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
+            e.getWhoClicked().sendMessage(c.red + c.bold + "Sorry! " + c.red + "The Candy Store is currently disabled!");
+            return;
+        }
+
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.purple + "Your Winter " + c.white + "Snowflakes " + c.purple + "Snowglobe") && e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
+            new GlobalMenu((Player) e.getWhoClicked());
+            return;
+        }
+
+        if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.yellow + "Information") && e.getView().getTitle().equalsIgnoreCase("Seasonal Menu")) {
+            e.getWhoClicked().sendMessage(c.yellow + "More information: https://twistedmc.net/seasonal-info/");
+            e.getWhoClicked().closeInventory();
+            return;
+        }
+    }
+
     @EventHandler(priority = EventPriority.LOW)
     public void onInventoryClick(InventoryClickEvent e) throws APIException {
         if (e.getCurrentItem() == null) {

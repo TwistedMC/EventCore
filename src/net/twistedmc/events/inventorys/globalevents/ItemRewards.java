@@ -71,7 +71,7 @@ public class ItemRewards {
 
     NumberFormat f = NumberFormat.getInstance();
     static HeadDatabaseAPI HAPI = new HeadDatabaseAPI();
-    public static ItemStack displayGold = new cItemStack(HAPI.getItemHead("46945")).setDisplayName(c.gold + "Gold Cache").addLore(
+    public static ItemStack displayGold = new cItemStack(Material.GOLD_INGOT).setDisplayName(c.gold + "Gold Cache").addLore(
         c.dgray + "Event Reward",
         c.green + "✮ Common (Event)",
         "",
