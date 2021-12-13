@@ -1,8 +1,7 @@
 package net.twistedmc.events.inventorys.globalevents;
 
-import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.EventAPI;
 import net.twistedmc.events.util.errors.APIException;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -122,23 +121,23 @@ public class MenuListener implements Listener{
             }
             if (e.getCurrentItem().getItemMeta().getLore().contains(c.yellow + "Click to Contribute!")) {
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 50❄")) {
-                    API.ContributionTransaction(pp,50);
+                    EventAPI.ContributionTransaction(pp,50);
                     return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 100❄")) {
-                    API.ContributionTransaction(pp,100);
+                    EventAPI.ContributionTransaction(pp,100);
                     return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 200❄")) {
-                    API.ContributionTransaction(pp,200);
+                    EventAPI.ContributionTransaction(pp,200);
                     return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 500❄")) {
-                    API.ContributionTransaction(pp,500);
+                    EventAPI.ContributionTransaction(pp,500);
                     return;
                 }
                 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase(c.white + "Contribute 1,000❄")) {
-                    API.ContributionTransaction(pp,1000);
+                    EventAPI.ContributionTransaction(pp,1000);
                     return;
                 }
             }

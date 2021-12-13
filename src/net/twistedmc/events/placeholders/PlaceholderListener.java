@@ -4,9 +4,8 @@ package net.twistedmc.events.placeholders;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.EventAPI;
 
-import org.apache.logging.log4j.core.Core;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -40,12 +39,12 @@ public class PlaceholderListener extends PlaceholderExpansion {
 
     @Override
     public String getRequiredPlugin(){
-        return "EventCore1.17";
+        return "EventCore1.18";
     }
 
     @Override
     public String getVersion(){
-        return Main.instance.getDescription().getVersion();
+        return Bukkit.getPluginManager().getPlugin("EventCore1.18").getDescription().getVersion();
     }
 
     @Override
@@ -99,10 +98,10 @@ public class PlaceholderListener extends PlaceholderExpansion {
             return String.valueOf(contribution);
         }
         if(identifier.equals("globalcontributionraw")) {
-           return "" + API.getTotalContributionRAW() + ""; 
+           return "" + EventAPI.getTotalContributionRAW() + "";
         }
         if (identifier.equals("globalcontributionf")) {
-            return API.getTotalContributionFormatted();
+            return EventAPI.getTotalContributionFormatted();
         }
 
         if(identifier.equals("color")) {

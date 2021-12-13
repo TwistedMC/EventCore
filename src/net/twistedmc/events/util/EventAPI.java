@@ -12,7 +12,6 @@ import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.events.data.c;
 import net.twistedmc.events.inventorys.globalevents.ContributeMenu;
 import net.twistedmc.events.inventorys.globalevents.GlobalMenu;
-import net.twistedmc.events.util.api_annotations.Unused;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
@@ -23,7 +22,7 @@ import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.util.errors.APIException;
 
-public class API {
+public class EventAPI {
 
     public static boolean adventOpenedAlready(UUID uuid, int openedWindow){
         try {
@@ -150,7 +149,7 @@ public class API {
                     Statement statement = MySQL.openConnection().createStatement();
                     statement.executeUpdate("UPDATE `contribution` SET `contribution` = `contribution` + "+ contributed +" WHERE UUID = '" + player.getUniqueId() + "'");
                    if (!GlobalMenu.AllContributionGetsPrize) {
-                    if (API.getTotalContributionRAW() <= GlobalMenu.GlobalGoal) {
+                    if (EventAPI.getTotalContributionRAW() <= GlobalMenu.GlobalGoal) {
                        Statement statement1 = MySQL.openConnection().createStatement();
                        ResultSet res = statement1.executeQuery("SELECT `canGetPrize` VALUE FROM `contribution` WHERE `UUID` = '"+player.getUniqueId() + "'");
                        while (res.next()){
@@ -177,7 +176,7 @@ public class API {
                 Bukkit.broadcastMessage(c.white + player.getName() + c.aqua + " contributed " + c.white + f.format(contributed) + "❄ " + c.aqua + "to the Global Event Goal!");
                 Bukkit.broadcastMessage("");
                 Main.chime();
-                API.GoalCheck();
+                EventAPI.GoalCheck();
             } else {
                 player.sendMessage(c.red + "Transaction failed, please try again later.");
             }
@@ -293,9 +292,9 @@ public class API {
     }
 
     public static void GoalCheck() throws APIException {
-        if (API.getTotalContributionRAW() >= GlobalMenu.GlobalGoal) {
+        if (EventAPI.getTotalContributionRAW() >= GlobalMenu.GlobalGoal) {
             Bukkit.getServer().broadcastMessage(c.green + "The Winter 2021 Community Challenge has been completed! Prizes will be dispatched!");
-            API.PrizeDispatcher();
+            EventAPI.PrizeDispatcher();
         }
     }
     /**
@@ -412,7 +411,7 @@ public class API {
 
     public static void addCandyStorePurchase(Player player, int amount) {
 
-        if (!API.inCandyStorePurchasesDB(player.getUniqueId())) {
+        if (!EventAPI.inCandyStorePurchasesDB(player.getUniqueId())) {
             try {
                 MySQL MySQL = new MySQL(Main.sqlHostCP, Main.sqlPortCP, Main.sqlDbCP, Main.sqlUserCP, Main.sqlPwCP);
                 Statement statement = MySQL.openConnection().createStatement();

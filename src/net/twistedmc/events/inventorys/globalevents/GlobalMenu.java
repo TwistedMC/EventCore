@@ -15,7 +15,7 @@ import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.EventAPI;
 import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
 
@@ -59,7 +59,7 @@ public class GlobalMenu extends AbstractGUI {
                         c.gray + "Goal: " + c.white + format.format(GlobalGoal) + "❄",
                         c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
                         "",
-                        c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + "❄",
+                        c.gray + "Total Snowflakes Contributed: " + c.white + EventAPI.getTotalContributionFormatted() + "❄",
                         c.gray + "Your Contributed Snowflakes: " + c.white + format.format(Main.getContribution(player)) + "❄",
                         "",
                         c.yellow + "Click to contribute " + c.white + "Snowflakes" + c.gray + "!" // Open the contribute menu
@@ -73,7 +73,7 @@ public class GlobalMenu extends AbstractGUI {
         ItemStack Green = new cItemStack(Material.GREEN_STAINED_GLASS_PANE).setDisplayName(c.green + "").addFlags(ItemFlag.HIDE_ENCHANTS);
         ItemStack Red = new cItemStack(Material.RED_STAINED_GLASS_PANE).setDisplayName(c.red + "").addFlags(ItemFlag.HIDE_ENCHANTS);
         ItemStack[] items = {Green,Red,Red,Green};
-        Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(API.generateRandomItem(items),slot, (s,c,p) -> { }));
+        Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(EventAPI.generateRandomItem(items),slot, (s, c, p) -> { }));
     }
     public void setItems(Player player) {
         // Prizes:
@@ -84,7 +84,7 @@ public class GlobalMenu extends AbstractGUI {
         String prize3_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal3 +"%"); String prize3_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal3 +"_d:0%");
         String prize4_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal4 +"%"); String prize4_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal4 +"_d:0%");
         String prize5_1 = PlaceholderAPI.setPlaceholders(player, "%progress_bar_{events_contribution}_r:&c■_c:&a■_l:10_p:&c■_m:"+ Goal5 +"%"); String prize5_2 = PlaceholderAPI.setPlaceholders(player, "%progress_percentage_{events_contribution}_m:"+ Goal5 +"_d:0%");
-        if (API.CanShowItem(Goal1, player, "contribution")) {
+        if (EventAPI.CanShowItem(Goal1, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize1")) {
                 ItemStack i = ItemRewards.displayGold.clone();
                 ItemMeta im = i.getItemMeta();
@@ -120,7 +120,7 @@ public class GlobalMenu extends AbstractGUI {
             , 29, (s,c,p) -> { });
         }
 
-        if (API.CanShowItem(Goal2, player, "contribution")) {
+        if (EventAPI.CanShowItem(Goal2, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize2")) {
                 ItemStack i = ItemRewards.displaySword.clone();
                 ItemMeta im = i.getItemMeta();
@@ -156,7 +156,7 @@ public class GlobalMenu extends AbstractGUI {
                     , 30, (s,c,p) -> { });
         }
 
-        if (API.CanShowItem(Goal3, player, "contribution")) {
+        if (EventAPI.CanShowItem(Goal3, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize3")) {
                 ItemStack i = ItemRewards.displayShovel.clone();
                 ItemMeta im = i.getItemMeta();
@@ -192,7 +192,7 @@ public class GlobalMenu extends AbstractGUI {
                     , 31, (s,c,p) -> { });
         }
 
-        if (API.CanShowItem(Goal4, player, "contribution")) {
+        if (EventAPI.CanShowItem(Goal4, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize4")) {
                 ItemStack i = ItemRewards.displayAxe.clone();
                 ItemMeta im = i.getItemMeta();
@@ -228,7 +228,7 @@ public class GlobalMenu extends AbstractGUI {
                     , 32, (s,c,p) -> { });
         }
 
-        if (API.CanShowItem(Goal5, player, "contribution")) {
+        if (EventAPI.CanShowItem(Goal5, player, "contribution")) {
             if(!player.hasPermission(PermPrefix + "prize5")) {
                 ItemStack i = ItemRewards.displayPickaxe.clone();
                 ItemMeta im = i.getItemMeta();

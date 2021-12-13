@@ -4,7 +4,7 @@ import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.EventAPI;
 import net.twistedmc.events.util.item.AbstractGUI;
 import net.twistedmc.events.util.item.cItemStack;
 import org.bukkit.Material;
@@ -43,7 +43,7 @@ public class ContributeMenu extends AbstractGUI {
                         c.gray + "Goal: " + c.white + format.format(GlobalGoal) + "❄",
                         c.gray + "Progress: " + global1 + c.gray + " (" + c.aqua + global2 + "%" + c.gray + ")",
                         "",
-                        c.gray + "Total Snowflakes Contributed: " + c.white + API.getTotalContributionFormatted() + "❄",
+                        c.gray + "Total Snowflakes Contributed: " + c.white + EventAPI.getTotalContributionFormatted() + "❄",
                         c.gray + "Your Contributed Snowflakes: " + c.white + format.format(Main.getContribution(player)) + "❄",
                         c.gray + "You currently have: " + c.white + format.format(sf) + "❄"
                 )
@@ -57,17 +57,17 @@ public class ContributeMenu extends AbstractGUI {
         ItemStack White = new cItemStack(Material.WHITE_STAINED_GLASS_PANE).setDisplayName(c.black + "").addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES);
         ItemStack LBlue = new cItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setDisplayName(c.black + "").addFlags(ItemFlag.HIDE_ENCHANTS).addFlags(ItemFlag.HIDE_ATTRIBUTES);
         ItemStack[] items = {Cyan,White,LBlue};
-        Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(API.generateRandomItem(items),slot, (s,c,p) -> { }));
+        Arrays.stream(INSIDE_FILL).forEach(slot -> setItem(EventAPI.generateRandomItem(items),slot, (s, c, p) -> { }));
     }
     public void setItems(Player plr) {
-        if (API.canBuy(50,"snowflakes",plr)) {
+        if (EventAPI.canBuy(50,"snowflakes",plr)) {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄").addLore("",c.yellow + "Click to Contribute!")
                     ,29, (s,c,p) -> { });
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 50❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,29, (s,c,p) -> { });
         }
-        if (API.canBuy(100,"snowflakes",plr)) {
+        if (EventAPI.canBuy(100,"snowflakes",plr)) {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 100❄").addLore("",c.yellow + "Click to Contribute!")
                     ,30, (s,c,p) -> { });
         } else {
@@ -75,14 +75,14 @@ public class ContributeMenu extends AbstractGUI {
                     ,30, (s,c,p) -> { });
 
         }
-        if (API.canBuy(200,"snowflakes",plr)) {
+        if (EventAPI.canBuy(200,"snowflakes",plr)) {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 200❄").addLore("",c.yellow + "Click to Contribute!")
                     ,31, (s,c,p) -> { });
         } else {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 200❄").addLore("",c.red + "Not enough "+c.white+"Snowflakes"+c.red+"!")
                     ,31, (s,c,p) -> { });
         }
-        if (API.canBuy(500,"snowflakes",plr)) {
+        if (EventAPI.canBuy(500,"snowflakes",plr)) {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 500❄").addLore("",c.yellow + "Click to Contribute!")
                     ,32, (s,c,p) -> { });
         } else {
@@ -90,7 +90,7 @@ public class ContributeMenu extends AbstractGUI {
                     , 32, (s, c, p) -> {
                     });
         }
-        if (API.canBuy(1000,"snowflakes",plr)) {
+        if (EventAPI.canBuy(1000,"snowflakes",plr)) {
             setItem(new cItemStack(HEADapi.getItemHead("39739")).setDisplayName(c.white + "Contribute 1,000❄").addLore("",c.yellow + "Click to Contribute!")
                     ,33, (s,c,p) -> { });
         } else {

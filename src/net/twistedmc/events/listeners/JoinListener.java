@@ -1,16 +1,13 @@
 package net.twistedmc.events.listeners;
 
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.twistedmc.api.achievements.Achievement;
-import net.twistedmc.api.achievements.AchievementType;
 import net.twistedmc.events.Main;
 import net.twistedmc.events.MySQL;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.EventAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -61,14 +58,14 @@ public class JoinListener implements Listener {
     public void join(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         if (p.hasPermission("twisted.events.global.joinrewards")) {
-            API.PrizeDispatchJoin(p);
+            EventAPI.PrizeDispatchJoin(p);
             return;
         }
 
         Calendar cal = Calendar.getInstance();
         int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
 
-        if (!API.adventOpenedAlready(p.getUniqueId(), dayOfMonth)) {
+        if (!EventAPI.adventOpenedAlready(p.getUniqueId(), dayOfMonth)) {
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin(Main.instance.getDescription().getName()), new Runnable() {
                 @Override
                 public void run() {

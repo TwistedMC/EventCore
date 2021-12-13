@@ -23,7 +23,6 @@ import net.ranktw.DiscordWebHooks.embed.FooterEmbed;
 import net.twistedmc.events.commands.*;
 import net.twistedmc.events.commands.advent.AdventCalendarCommand;
 import net.twistedmc.events.data.c;
-import net.twistedmc.events.inventorys.CandyStoreListener;
 import net.twistedmc.events.inventorys.advent.*;
 import net.twistedmc.events.inventorys.globalevents.MenuListener;
 import net.twistedmc.events.listeners.JoinListener;
@@ -32,7 +31,7 @@ import net.twistedmc.events.listeners.SuggestionsManager;
 import net.twistedmc.events.listeners.ToTListener;
 import net.twistedmc.events.commands.CandyStoreCommand;
 import net.twistedmc.events.placeholders.PlaceholderListener;
-import net.twistedmc.events.util.API;
+import net.twistedmc.events.util.EventAPI;
 import net.twistedmc.events.util.errors.APIException;
 import org.bukkit.*;
 import org.bukkit.command.*;
@@ -102,7 +101,7 @@ public class Main extends JavaPlugin implements Listener {
     public void onEnable() {
 
         try {
-            API.GoalCheck();
+            EventAPI.GoalCheck();
         } catch (APIException e) {
             e.printStackTrace();
         }
@@ -136,7 +135,7 @@ public class Main extends JavaPlugin implements Listener {
                 @Override
                 public void run() {
 
-                    getServer().getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin("EventCore1.17"));
+                    getServer().getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin("EventCore1.18"));
                     Bukkit.getServer().shutdown();
 
                 }
@@ -178,7 +177,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(1);
+                        EventAPI.disableDay(1);
                         return;
                     }
 
@@ -197,7 +196,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(2);
+                        EventAPI.disableDay(2);
                         return;
                     }
 
@@ -216,7 +215,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(3);
+                        EventAPI.disableDay(3);
                         return;
                     }
 
@@ -235,7 +234,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(4);
+                        EventAPI.disableDay(4);
                         return;
                     }
 
@@ -254,7 +253,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(5);
+                        EventAPI.disableDay(5);
                         return;
                     }
 
@@ -273,7 +272,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(6);
+                        EventAPI.disableDay(6);
                         return;
                     }
 
@@ -292,7 +291,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(7);
+                        EventAPI.disableDay(7);
                         return;
                     }
 
@@ -311,7 +310,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(8);
+                        EventAPI.disableDay(8);
                         return;
                     }
 
@@ -330,7 +329,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(9);
+                        EventAPI.disableDay(9);
                         return;
                     }
 
@@ -349,7 +348,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(10);
+                        EventAPI.disableDay(10);
                         return;
                     }
 
@@ -368,7 +367,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(11);
+                        EventAPI.disableDay(11);
                         return;
                     }
 
@@ -387,7 +386,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(12);
+                        EventAPI.disableDay(12);
                         return;
                     }
 
@@ -406,7 +405,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(13);
+                        EventAPI.disableDay(13);
                         return;
                     }
 
@@ -425,7 +424,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(14);
+                        EventAPI.disableDay(14);
                         return;
                     }
 
@@ -444,7 +443,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(15);
+                        EventAPI.disableDay(15);
                         return;
                     }
 
@@ -463,7 +462,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(16);
+                        EventAPI.disableDay(16);
                         return;
                     }
 
@@ -482,7 +481,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(17);
+                        EventAPI.disableDay(17);
                         return;
                     }
 
@@ -500,7 +499,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(18);
+                        EventAPI.disableDay(18);
                         return;
                     }
 
@@ -519,7 +518,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(19);
+                        EventAPI.disableDay(19);
                         return;
                     }
 
@@ -538,7 +537,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(20);
+                        EventAPI.disableDay(20);
                         return;
                     }
 
@@ -557,7 +556,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(21);
+                        EventAPI.disableDay(21);
                         return;
                     }
 
@@ -576,7 +575,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(22);
+                        EventAPI.disableDay(22);
                         return;
                     }
 
@@ -595,7 +594,7 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(23);
+                        EventAPI.disableDay(23);
                         return;
                     }
 
@@ -613,13 +612,13 @@ public class Main extends JavaPlugin implements Listener {
                         Bukkit.broadcastMessage(c.green + "You may claim today's " + c.white + "Advent Calendar" + c.green + " reward!");
                         click();
                         Bukkit.broadcastMessage("");
-                        API.disableDay(24);
+                        EventAPI.disableDay(24);
                         return;
                         // 25 window
                     }
 
                     if (format.format(now).equals("12/26/2021 12:00:00AM ET")) {
-                        API.disableDay(25);
+                        EventAPI.disableDay(25);
                         return;
                         // 25 window
                     }
@@ -652,97 +651,6 @@ public class Main extends JavaPlugin implements Listener {
             discordPluginLeak.sendMessage(dmPluginLeak);
 
         }
-
-        this.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, (Runnable) new Runnable() {
-            @Override
-            public void run() {
-                for (final Player p : Bukkit.getOnlinePlayers()) {
-
-                    String sqlHost = "173.44.44.251";
-                    String sqlPort = "3306";
-                    String sqlDb = "survivalEnchanted_events?useSSL=false";
-                    String sqlUser = "survivalEnchanted_events";
-                    String sqlPw = "4mHYCVVltvCmLVgF";
-
-                    int progress = 0;
-
-                    try {
-                        MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
-                        Statement statement = MySQL.openConnection().createStatement();
-                        ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
-                        while (result.next()) {
-                            progress = result.getInt("VALUE");
-                        }
-                    } catch (SQLException | ClassNotFoundException c) {
-                        c.printStackTrace();
-                    }
-
-
-                    if (progress >= 20 && p.hasPermission("quests.quest.events1")) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + p.getName() + " permission set quests.quest.events1 false");
-
-                        String sqlHostE = "173.44.44.251";
-                        String sqlPortE = "3306";
-                        String sqlDbE = "network_events?useSSL=false";
-                        String sqlUserE = "network_events";
-                        String sqlPwE = "mDYvjpZIbj1CZjGD";
-
-                        try {
-                            MySQL MySQL = new MySQL(sqlHostE, sqlPortE, sqlDbE, sqlUserE, sqlPwE);
-                            Statement statement = MySQL.openConnection().createStatement();
-                            statement.executeUpdate("UPDATE `networkEvents` SET eventsCompleted = eventsCompleted + 1 WHERE UUID = '" + p.getUniqueId() + "'");
-                        } catch (SQLException | ClassNotFoundException s) {
-                            s.printStackTrace();
-                        }
-
-                        try {
-                            MySQL MySQL = new MySQL(sqlHostE, sqlPortE, sqlDbE, sqlUserE, sqlPwE);
-                            Statement statement = MySQL.openConnection().createStatement();
-                            statement.executeUpdate("UPDATE `networkEvents` SET claimableRewards = claimableRewards + 1 WHERE UUID = '" + p.getUniqueId() + "'");
-                        } catch (SQLException | ClassNotFoundException s) {
-                            s.printStackTrace();
-                        }
-
-                    }
-                }
-            }
-        }, 0L, 3L);
-
-        this.getServer().getScheduler().scheduleSyncRepeatingTask((Plugin) this, (Runnable) new Runnable() {
-            @Override
-            public void run() {
-                for (final Player p : Bukkit.getOnlinePlayers()) {
-
-                    String sqlHost = "173.44.44.251";
-                    String sqlPort = "3306";
-                    String sqlDb = "survivalEnchanted_events?useSSL=false";
-                    String sqlUser = "survivalEnchanted_events";
-                    String sqlPw = "4mHYCVVltvCmLVgF";
-
-                    int progress = 0;
-
-                    try {
-                        MySQL MySQL = new MySQL(sqlHost, sqlPort, sqlDb, sqlUser, sqlPw);
-                        Statement statement = MySQL.openConnection().createStatement();
-                        ResultSet result = statement.executeQuery("SELECT progress VALUE FROM progress WHERE uuid = '" + p.getUniqueId() + "'");
-                        while (result.next()) {
-                            progress = result.getInt("VALUE");
-                        }
-                    } catch (SQLException | ClassNotFoundException c) {
-                        c.printStackTrace();
-                    }
-
-
-                    if (progress == 20 && !p.hasPermission("twisted.events.redeemed.reward")) {
-                        p.sendMessage(c.gray + "--------------------------------------------");
-                        p.sendMessage(c.green + c.bold + "You have unclaimed rewards!");
-                        p.sendMessage(c.green + "Type /rewards to collect.");
-                        p.sendMessage(c.gray + "--------------------------------------------");
-                        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 2.0F);
-                    }
-                }
-            }
-        }, 0, 600);
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             new PlaceholderListener(this).register();
